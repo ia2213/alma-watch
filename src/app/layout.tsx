@@ -28,6 +28,21 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-obsidian text-[#f5f0e8] font-sans antialiased">
+              {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <a href="/" className="font-serif text-2xl bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">
+            ALMA
+          </a>
+          <div className="flex gap-8">
+            <a href="/" className="text-neutral-400 hover:text-amber-200 transition-colors">Accueil</a>
+            <a href="/collection" className="text-neutral-400 hover:text-amber-200 transition-colors">Collection</a>
+            <a href="/histoire" className="text-neutral-400 hover:text-amber-200 transition-colors">Histoire</a>
+            <a href="/fabrication" className="text-neutral-400 hover:text-amber-200 transition-colors">Fabrication</a>
+          </div>
+        </div>
+      </nav>
+
         {children}
       </body>
     </html>

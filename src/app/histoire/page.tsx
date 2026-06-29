@@ -1,66 +1,66 @@
 export default function Histoire() {
- const civilisations = [
-  {
-    heure: 'XII', civ: 'Rome', symbole: 'Chiffres romains',
-    anecdote: 'Les Romains utilisaient XII pour midi — c\'est exactement l\'heure que vous lisez maintenant.',
-    sticker: '/stickers/sticker-romain.jpg', rotate: '-6deg', corner: 'top-right',
-  },
-  {
-    heure: '١', civ: 'Monde Arabe', symbole: 'Chiffres arabes',
-    anecdote: 'Sans les mathématiciens arabes, vos montres numériques n\'existeraient tout simplement pas.',
-    sticker: '/stickers/sticker-arabe.jpg', rotate: '5deg', corner: 'top-left',
-  },
-  {
-    heure: 'Θʹ', civ: 'Perse', symbole: 'Calligraphie persane',
-    anecdote: 'La Perse antique inventait l\'algèbre pendant que l\'Europe dormait encore.',
-    sticker: null, rotate: '-4deg', corner: 'top-right',
-  },
-  {
-    heure: 'ה', civ: 'Israël', symbole: 'Lettres hébraïques',
-    anecdote: 'L\'alphabet hébreu est l\'un des plus anciens systèmes d\'écriture encore utilisés aujourd\'hui.',
-    sticker: '/stickers/sticker-hebreu.png', rotate: '7deg', corner: 'top-right',
-  },
-  {
-    heure: 'Δ', civ: 'Grèce', symbole: 'Lettres grecques',
-    anecdote: 'Alpha, bêta, pi… la Grèce a littéralement donné son alphabet à la science mondiale.',
-    sticker: '/stickers/sticker-grec.png', rotate: '-5deg', corner: 'top-left',
-  },
-  {
-    heure: '𒎙', civ: 'Mésopotamie', symbole: 'Cunéiforme sumérien',
-    anecdote: 'Les Sumériens ont inventé l\'écriture, la roue, et la bière. Les priorités étaient claires.',
-    sticker: '/stickers/sticker-mesopotamia.png', rotate: '6deg', corner: 'top-right',
-  },
-  {
-    heure: '𓏺', civ: 'Égypte', symbole: 'Hiéroglyphes',
-    anecdote: 'Les Égyptiens mesuraient le temps avec des cadrans solaires 3500 ans avant votre montre.',
-    sticker: null, rotate: '-7deg', corner: 'top-left',
-  },
-  {
-    heure: '७', civ: 'Inde', symbole: 'Chiffres indiens',
-    anecdote: 'Le zéro ? Inventé en Inde. Sans lui, vos ordinateurs ne sont que des cailloux.',
-    sticker: null, rotate: '4deg', corner: 'top-right',
-  },
-  {
-    heure: '八', civ: 'Chine', symbole: 'Caractères chinois',
-    anecdote: 'La Chine inventait la boussole, l\'imprimerie et la poudre à canon en même temps. Show-off.',
-    sticker: '/stickers/sticker-chinois.png', rotate: '-6deg', corner: 'top-left',
-  },
-  {
-    heure: '৯', civ: 'Océanie', symbole: 'Navigation stellaire',
-    anecdote: 'Les Polynésiens naviguaient sur des milliers de km à la seule lecture des étoiles et des vagues.',
-    sticker: '/stickers/sticker-oceanie.png', rotate: '8deg', corner: 'top-right',
-  },
-  {
-    heure: '፲', civ: 'Amériques / Maya', symbole: 'Calendrier Maya',
-    anecdote: 'Le calendrier maya était plus précis que le calendrier grégorien.',
-    sticker: '/stickers/sticker-maya.webp', rotate: '-5deg', corner: 'top-left',
-  },
-  {
-    heure: '፲፩', civ: 'Afrique', symbole: 'Système Ishângo',
-    anecdote: 'Le bâton d\'Ishângo (Congo, -20 000 ans) est le plus ancien outil mathématique connu.',
-    sticker: '/stickers/stickers-afrique.png', rotate: '6deg', corner: 'top-right',
-  },
-];
+const civilisations = [
+    {
+      heure: 'XII', civ: 'Rome', symbole: 'Chiffres romains',
+      anecdote: 'Les Romains utilisaient XII pour midi — c\'est exactement l\'heure que vous lisez maintenant.',
+      sticker: '/stickers/sticker-romain.png', rotate: '-6deg', corner: 'top-right',
+    },
+    {
+      heure: '١', civ: 'Monde Arabe', symbole: 'Chiffres arabes',
+      anecdote: 'Sans les mathématiciens arabes, vos montres numériques n\'existeraient tout simplement pas.',
+      sticker: '/stickers/sticker-arabe.png', rotate: '5deg', corner: 'top-left',
+    },
+    {
+      heure: 'Θʹ', civ: 'Perse', symbole: 'Calligraphie persane',
+      anecdote: 'La Perse antique inventait l\'algèbre pendant que l\'Europe dormait encore.',
+      sticker: null, rotate: '-4deg', corner: 'top-right',
+    },
+    {
+      heure: 'ה', civ: 'Israël', symbole: 'Lettres hébraïques',
+      anecdote: 'L\'alphabet hébreu est l\'un des plus anciens systèmes d\'écriture encore utilisés aujourd\'hui.',
+      sticker: '/stickers/sticker-hebreu.png', rotate: '7deg', corner: 'top-right',
+    },
+    {
+      heure: 'Δ', civ: 'Grèce', symbole: 'Lettres grecques',
+      anecdote: 'Alpha, bêta, pi… la Grèce a littéralement donné son alphabet à la science mondiale.',
+      sticker: '/stickers/sticker-grec.png', rotate: '-5deg', corner: 'top-left',
+    },
+    {
+      heure: '𒎙', civ: 'Mésopotamie', symbole: 'Cunéiforme sumérien',
+      anecdote: 'Les Sumériens ont inventé l\'écriture, la roue, et la bière. Les priorités étaient claires.',
+      sticker: '/stickers/sticker-mesopotamia.png', rotate: '6deg', corner: 'top-right',
+    },
+    {
+      heure: '𓏺', civ: 'Égypte', symbole: 'Hiéroglyphes',
+      anecdote: 'Les Égyptiens mesuraient le temps avec des cadrans solaires 3500 ans avant votre montre.',
+      sticker: null, rotate: '-7deg', corner: 'top-left',
+    },
+    {
+      heure: '७', civ: 'Inde', symbole: 'Chiffres indiens',
+      anecdote: 'Le zéro ? Inventé en Inde. Sans lui, vos ordinateurs ne sont que des cailloux.',
+      sticker: null, rotate: '4deg', corner: 'top-right',
+    },
+    {
+      heure: '八', civ: 'Chine', symbole: 'Caractères chinois',
+      anecdote: 'La Chine inventait la boussole, l\'imprimerie et la poudre à canon en même temps. Show-off.',
+      sticker: '/stickers/sticker-chinois.png', rotate: '-6deg', corner: 'top-left',
+    },
+    {
+      heure: '৯', civ: 'Océanie', symbole: 'Navigation stellaire',
+      anecdote: 'Les Polynésiens naviguaient sur des milliers de km à la seule lecture des étoiles et des vagues.',
+      sticker: '/stickers/sticker-oceanie.png', rotate: '8deg', corner: 'top-right',
+    },
+    {
+      heure: '፲', civ: 'Amériques / Maya', symbole: 'Calendrier Maya',
+      anecdote: 'Le calendrier maya était plus précis que le calendrier grégorien.',
+      sticker: '/stickers/sticker-maya.webp', rotate: '-5deg', corner: 'top-left',
+    },
+    {
+      heure: '፲፩', civ: 'Afrique', symbole: 'Système Ishângo',
+      anecdote: 'Le bâton d\'Ishângo (Congo, -20 000 ans) est le plus ancien outil mathématique connu.',
+      sticker: '/stickers/stickers-afrique.png', rotate: '6deg', corner: 'top-right',
+    },
+  ];
   return (
     <>
       {/* HERO */}
@@ -125,8 +125,8 @@ export default function Histoire() {
                       src={item.sticker}
                       alt={`Sticker ${item.civ}`}
                       style={{
-                        width: '110px',
-                        height: '110px',
+                        width: '160px',
+                        height: '160px',
                         objectFit: 'contain',
                         display: 'block',
                       }}
@@ -135,7 +135,7 @@ export default function Histoire() {
                 )}
 
                 {/* Contenu */}
-                <div className="grid md:grid-cols-[70px_1fr] gap-6 items-start" style={{ paddingLeft: '1rem', paddingRight: item.sticker && item.corner === 'top-right' ? '130px' : '1rem' }}>
+                <div className="grid md:grid-cols-[70px_1fr] gap-6 items-start" style={{ paddingLeft: '1rem', paddingRight: item.sticker && item.corner === 'top-right' ? '180px' : '1rem' }}>
                   {/* Heure */}
                   <div className="text-center pt-1">
                     <span className="font-serif" style={{

@@ -1,71 +1,126 @@
 'use client';
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // autoplay blocked — vidéo reste invisible, le fond noir prend le relais
+      });
+    }
+  }, []);
+
   return (
     <>
-      {/* HERO — plein écran, vidéo, texte en bas à gauche comme Rolex/AP */}
-      <section className="relative w-full overflow-hidden" style={{height: '100dvh', minHeight: '600px'}}>
+      {/* HERO */}
+      <section
+        className="relative w-full overflow-hidden"
+        style={{
+          height: '100dvh',
+          minHeight: '600px',
+          // Fond sombre garanti si vidéo absente
+          background: '#0A0A0A',
+        }}
+      >
+        {/* Image fallback sombre — toujours visible en fond */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=2400&q=85)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'brightness(0.35) contrast(1.1) saturate(0.6)',
+          }}
+        />
 
-        {/* Vidéo de fond — couvre tout, y compris sous la navbar */}
+        {/* Vidéo locale — par-dessus l’image, même filtre */}
+        {/* Pour activer : déposer un fichier hero.mp4 dans /public/ */}
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{filter: 'brightness(0.45) contrast(1.05)'}}
+          style={{filter: 'brightness(0.38) contrast(1.08) saturate(0.7)'}}
         >
-          <source src="https://videos.pexels.com/video-files/3764145/3764145-hd_1920_1080_25fps.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/855282/855282-hd_1920_1080_25fps.mp4" type="video/mp4" />
+          <source src="/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Overlay gradient subtil en bas pour lisibilité du texte */}
+        {/* Overlay gradient bas → haut pour lisibilité du texte */}
         <div
           className="absolute inset-0"
-          style={{background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)'}}
+          style={{background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 55%, transparent 100%)'}}
         />
 
-        {/* Texte — ancré en bas à gauche style Omega/AP */}
-        <div className="absolute left-0 right-0" style={{bottom: '80px', padding: '0 5vw', zIndex: 10}}>
-          <p className="uppercase tracking-[0.25em] mb-4" style={{fontSize: '0.65rem', color: 'rgba(232,213,163,0.8)'}}>
+        {/* TEXTE — bas gauche, style maison horlogère */}
+        <div
+          className="absolute"
+          style={{bottom: '80px', left: '5vw', right: '5vw', zIndex: 10}}
+        >
+          <p
+            className="uppercase mb-5"
+            style={{fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(220,190,120,0.75)'}}
+          >
             Haute Horlogerie Multiculturelle
           </p>
+
           <h1
-            className="font-serif mb-6"
+            className="font-serif mb-5"
             style={{
-              fontSize: 'clamp(3.5rem, 8vw, 7rem)',
-              lineHeight: 1.0,
+              fontSize: 'clamp(3rem, 7vw, 6.5rem)',
+              lineHeight: 1.02,
               fontWeight: 400,
               color: '#FFFFFF',
-              letterSpacing: '0.04em',
+              letterSpacing: '0.02em',
             }}
           >
-            L&apos;Art du<br/>
-            <em style={{
-              background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 40%, #D4A843 70%, #BF9733 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontStyle: 'italic',
-            }}>Temps Universel</em>
+            L&apos;Art du<br />
+            <em
+              style={{
+                fontStyle: 'italic',
+                background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 40%, #D4A843 70%, #BF9733 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Temps Universel
+            </em>
           </h1>
-          <p className="mb-8" style={{fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.05em', maxWidth: '420px'}}>
+
+          <p
+            className="mb-8"
+            style={{fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '400px', lineHeight: 1.7}}
+          >
             12 civilisations. 25 pièces. 1 montre pour réunir les grandes cultures de l’humanité.
           </p>
+
           <Link
             href="/collection"
             className="inline-flex items-center gap-4 transition-all duration-400 group"
-            style={{color: '#FFFFFF', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase'}}
+            style={{color: '#FFFFFF', fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase'}}
           >
-            <span className="inline-block w-10 h-[1px] transition-all duration-400 group-hover:w-16" style={{background: 'linear-gradient(to right, #C8A84B, #F0DFA0)'}} />
+            <span
+              className="inline-block h-[1px] transition-all duration-500 group-hover:w-16"
+              style={{width: '40px', background: 'linear-gradient(to right, #C8A84B, #F0DFA0)'}}
+            />
             Découvrir la Collection
           </Link>
         </div>
 
-        {/* Indicateur pause vidéo — style AP */}
-        <div className="absolute" style={{bottom: '28px', right: '5vw', zIndex: 10}}>
-          <div className="w-[1px] h-8 mx-auto animate-bounce" style={{background: 'rgba(255,255,255,0.3)'}} />
+        {/* Scroll indicator */}
+        <div
+          className="absolute"
+          style={{bottom: '28px', left: '50%', transform: 'translateX(-50%)', zIndex: 10}}
+        >
+          <div
+            className="animate-bounce"
+            style={{width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(200,168,75,0.6), transparent)', margin: '0 auto'}}
+          />
         </div>
       </section>
 

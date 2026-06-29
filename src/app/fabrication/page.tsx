@@ -1,103 +1,98 @@
 export default function Fabrication() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-950/20 via-neutral-950 to-neutral-950"></div>
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <h1 className="font-serif text-7xl md:text-8xl lg:text-9xl mb-8 tracking-tight">
-            <span className="bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent">Fabrication</span>
+    <main className="min-h-screen bg-white">
+      {/* HERO */}
+      <section className="flex items-end justify-center pb-24 pt-48 px-6" style={{background: '#F8F7F5'}}>
+        <div className="text-center">
+          <p className="nav-link mb-4" style={{color: 'var(--gold)'}}>ALMA WATCHES</p>
+          <h1 className="font-serif text-black mb-6" style={{fontSize: 'clamp(3.5rem, 9vw, 7rem)', fontWeight: 500, lineHeight: 1.05}}>
+            Fabrication
           </h1>
-          <p className="text-neutral-400 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
-            L'Excellence Horlogère Suisse
+          <div className="gold-line w-20 mx-auto mb-6" />
+          <p className="text-black/50 text-lg max-w-xl mx-auto">
+            L’Excellence Horlogère Suisse
           </p>
         </div>
       </section>
 
-      {/* Savoir-Faire Suisse */}
-      <section className="py-32 px-6">
+      {/* SAVOIR-FAIRE */}
+      <section className="py-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-5xl md:text-6xl mb-16 text-center bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">
-            Savoir-Faire Suisse
-          </h2>
-          
-          <div className="prose prose-invert prose-lg max-w-4xl mx-auto">
-            <p className="text-neutral-300 text-xl leading-relaxed mb-12">
-              Chaque montre ALMA est le fruit d'un savoir-faire horloger transmis de génération en génération. Fabriquées en Suisse dans le respect des traditions les plus exigeantes, nos garde-temps incarnent la perfection technique et l'art de la haute horlogerie.
-            </p>
+          <div className="text-center mb-16">
+            <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>TECHNIQUE</p>
+            <h2 className="font-serif text-4xl text-black mb-4">Savoir-Faire Suisse</h2>
+            <div className="gold-line w-16 mx-auto" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 mt-20">
-            <div className="space-y-8">
-              <div className="group relative p-8 rounded-2xl bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 border border-neutral-800/50 hover:border-amber-900/50 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-yellow-500/0 group-hover:from-amber-500/5 group-hover:to-yellow-500/5 rounded-2xl transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="text-amber-200 text-5xl font-serif mb-4">01</div>
-                  <h3 className="font-serif text-2xl text-neutral-100 mb-4">Mouvement</h3>
-                  <p className="text-neutral-400 leading-relaxed">
-                    Mouvement automatique Sellita SW200-2, manufacturier suisse réputé pour sa précision et sa fiabilité. Réserve de marche de 38 heures.
-                  </p>
-                </div>
-              </div>
+          <p className="text-black/55 text-lg leading-relaxed max-w-3xl mx-auto text-center mb-16">
+            Chaque montre ALMA est le fruit d’un savoir-faire horloger transmis de génération en génération, fabriquée en Suisse dans le respect des traditions les plus exigeantes.
+          </p>
 
-              <div className="group relative p-8 rounded-2xl bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 border border-neutral-800/50 hover:border-amber-900/50 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-yellow-500/0 group-hover:from-amber-500/5 group-hover:to-yellow-500/5 rounded-2xl transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="text-amber-200 text-5xl font-serif mb-4">02</div>
-                  <h3 className="font-serif text-2xl text-neutral-100 mb-4">Boîtier</h3>
-                  <p className="text-neutral-400 leading-relaxed">
-                    Boîtier coussin de 42mm en titane grade 5, acier inoxydable 316L ou carbone forgé. Étanchéité 100m (10 ATM). Glace saphir bombée avec traitement anti-reflet.
-                  </p>
-                </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { num: '01', titre: 'Mouvement', texte: 'Mouvement automatique Sellita SW200-2, manufacturié suisse réputé pour sa précision. Réserve de marche de 72 heures.' },
+              { num: '02', titre: 'Boîtier', texte: 'Boîtier coussin 42mm en titane grade 5, acier 316L ou carbone forgé. Étanchéité 100m. Glace saphir bombée anti-reflet.' },
+              { num: '03', titre: 'Cadran', texte: 'Cadrans en météorite Gibeon authentique, nacre naturelle ou carbone. Aiguilles en or rose 18 carats ou acier poli.' },
+              { num: '04', titre: 'Bracelet', texte: 'Bracelets en cuir Shell Cordovan, alligator ou veau velours. Boucle déployante en titane ou or rose. Finitions main.' },
+            ].map((item, i) => (
+              <div key={i} className="p-8 border border-black/8 bg-white hover:border-amber-400/40 transition-all duration-300" style={{boxShadow: '0 2px 20px rgba(0,0,0,0.03)'}}>
+                <div className="font-serif text-4xl mb-4" style={{color: 'var(--gold)'}}>{item.num}</div>
+                <h3 className="font-serif text-2xl text-black mb-3">{item.titre}</h3>
+                <div className="gold-line w-12 mb-4" />
+                <p className="text-black/55 leading-relaxed">{item.texte}</p>
               </div>
-            </div>
-
-            <div className="space-y-8">
-              <div className="group relative p-8 rounded-2xl bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 border border-neutral-800/50 hover:border-amber-900/50 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-yellow-500/0 group-hover:from-amber-500/5 group-hover:to-yellow-500/5 rounded-2xl transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="text-amber-200 text-5xl font-serif mb-4">03</div>
-                  <h3 className="font-serif text-2xl text-neutral-100 mb-4">Cadran</h3>
-                  <p className="text-neutral-400 leading-relaxed">
-                    Cadrans en météorite Gibeon authentique, nacre naturelle, ou carbone texture. Aiguilles en or rose 18 carats ou acier poli. Index gravés au laser.
-                  </p>
-                </div>
-              </div>
-
-              <div className="group relative p-8 rounded-2xl bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 border border-neutral-800/50 hover:border-amber-900/50 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-yellow-500/0 group-hover:from-amber-500/5 group-hover:to-yellow-500/5 rounded-2xl transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="text-amber-200 text-5xl font-serif mb-4">04</div>
-                  <h3 className="font-serif text-2xl text-neutral-100 mb-4">Bracelet</h3>
-                  <p className="text-neutral-400 leading-relaxed">
-                    Bracelets en cuir Shell Cordovan, alligator ou veau velours. Boucle déployante en titane ou or rose. Finitions main.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Les Ateliers */}
-      <section className="py-32 px-6 bg-gradient-to-b from-neutral-900 to-neutral-950">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-5xl md:text-6xl mb-16 text-center bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">
-            Les Ateliers Partenaires
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8 mt-20">
+      {/* ATELIERS */}
+      <section className="py-24 px-6" style={{background: '#F8F7F5'}}>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>PARTENAIRES</p>
+            <h2 className="font-serif text-4xl text-black mb-4">Les Ateliers Partenaires</h2>
+            <div className="gold-line w-16 mx-auto" />
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { nom: 'Sellita', spécialité: 'Mouvements automatiques', lieu: 'La Chaux-de-Fonds' },
-              { nom: 'Bryek', spécialité: 'Boîtiers titane & acier', lieu: 'Genève' },
-              { nom: 'Combettes', spécialité: 'Cadrans d’exception', lieu: 'Jura' },
-            ].map((atelier, index) => (
-              <div key={index} className="group relative p-8 rounded-2xl bg-gradient-to-br from-neutral-900/50 to-neutral-950/50 border border-neutral-800/50 hover:border-amber-900/50 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-yellow-500/0 group-hover:from-amber-500/5 group-hover:to-yellow-500/5 rounded-2xl transition-all duration-500"></div>
-                <div className="relative z-10 text-center">
-                  <h3 className="font-serif text-3xl text-amber-200 mb-4">{atelier.nom}</h3>
-                  <p className="text-neutral-300 text-lg mb-2">{atelier.spécialité}</p>
-                  <p className="text-neutral-500 text-sm">{atelier.lieu}</p>
+              { nom: 'Sellita', sp: 'Mouvements automatiques', lieu: 'La Chaux-de-Fonds' },
+              { nom: 'Bryek', sp: 'Boîtiers titane & acier', lieu: 'Genève' },
+              { nom: 'Combettes', sp: 'Cadrans d’exception', lieu: 'Jura' },
+            ].map((a, i) => (
+              <div key={i} className="p-8 text-center border border-black/8 bg-white hover:border-amber-400/40 transition-all duration-300">
+                <h3 className="font-serif text-2xl mb-2" style={{color: 'var(--gold)'}}>{a.nom}</h3>
+                <p className="text-black/70 mb-1">{a.sp}</p>
+                <p className="text-black/35 text-sm">{a.lieu}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESSUS */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>PROCESSUS</p>
+            <h2 className="font-serif text-4xl text-black mb-4">Fabrication</h2>
+            <div className="gold-line w-16 mx-auto" />
+          </div>
+          <div className="space-y-10">
+            {[
+              { etape: 'Conception', desc: 'Design et prototypage avec les meilleurs ateliers suisses. Chaque détail est pensé pour l’excellence.' },
+              { etape: 'Usinage', desc: 'Fabrication des boîtiers et composants avec des machines CNC de haute précision. Tolérances au centième de millimètre.' },
+              { etape: 'Assemblage', desc: 'Montage manuel du mouvement par des horlogers qualifiés. Contrôle qualité à chaque étape.' },
+              { etape: 'Finition', desc: 'Polissage, sertissage et réglage final. Chaque montre est testée pendant 72 heures minimum.' },
+              { etape: 'Certification', desc: 'Contrôle final et certification Swiss Made. Garantie internationale de 3 ans.' },
+            ].map((p, i) => (
+              <div key={i} className="flex gap-8 items-start">
+                <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center border" style={{border: '1px solid rgba(184,150,10,0.3)'}}>
+                  <span className="font-serif text-xl" style={{color: 'var(--gold)'}}>{i + 1}</span>
+                </div>
+                <div>
+                  <h3 className="font-serif text-xl text-black mb-2">{p.etape}</h3>
+                  <p className="text-black/50 leading-relaxed">{p.desc}</p>
                 </div>
               </div>
             ))}
@@ -105,52 +100,22 @@ export default function Fabrication() {
         </div>
       </section>
 
-      {/* Processus */}
-      <section className="py-32 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-serif text-5xl md:text-6xl mb-16 text-center bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">
-            Processus de Fabrication
-          </h2>
-
-          <div className="space-y-12">
-            {[
-              { étape: 'Conception', description: 'Design et prototypage avec les meilleurs ateliers suisses. Chaque détail est pensé pour l’excellence.' },
-              { étape: 'Usinage', description: 'Fabrication des boîtiers et composants avec des machines CNC de haute précision. Tolérances au centième de millimètre.' },
-              { étape: 'Assemblage', description: 'Montage manuel du mouvement et des composants par des horlogers qualifiés. Contrôle qualité à chaque étape.' },
-              { étape: 'Finition', description: 'Polissage, sertissage et réglage final. Chaque montre est testée pendant 72 heures minimum.' },
-              { étape: 'Certification', description: 'Contrôle final et certification Swiss Made. Garantie internationale de 2 ans.' },
-            ].map((process, index) => (
-              <div key={index} className="flex gap-8 items-start">
-                <div className="flex-shrink-0 w-24 h-24 rounded-full bg-gradient-to-br from-amber-900/30 to-yellow-900/30 border border-amber-800/50 flex items-center justify-center">
-                  <span className="font-serif text-3xl text-amber-200">{index + 1}</span>
-                </div>
-                <div className="flex-grow">
-                  <h3 className="font-serif text-2xl text-neutral-100 mb-3">{process.étape}</h3>
-                  <p className="text-neutral-400 leading-relaxed">{process.description}</p>
-                </div>
-              </div>
-            ))}
+      {/* SWISS MADE */}
+      <section className="py-24 px-6 text-center" style={{background: '#F8F7F5'}}>
+        <div className="max-w-3xl mx-auto">
+          <div className="inline-block px-8 py-3 mb-8" style={{border: '1px solid rgba(184,150,10,0.4)'}}>
+            <span className="font-serif text-2xl" style={{color: 'var(--gold)'}}>Swiss Made</span>
           </div>
-        </div>
-      </section>
-
-      {/* Swiss Made */}
-      <section className="py-32 px-6 bg-gradient-to-b from-neutral-950 to-neutral-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-8 px-8 py-4 rounded-full border-2 border-amber-800/50 bg-gradient-to-r from-amber-950/30 to-yellow-950/30">
-            <span className="font-serif text-3xl text-amber-200">Swiss Made</span>
-          </div>
-          <h2 className="font-serif text-4xl md:text-5xl mb-8 bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">
-            La Garantie Suisse
-          </h2>
-          <p className="text-neutral-300 text-xl leading-relaxed mb-6">
-            Le label Swiss Made garantit que 60% minimum de la valeur de nos montres est produite en Suisse, que le mouvement est suisse et que l'assemblage final est réalisé en Suisse.
+          <h2 className="font-serif text-4xl text-black mb-6">La Garantie Suisse</h2>
+          <div className="gold-line w-16 mx-auto mb-8" />
+          <p className="text-black/60 text-lg leading-relaxed mb-4">
+            Le label Swiss Made garantit que 60% minimum de la valeur est produite en Suisse, que le mouvement est suisse et que l’assemblage final est réalisé en Suisse.
           </p>
-          <p className="text-neutral-400 text-lg leading-relaxed">
-            ALMA va au-delà de ces exigences : 85% de nos composants sont fabriqués en Suisse, garantissant une qualité et une traçabilité exceptionnelles.
+          <p className="text-black/40 leading-relaxed">
+            ALMA va au-delà : 85% de nos composants sont fabriqués en Suisse.
           </p>
         </div>
       </section>
     </main>
-  )
+  );
 }

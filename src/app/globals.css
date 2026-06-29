@@ -1,74 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family-Inter:wght@200;300;400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-pale: #F5EDDA;
+  --obsidian: #080808;
+  --charcoal: #111111;
+  --slate: #1C1C1C;
+  --ivory: #F8F3EC;
+  --text-muted: #9A9089;
 }
 
 body {
-  background: #0a0a0a;
-  color: #f5f5f5;
+  background: var(--obsidian);
+  color: var(--ivory);
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #d4af37;
-  border-radius: 4px;
-}
-
-/* Palette luxe */
-:root {
-  --gold-champagne: #d4af37;
-  --gold-light: #f4e4c1;
-  --gold-dark: #a08628;
-  --cream: #faf9f6;
-  --black-deep: #0a0a0a;
-  --gray-warm: #2a2a2a;
-  --burgundy: #6d2932;
-  --silver: #c0c0c0;
-}
+.font-serif { font-family: 'Playfair Display', Georgia, serif; }
 
 .gold-gradient {
-  background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 50%, #d4af37 100%);
+  background: linear-gradient(135deg, #B8860B 0%, #E8D5A3 40%, #C9A84C 70%, #F5EDDA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.luxury-border {
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-.luxury-shadow {
-  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+.card-luxury {
+  background: linear-gradient(145deg, #131313 0%, #1a1a1a 100%);
+  border: 1px solid rgba(201,168,76,0.12);
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+.card-luxury:hover {
+  border-color: rgba(201,168,76,0.45);
+  transform: translateY(-4px);
 }
 
-/* Text lisible sans overlay */
-.text-readable {
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+.nav-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
 }
-
-.backdrop-luxury {
-  backdrop-filter: blur(12px);
-  background: rgba(10, 10, 10, 0.85);
-  border: 1px solid rgba(212, 175, 55, 0.15);
+.nav-link:hover, .nav-link.active {
+  color: var(--gold-light);
 }

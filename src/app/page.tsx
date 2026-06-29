@@ -3,18 +3,18 @@ import Link from 'next/link';
 
 // Les 12 systèmes de numération d'ALMA aux 12 positions de l'horloge
 const CIVILIZATIONS = [
-  { pos: 12, num: 'XII',   label: 'Romain',       char: 'XII'  },
-  { pos:  1, num: '١',    label: 'Arabe-Indien',  char: '١'   },
-  { pos:  2, num: '১',    label: 'Bengali',       char: '২'   },
-  { pos:  3, num: 'ג',    label: 'Hébreu',        char: 'ג'   },
-  { pos:  4, num: '๔',    label: 'Thaï',          char: '๔'   },
-  { pos:  5, num: 'ე',    label: 'Géorgien',      char: 'ვ'   },
-  { pos:  6, num: 'ፆ',    label: 'Éthiopien',     char: 'ፆ'   },
-  { pos:  7, num: 'ζ',    label: 'Grec',          char: 'ζ'   },
-  { pos:  8, num: '八',   label: 'Sino-japonais', char: '八'  },
-  { pos:  9, num: '𒐝',   label: 'Cunéiforme',    char: '𒐝'  },
-  { pos: 10, num: '𐤉',   label: 'Phénicien',     char: '𐤉'  },
-  { pos: 11, num: 'ια',   label: 'Grec ancien',   char: 'ια'  },
+  { pos: 1,  char: '١' },
+  { pos: 2,  char: '২' },
+  { pos: 3,  char: '3' },
+  { pos: 4,  char: '- - - -' },
+  { pos: 5,  char: 'ה' },
+  { pos: 6,  char: '๖' },
+  { pos: 7,  char: 'ზ' },
+  { pos: 8,  char: '፰' },
+  { pos: 9,  char: 'Θʹ' },
+  { pos: 10, char: '十' },
+  { pos: 11, char: '𒎙𒁹' },
+  { pos: 12, char: 'XII' },
 ];
 
 function AnimatedClock() {

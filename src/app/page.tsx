@@ -4,70 +4,68 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      {/* HERO — plein écran, vidéo, texte en bas à gauche comme Rolex/AP */}
+      <section className="relative w-full overflow-hidden" style={{height: '100dvh', minHeight: '600px'}}>
 
-        {/* Vidéo de fond — horloge / temps qui passe */}
+        {/* Vidéo de fond — couvre tout, y compris sous la navbar */}
         <video
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(0.28) contrast(1.1) saturate(0.7)' }}
+          style={{filter: 'brightness(0.45) contrast(1.05)'}}
         >
-          {/* Aiguilles de montre — Pexels 3764145 */}
           <source src="https://videos.pexels.com/video-files/3764145/3764145-hd_1920_1080_25fps.mp4" type="video/mp4" />
-          {/* Mécanisme d’horloge — Pexels 855282 */}
           <source src="https://videos.pexels.com/video-files/855282/855282-hd_1920_1080_25fps.mp4" type="video/mp4" />
-          {/* Sablier — Pexels 4473349 */}
-          <source src="https://videos.pexels.com/video-files/4473349/4473349-hd_1920_1080_25fps.mp4" type="video/mp4" />
         </video>
 
-        {/* Fondu vers blanc en bas */}
+        {/* Overlay gradient subtil en bas pour lisibilité du texte */}
         <div
-          className="absolute bottom-0 left-0 right-0"
-          style={{ height: '240px', background: 'linear-gradient(to bottom, transparent, white)', zIndex: 2 }}
+          className="absolute inset-0"
+          style={{background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)'}}
         />
 
-        {/* Contenu */}
-        <div className="relative text-center px-6 space-y-8" style={{ zIndex: 3 }}>
-          <div className="w-[1px] h-14 bg-gradient-to-b from-transparent via-amber-400 to-transparent mx-auto" />
+        {/* Texte — ancré en bas à gauche style Omega/AP */}
+        <div className="absolute left-0 right-0" style={{bottom: '80px', padding: '0 5vw', zIndex: 10}}>
+          <p className="uppercase tracking-[0.25em] mb-4" style={{fontSize: '0.65rem', color: 'rgba(232,213,163,0.8)'}}>
+            Haute Horlogerie Multiculturelle
+          </p>
           <h1
-            className="font-serif leading-none tracking-[0.1em]"
+            className="font-serif mb-6"
             style={{
-              fontSize: 'clamp(5rem, 12vw, 11rem)',
-              background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #EDD98A 80%, #BF9733 100%)',
+              fontSize: 'clamp(3.5rem, 8vw, 7rem)',
+              lineHeight: 1.0,
+              fontWeight: 400,
+              color: '#FFFFFF',
+              letterSpacing: '0.04em',
+            }}
+          >
+            L&apos;Art du<br/>
+            <em style={{
+              background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 40%, #D4A843 70%, #BF9733 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-            }}
-          >
-            ALMA
+              fontStyle: 'italic',
+            }}>Temps Universel</em>
           </h1>
-          <p className="font-serif text-xl md:text-2xl tracking-[0.18em] font-light italic" style={{ color: '#E8D5A3' }}>
-            L&apos;Art du Temps Universel
+          <p className="mb-8" style={{fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.05em', maxWidth: '420px'}}>
+            12 civilisations. 25 pièces. 1 montre pour réunir les grandes cultures de l’humanité.
           </p>
-          <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto" />
-          <p className="text-sm tracking-[0.12em] font-light" style={{ color: '#C8C0B0' }}>
-            12 civilisations ·  25 pièces ·  1 montre
-          </p>
-          <div className="pt-4">
-            <Link
-              href="/collection"
-              className="inline-block px-12 py-4 text-xs uppercase tracking-[0.25em] transition-all duration-500"
-              style={{ border: '1px solid rgba(232,213,163,0.5)', color: '#E8D5A3' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(232,213,163,0.08)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-            >
-              Découvrir la Collection
-            </Link>
-          </div>
+          <Link
+            href="/collection"
+            className="inline-flex items-center gap-4 transition-all duration-400 group"
+            style={{color: '#FFFFFF', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase'}}
+          >
+            <span className="inline-block w-10 h-[1px] transition-all duration-400 group-hover:w-16" style={{background: 'linear-gradient(to right, #C8A84B, #F0DFA0)'}} />
+            Découvrir la Collection
+          </Link>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 animate-bounce" style={{ zIndex: 3 }}>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-amber-400/50 to-transparent" />
+        {/* Indicateur pause vidéo — style AP */}
+        <div className="absolute" style={{bottom: '28px', right: '5vw', zIndex: 10}}>
+          <div className="w-[1px] h-8 mx-auto animate-bounce" style={{background: 'rgba(255,255,255,0.3)'}} />
         </div>
       </section>
 
@@ -78,18 +76,18 @@ export default function Home() {
           <h2 className="font-serif text-4xl md:text-5xl tracking-[0.04em] text-black leading-tight">
             Une Vision.<br/>Douze Civilisations.
           </h2>
-          <div className="w-14 h-[1px] mx-auto" style={{ background: 'var(--gold)' }} />
+          <div className="w-14 h-[1px] mx-auto" style={{background: 'var(--gold)'}} />
           <p className="text-base md:text-lg text-black/55 leading-relaxed font-light tracking-wide">
             ALMA réunit sur un seul cadran les systèmes de numération des plus grandes civilisations de l&apos;humanité. De Rome à Sumer, du monde arabe à l&apos;Asie, chaque heure raconte une histoire millénaire.
           </p>
-          <Link href="/histoire" className="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase hover:gap-5 transition-all duration-300" style={{ color: 'var(--gold)' }}>
+          <Link href="/histoire" className="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase hover:gap-5 transition-all duration-300" style={{color: 'var(--gold)'}}>
             <span>En savoir plus</span><span>→</span>
           </Link>
         </div>
       </section>
 
       {/* HIGHLIGHTS */}
-      <section className="py-28 px-6" style={{ background: '#F8F7F5' }}>
+      <section className="py-28 px-6" style={{background: '#F8F7F5'}}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-16">
           {[
             { title: 'Swiss Made', desc: 'Mouvement Sellita SW200-2 assemblé en Suisse', icon: '✦' },
@@ -97,9 +95,9 @@ export default function Home() {
             { title: 'Garantie 3 Ans', desc: 'Service après-vente exclusif en Suisse', icon: '✧' },
           ].map((item, idx) => (
             <div key={idx} className="text-center space-y-5 group">
-              <div className="text-3xl group-hover:scale-110 transition-transform duration-500" style={{ color: 'var(--gold)' }}>{item.icon}</div>
+              <div className="text-3xl group-hover:scale-110 transition-transform duration-500" style={{color: 'var(--gold)'}}>{item.icon}</div>
               <h3 className="font-serif text-xl text-black tracking-[0.06em]">{item.title}</h3>
-              <div className="w-10 h-[1px] mx-auto" style={{ background: 'var(--gold)', opacity: 0.5 }} />
+              <div className="w-10 h-[1px] mx-auto" style={{background: 'var(--gold)', opacity: 0.5}} />
               <p className="text-black/50 text-sm leading-relaxed font-light">{item.desc}</p>
             </div>
           ))}
@@ -107,19 +105,12 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t py-14 px-6 bg-white" style={{ borderColor: 'rgba(0,0,0,0.07)' }}>
+      <footer className="border-t py-14 px-6 bg-white" style={{borderColor: 'rgba(0,0,0,0.07)'}}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div
-            className="font-serif text-2xl tracking-[0.3em]"
-            style={{
-              background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #EDD98A 80%, #BF9733 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            ALMA
-          </div>
+          <div className="font-serif text-2xl tracking-[0.3em]" style={{
+            background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #BF9733 100%)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+          }}>ALMA</div>
           <div className="flex gap-8 text-xs text-black/35 tracking-[0.15em] uppercase">
             <Link href="#" className="hover:text-black transition">Instagram</Link>
             <Link href="#" className="hover:text-black transition">LinkedIn</Link>

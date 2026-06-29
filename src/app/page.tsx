@@ -14,26 +14,24 @@ export default function Home() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(0.3) contrast(1.1) saturate(0.85)' }}
+          style={{ filter: 'brightness(0.28) contrast(1.1) saturate(0.7)' }}
         >
-          {/* Vidéo Pexels libre de droits — aiguilles d’horloge */}
-          <source src="https://videos.pexels.com/video-files/3764145/3764145-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-          {/* Fallback image si vidéo non disponible */}
-          <img
-            src="https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=2400&q=90"
-            alt="ALMA Watch"
-            className="w-full h-full object-cover"
-          />
+          {/* Aiguilles de montre — Pexels 3764145 */}
+          <source src="https://videos.pexels.com/video-files/3764145/3764145-hd_1920_1080_25fps.mp4" type="video/mp4" />
+          {/* Mécanisme d’horloge — Pexels 855282 */}
+          <source src="https://videos.pexels.com/video-files/855282/855282-hd_1920_1080_25fps.mp4" type="video/mp4" />
+          {/* Sablier — Pexels 4473349 */}
+          <source src="https://videos.pexels.com/video-files/4473349/4473349-hd_1920_1080_25fps.mp4" type="video/mp4" />
         </video>
 
         {/* Fondu vers blanc en bas */}
         <div
           className="absolute bottom-0 left-0 right-0"
-          style={{ height: '220px', background: 'linear-gradient(to bottom, transparent, white)' }}
+          style={{ height: '240px', background: 'linear-gradient(to bottom, transparent, white)', zIndex: 2 }}
         />
 
         {/* Contenu */}
-        <div className="relative z-10 text-center px-6 space-y-8">
+        <div className="relative text-center px-6 space-y-8" style={{ zIndex: 3 }}>
           <div className="w-[1px] h-14 bg-gradient-to-b from-transparent via-amber-400 to-transparent mx-auto" />
           <h1
             className="font-serif leading-none tracking-[0.1em]"
@@ -68,7 +66,7 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 animate-bounce z-10">
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 animate-bounce" style={{ zIndex: 3 }}>
           <div className="w-[1px] h-12 bg-gradient-to-b from-amber-400/50 to-transparent" />
         </div>
       </section>

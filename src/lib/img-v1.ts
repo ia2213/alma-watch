@@ -1,1 +1,2 @@
-b64_v1_placeholder
+// unused — images served via Imgur CDN
+export {};

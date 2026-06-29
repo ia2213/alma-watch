@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#080808] text-[#F8F3EC] font-sans antialiased">
+      <body className="bg-white text-[#111111] font-sans antialiased">
         <Navbar />
         {children}
       </body>

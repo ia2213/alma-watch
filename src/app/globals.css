@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --gold: #C9A84C;
-  --gold-light: #E8D5A3;
-  --gold-pale: #F5EDDA;
-  --obsidian: #080808;
-  --charcoal: #111111;
-  --slate: #1C1C1C;
-  --ivory: #F8F3EC;
-  --text-muted: #9A9089;
+  --gold: #B8960A;
+  --gold-light: #9A7B00;
+  --gold-pale: #7A6000;
+  --obsidian: #FFFFFF;
+  --charcoal: #F5F5F3;
+  --slate: #EBEBEB;
+  --ivory: #111111;
+  --text-muted: #666666;
 }
 
 body {
-  background: var(--obsidian);
-  color: var(--ivory);
+  background: #FFFFFF;
+  color: #111111;
   font-family: 'Inter', sans-serif;
 }
 
 .font-serif { font-family: 'Playfair Display', Georgia, serif; }
 
 .gold-gradient {
-  background: linear-gradient(135deg, #B8860B 0%, #E8D5A3 40%, #C9A84C 70%, #F5EDDA 100%);
+  background: linear-gradient(135deg, #9A7B00 0%, #C9A84C 40%, #B8960A 70%, #E8C84A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -34,13 +34,14 @@ body {
 }
 
 .card-luxury {
-  background: linear-gradient(145deg, #131313 0%, #1a1a1a 100%);
-  border: 1px solid rgba(201,168,76,0.12);
-  transition: border-color 0.4s ease, transform 0.4s ease;
+  background: #FFFFFF;
+  border: 1px solid rgba(184,150,10,0.2);
+  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
 }
 .card-luxury:hover {
-  border-color: rgba(201,168,76,0.45);
+  border-color: rgba(184,150,10,0.6);
   transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(184,150,10,0.08);
 }
 
 .nav-link {
@@ -51,5 +52,5 @@ body {
   transition: color 0.3s ease;
 }
 .nav-link:hover, .nav-link.active {
-  color: var(--gold-light);
+  color: var(--gold);
 }

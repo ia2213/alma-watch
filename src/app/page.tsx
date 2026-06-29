@@ -1,169 +1,154 @@
 'use client';
 import Link from 'next/link';
 
-// Horloge SVG animée 100% CSS — aucune dépendance externe
+// Les 12 systèmes de numération d'ALMA aux 12 positions de l'horloge
+const CIVILIZATIONS = [
+  { pos: 12, num: 'XII',   label: 'Romain',       char: 'XII'  },
+  { pos:  1, num: '١',    label: 'Arabe-Indien',  char: '١'   },
+  { pos:  2, num: '১',    label: 'Bengali',       char: '২'   },
+  { pos:  3, num: 'ג',    label: 'Hébreu',        char: 'ג'   },
+  { pos:  4, num: '๔',    label: 'Thaï',          char: '๔'   },
+  { pos:  5, num: 'ე',    label: 'Géorgien',      char: 'ვ'   },
+  { pos:  6, num: 'ፆ',    label: 'Éthiopien',     char: 'ፆ'   },
+  { pos:  7, num: 'ζ',    label: 'Grec',          char: 'ζ'   },
+  { pos:  8, num: '八',   label: 'Sino-japonais', char: '八'  },
+  { pos:  9, num: '𒐝',   label: 'Cunéiforme',    char: '𒐝'  },
+  { pos: 10, num: '𐤉',   label: 'Phénicien',     char: '𐤉'  },
+  { pos: 11, num: 'ια',   label: 'Grec ancien',   char: 'ια'  },
+];
+
 function AnimatedClock() {
   return (
     <svg
-      viewBox="0 0 400 400"
+      viewBox="0 0 500 500"
       xmlns="http://www.w3.org/2000/svg"
       style={{
         position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        opacity: 0.18,
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 'min(90vw, 90vh)',
+        height: 'min(90vw, 90vh)',
+        opacity: 0.55,
+        pointerEvents: 'none',
       }}
     >
       <defs>
-        <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#1a1408" />
-          <stop offset="100%" stopColor="#050505" />
-        </radialGradient>
         <radialGradient id="faceGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#1c1810" />
-          <stop offset="100%" stopColor="#0d0b07" />
+          <stop offset="0%" stopColor="#1c1808" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#050504" stopOpacity="0.9" />
         </radialGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="2" result="blur" />
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="softGlow">
+          <feGaussianBlur stdDeviation="1.5" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
         <style>{`
-          @keyframes rotateSecond {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
-          }
-          @keyframes rotateMinute {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
-          }
-          @keyframes rotateHour {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
-          }
-          .hand-second {
-            transform-origin: 200px 200px;
-            animation: rotateSecond 10s linear infinite;
-          }
-          .hand-minute {
-            transform-origin: 200px 200px;
-            animation: rotateMinute 60s linear infinite;
-          }
-          .hand-hour {
-            transform-origin: 200px 200px;
-            animation: rotateHour 720s linear infinite;
-          }
+          @keyframes rotSec  { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+          @keyframes rotMin  { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+          @keyframes rotHour { from { transform: rotate(30deg); }  to { transform: rotate(390deg); } }
+          .hand-s { transform-origin: 250px 250px; animation: rotSec  10s  linear infinite; }
+          .hand-m { transform-origin: 250px 250px; animation: rotMin  60s  linear infinite; }
+          .hand-h { transform-origin: 250px 250px; animation: rotHour 720s linear infinite; }
         `}</style>
       </defs>
 
-      {/* Fond */}
-      <rect width="400" height="400" fill="url(#bgGrad)" />
-
-      {/* Anneau extérieur or */}
-      <circle cx="200" cy="200" r="180" fill="none" stroke="#C8A84B" strokeWidth="3" opacity="0.6" />
-      <circle cx="200" cy="200" r="174" fill="none" stroke="#8B6914" strokeWidth="1" opacity="0.4" />
-
       {/* Face cadran */}
-      <circle cx="200" cy="200" r="172" fill="url(#faceGrad)" />
+      <circle cx="250" cy="250" r="238" fill="url(#faceGrad)" />
+
+      {/* Anneaux concentriques or */}
+      <circle cx="250" cy="250" r="238" fill="none" stroke="#C8A84B" strokeWidth="1.5" opacity="0.4" />
+      <circle cx="250" cy="250" r="232" fill="none" stroke="#F0DFA0" strokeWidth="0.5" opacity="0.3" />
+      <circle cx="250" cy="250" r="225" fill="none" stroke="#C8A84B" strokeWidth="3"   opacity="0.7" />
+      <circle cx="250" cy="250" r="218" fill="none" stroke="#8B6914" strokeWidth="1"   opacity="0.4" />
 
       {/* 60 graduations */}
       {Array.from({ length: 60 }, (_, i) => {
         const angle = (i * 6 * Math.PI) / 180;
         const isHour = i % 5 === 0;
-        const r1 = isHour ? 148 : 158;
-        const r2 = 170;
-        const x1 = 200 + r1 * Math.sin(angle);
-        const y1 = 200 - r1 * Math.cos(angle);
-        const x2 = 200 + r2 * Math.sin(angle);
-        const y2 = 200 - r2 * Math.cos(angle);
+        const r1 = isHour ? 192 : 208;
+        const r2 = 220;
+        const x1 = 250 + r1 * Math.sin(angle);
+        const y1 = 250 - r1 * Math.cos(angle);
+        const x2 = 250 + r2 * Math.sin(angle);
+        const y2 = 250 - r2 * Math.cos(angle);
         return (
-          <line
-            key={i}
-            x1={x1} y1={y1} x2={x2} y2={y2}
-            stroke={isHour ? '#C8A84B' : '#5a4a1a'}
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke={isHour ? '#C8A84B' : '#6a5020'}
             strokeWidth={isHour ? 3 : 1}
-            opacity={isHour ? 0.9 : 0.5}
+            opacity={isHour ? 1 : 0.6}
           />
         );
       })}
 
-      {/* Chiffres romains aux 12 positions */}
-      {[
-        { n: 'XII', angle: 0,   r: 128 },
-        { n: 'III', angle: 90,  r: 128 },
-        { n: 'VI',  angle: 180, r: 128 },
-        { n: 'IX',  angle: 270, r: 128 },
-      ].map(({ n, angle, r }) => {
-        const rad = (angle * Math.PI) / 180;
-        const x = 200 + r * Math.sin(rad);
-        const y = 200 - r * Math.cos(rad);
+      {/* Caractères des 12 civilisations */}
+      {CIVILIZATIONS.map(({ pos, char, label }) => {
+        const angle = ((pos * 30 - 90) * Math.PI) / 180;
+        const r = 168;
+        const x = 250 + r * Math.cos(angle);
+        const y = 250 + r * Math.sin(angle);
         return (
-          <text
-            key={n}
-            x={x} y={y}
-            textAnchor="middle"
-            dominantBaseline="central"
-            fill="#C8A84B"
-            fontSize="18"
-            fontFamily="Georgia, serif"
-            opacity="0.8"
-          >
-            {n}
-          </text>
+          <g key={pos}>
+            <text
+              x={x} y={y}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="#D4A843"
+              fontSize={pos === 12 ? "16" : "20"}
+              fontFamily="Georgia, 'Times New Roman', serif"
+              opacity="0.95"
+              filter="url(#softGlow)"
+            >
+              {char}
+            </text>
+          </g>
         );
       })}
 
-      {/* Aiguille des heures */}
-      <g className="hand-hour">
-        <line
-          x1="200" y1="200"
-          x2="200" y2="110"
-          stroke="#C8A84B" strokeWidth="6" strokeLinecap="round"
-          filter="url(#glow)"
-        />
-        <line
-          x1="200" y1="200"
-          x2="200" y2="225"
-          stroke="#8B6914" strokeWidth="6" strokeLinecap="round"
-        />
+      {/* Cercle intérieur décoratif */}
+      <circle cx="250" cy="250" r="80" fill="none" stroke="#C8A84B" strokeWidth="0.5" opacity="0.3" />
+
+      {/* === AIGUILLES === */}
+      {/* Heures */}
+      <g className="hand-h">
+        <line x1="250" y1="250" x2="250" y2="132"
+          stroke="#C8A84B" strokeWidth="7" strokeLinecap="round"
+          filter="url(#glow)" />
+        <line x1="250" y1="250" x2="250" y2="280"
+          stroke="#8B6914" strokeWidth="7" strokeLinecap="round" />
       </g>
 
-      {/* Aiguille des minutes */}
-      <g className="hand-minute">
-        <line
-          x1="200" y1="200"
-          x2="200" y2="80"
-          stroke="#D4A843" strokeWidth="4" strokeLinecap="round"
-          filter="url(#glow)"
-        />
-        <line
-          x1="200" y1="200"
-          x2="200" y2="230"
-          stroke="#7a5c10" strokeWidth="4" strokeLinecap="round"
-        />
+      {/* Minutes */}
+      <g className="hand-m">
+        <line x1="250" y1="250" x2="250" y2="100"
+          stroke="#D4A843" strokeWidth="5" strokeLinecap="round"
+          filter="url(#glow)" />
+        <line x1="250" y1="250" x2="250" y2="285"
+          stroke="#7a5c10" strokeWidth="5" strokeLinecap="round" />
       </g>
 
-      {/* Aiguille des secondes */}
-      <g className="hand-second">
-        <line
-          x1="200" y1="200"
-          x2="200" y2="60"
+      {/* Secondes */}
+      <g className="hand-s">
+        <line x1="250" y1="250" x2="250" y2="76"
           stroke="#F0DFA0" strokeWidth="2" strokeLinecap="round"
-          filter="url(#glow)"
-        />
-        <line
-          x1="200" y1="200"
-          x2="200" y2="240"
-          stroke="#c84030" strokeWidth="2" strokeLinecap="round"
-        />
+          filter="url(#glow)" />
+        <line x1="250" y1="250" x2="250" y2="295"
+          stroke="#c84030" strokeWidth="2" strokeLinecap="round" />
       </g>
 
       {/* Centre */}
-      <circle cx="200" cy="200" r="8" fill="#C8A84B" />
-      <circle cx="200" cy="200" r="4" fill="#F0DFA0" />
+      <circle cx="250" cy="250" r="12" fill="#C8A84B" />
+      <circle cx="250" cy="250" r="6"  fill="#F0DFA0" />
+      <circle cx="250" cy="250" r="2.5" fill="#ffffff" opacity="0.8" />
     </svg>
   );
 }
@@ -176,26 +161,20 @@ export default function Home() {
         className="relative w-full overflow-hidden"
         style={{ height: '100dvh', minHeight: '600px', background: '#07070a' }}
       >
-        {/* Horloge SVG animée en fond — 100% inline, 0 dépendance externe */}
+        {/* Horloge SVG animée */}
         <AnimatedClock />
 
-        {/* Overlay dégradé pour assombrir davantage */}
+        {/* Overlay très léger */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse at center, rgba(15,12,5,0.55) 0%, rgba(5,5,8,0.82) 100%)',
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.3) 100%)',
+              'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.15) 100%)',
+            pointerEvents: 'none',
           }}
         />
 
-        {/* TEXTE — bas gauche style maison horlogère */}
+        {/* TEXTE — bas gauche */}
         <div
           className="absolute"
           style={{ bottom: '80px', left: '5vw', right: '5vw', zIndex: 10 }}
@@ -247,7 +226,7 @@ export default function Home() {
 
           <Link
             href="/collection"
-            className="inline-flex items-center gap-4 group"
+            className="inline-flex items-center gap-4"
             style={{
               color: '#FFFFFF',
               fontSize: '0.68rem',
@@ -315,10 +294,7 @@ export default function Home() {
             { title: 'Garantie 3 Ans', desc: 'Service après-vente exclusif en Suisse', icon: '✧' },
           ].map((item, idx) => (
             <div key={idx} className="text-center space-y-5 group">
-              <div
-                className="text-3xl group-hover:scale-110 transition-transform duration-500"
-                style={{ color: 'var(--gold)' }}
-              >
+              <div className="text-3xl group-hover:scale-110 transition-transform duration-500" style={{ color: 'var(--gold)' }}>
                 {item.icon}
               </div>
               <h3 className="font-serif text-xl text-black tracking-[0.06em]">{item.title}</h3>
@@ -335,8 +311,7 @@ export default function Home() {
           <div
             className="font-serif text-2xl tracking-[0.3em]"
             style={{
-              background:
-                'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #BF9733 100%)',
+              background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #BF9733 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',

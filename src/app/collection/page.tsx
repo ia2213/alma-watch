@@ -26,14 +26,13 @@ export default function Collection() {
         </div>
       </section>
 
-      {/* CARROUSEL HORIZONTAL */}
-      <section className="py-16">
+      {/* CARROUSEL — DESKTOP */}
+      <section className="py-16 hidden md:block">
         <div
           className="flex gap-6 overflow-x-auto px-8"
           style={{
             scrollSnapType: 'x mandatory',
             scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
             WebkitOverflowScrolling: 'touch',
           }}
         >
@@ -42,7 +41,7 @@ export default function Collection() {
               key={watch.id}
               href={`/collection/${watch.id}`}
               className="group flex-shrink-0 card-luxury overflow-hidden"
-              style={{width: '340px', scrollSnapAlign: 'start'}}
+              style={{width: '340px', scrollSnapAlign: 'center'}}
             >
               <div className="relative overflow-hidden" style={{height: '340px', background: '#F5F5F3'}}>
                 <img
@@ -69,8 +68,63 @@ export default function Collection() {
             </Link>
           ))}
         </div>
-        {/* Hint scroll */}
         <p className="text-center mt-6 text-xs" style={{color: '#CCCCCC', letterSpacing: '0.15em'}}>FAIRE DÉFILER →</p>
+      </section>
+
+      {/* CARROUSEL — MOBILE : snap-center parfait */}
+      <section className="py-12 md:hidden">
+        <div
+          className="flex gap-5 overflow-x-auto snap-x snap-mandatory"
+          style={{
+            paddingLeft: 'calc(50vw - 145px)',
+            paddingRight: 'calc(50vw - 145px)',
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+          }}
+        >
+          {watches.map((watch) => (
+            <Link
+              key={watch.id}
+              href={`/collection/${watch.id}`}
+              className="snap-center flex-shrink-0 overflow-hidden rounded-2xl border border-black/8"
+              style={{width: '290px', background: '#FAFAF9'}}
+            >
+              {/* Image */}
+              <div className="relative overflow-hidden" style={{height: '290px', background: '#F0EFED'}}>
+                <img
+                  src={watchImages[watch.id]}
+                  alt={watch.name}
+                  className="w-full h-full object-cover"
+                />
+                <div
+                  className="absolute bottom-0 left-0 right-0 p-3"
+                  style={{background: 'linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%)'}}
+                >
+                  <span style={{fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold)'}}>
+                    {watch.seriesLabel}
+                  </span>
+                </div>
+              </div>
+
+              {/* Infos */}
+              <div className="p-5 space-y-3">
+                <div>
+                  <h3 className="font-serif text-[1.15rem] leading-tight text-black">{watch.name}</h3>
+                  <p className="text-[0.72rem] mt-1" style={{color: '#999', letterSpacing: '0.08em'}}>{watch.subtitle}</p>
+                </div>
+                <div className="gold-line w-full" />
+                <div className="flex items-center justify-between">
+                  <span className="font-serif text-base" style={{color: 'var(--gold)'}}>{watch.price}</span>
+                  <span style={{fontSize: '0.68rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold)'}}>Voir →</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <p className="text-center mt-5 text-[0.65rem] tracking-[0.2em] uppercase" style={{color: '#CCC'}}>
+          ← Faire défiler →
+        </p>
       </section>
 
       {/* SPECS COMMUNES */}

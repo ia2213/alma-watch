@@ -1,214 +1,283 @@
-'use client';
-import Link from 'next/link';
+export default function Histoire() {
+  const civilisations = [
+    {
+      heure: 'XII', civ: 'Rome', emoji: '🏛️', symbole: 'Chiffres romains',
+      anecdote: 'Les Romains utilisaient XII pour midi — c\'est exactement l\'heure que vous lisez maintenant.',
+      sticker: '/stickers/sticker-romain.jpg',
+    },
+    {
+      heure: '1', civ: 'Monde Arabe', emoji: '🌙', symbole: 'Chiffres arabes',
+      anecdote: 'Sans les mathématiciens arabes, vos montres numériques n\'existeraient tout simplement pas.',
+      sticker: '/stickers/sticker-arabe.jpg',
+    },
+    {
+      heure: '2', civ: 'Perse', emoji: '🧱', symbole: 'Calligraphie persane',
+      anecdote: 'La Perse antique inventait l\'algèbre pendant que l\'Europe dormait encore.',
+      sticker: null,
+    },
+    {
+      heure: '3', civ: 'Israël', emoji: '✡️', symbole: 'Lettres hébraïques',
+      anecdote: 'L\'alphabet hébreu est l\'un des plus anciens systèmes d\'écriture encore utilisés aujourd\'hui.',
+      sticker: '/stickers/sticker-hebreu.jpg',
+    },
+    {
+      heure: '4', civ: 'Grèce', emoji: '🏛️', symbole: 'Lettres grecques',
+      anecdote: 'Alpha, bêta, pi… la Grèce a littéralement donné son alphabet à la science mondiale.',
+      sticker: '/stickers/sticker-grec.jpg',
+    },
+    {
+      heure: '5', civ: 'Mésopotamie', emoji: '🌾', symbole: 'Cunéiforme sumérien',
+      anecdote: 'Les Sumériens ont inventé l\'écriture, la roue, et la bière. Les priorités étaient claires.',
+      sticker: '/stickers/sticker-mesopotamia.jpg',
+    },
+    {
+      heure: '6', civ: 'Égypte', emoji: '𓂀', symbole: 'Hiéroglyphes',
+      anecdote: 'Les Égyptiens mesuraient le temps avec des cadrans solaires 3500 ans avant votre montre.',
+      sticker: null,
+    },
+    {
+      heure: '7', civ: 'Inde', emoji: '🕉️', symbole: 'Chiffres indiens',
+      anecdote: 'Le zéro ? Inventé en Inde. Sans lui, vos ordinateurs ne sont que des cailloux.',
+      sticker: null,
+    },
+    {
+      heure: '8', civ: 'Chine', emoji: '🏯', symbole: 'Caractères chinois',
+      anecdote: 'La Chine inventait la boussole, l\'imprimerie et la poudre à canon en même temps. Show-off.',
+      sticker: '/stickers/sticker-chinois.jpg',
+    },
+    {
+      heure: '9', civ: 'Océanie', emoji: '🌊', symbole: 'Navigation stellaire',
+      anecdote: 'Les Polynésiens naviguaient sur des milliers de km à la seule lecture des étoiles et des vagues.',
+      sticker: '/stickers/sticker-oceanie.jpg',
+    },
+    {
+      heure: '10', civ: 'Amériques / Maya', emoji: '🐍', symbole: 'Calendrier Maya',
+      anecdote: 'Le calendrier maya était plus précis que le calendrier grégorien. Et c\'est lui qui l\'a précédé.',
+      sticker: '/stickers/sticker-maya.jpg',
+    },
+    {
+      heure: '11', civ: 'Afrique', emoji: '🌍', symbole: 'Système Ishângo',
+      anecdote: 'Le bâton d\'Ishângo (Congo, -20 000 ans) est le plus ancien outil mathématique connu.',
+      sticker: '/stickers/sticker-afrique.jpg',
+    },
+  ];
 
-const CIVILIZATIONS = [
-  { pos: 1,  char: '١' },
-  { pos: 2,  char: '২' },
-  { pos: 3,  char: '3' },
-  { pos: 4,  char: '- -' },
-  { pos: 5,  char: 'ה' },
-  { pos: 6,  char: '๖' },
-  { pos: 7,  char: 'ზ' },
-  { pos: 8,  char: '፰' },
-  { pos: 9,  char: 'Θʹ' },
-  { pos: 10, char: '十' },
-  { pos: 11, char: '𒎙𒁹' },
-  { pos: 12, char: 'XII' },
-];
-
-function AnimatedClock() {
-  return (
-    <svg
-      viewBox="0 0 500 500"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 'min(90vw, 90vh)',
-        height: 'min(90vw, 90vh)',
-        opacity: 0.62,
-        pointerEvents: 'none',
-      }}
-    >
-      <defs>
-        <radialGradient id="faceGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stopColor="#1c1808" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#050504" stopOpacity="0.9" />
-        </radialGradient>
-        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-        </filter>
-        <filter id="softGlow">
-          <feGaussianBlur stdDeviation="1.5" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-        </filter>
-        <style>{`
-          @keyframes rotSec  { from { transform: rotate(0deg); }  to { transform: rotate(360deg); } }
-          @keyframes rotMin  { from { transform: rotate(0deg); }  to { transform: rotate(360deg); } }
-          @keyframes rotHour { from { transform: rotate(30deg); } to { transform: rotate(390deg); } }
-          .hand-s { transform-origin: 250px 250px; animation: rotSec  10s  linear infinite; }
-          .hand-m { transform-origin: 250px 250px; animation: rotMin  60s  linear infinite; }
-          .hand-h { transform-origin: 250px 250px; animation: rotHour 720s linear infinite; }
-        `}</style>
-      </defs>
-
-      <circle cx="250" cy="250" r="238" fill="url(#faceGrad)" />
-
-      <circle cx="250" cy="250" r="238" fill="none" stroke="#C8A84B" strokeWidth="1.5" opacity="0.4" />
-      <circle cx="250" cy="250" r="232" fill="none" stroke="#F0DFA0" strokeWidth="0.5" opacity="0.3" />
-      <circle cx="250" cy="250" r="225" fill="none" stroke="#C8A84B" strokeWidth="3"   opacity="0.7" />
-      <circle cx="250" cy="250" r="218" fill="none" stroke="#8B6914" strokeWidth="1"   opacity="0.4" />
-
-      {Array.from({ length: 60 }, (_, i) => {
-        const angle = (i * 6 * Math.PI) / 180;
-        const isHour = i % 5 === 0;
-        const r1 = isHour ? 192 : 208;
-        const r2 = 220;
-        const x1 = 250 + r1 * Math.sin(angle);
-        const y1 = 250 - r1 * Math.cos(angle);
-        const x2 = 250 + r2 * Math.sin(angle);
-        const y2 = 250 - r2 * Math.cos(angle);
-        return (
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-            stroke={isHour ? '#C8A84B' : '#6a5020'}
-            strokeWidth={isHour ? 3 : 1}
-            opacity={isHour ? 1 : 0.6}
-          />
-        );
-      })}
-
-      {CIVILIZATIONS.map(({ pos, char }) => {
-        const angle = ((pos * 30 - 90) * Math.PI) / 180;
-        const r = 168;
-        const x = 250 + r * Math.cos(angle);
-        const y = 250 + r * Math.sin(angle);
-        return (
-          <text
-            key={pos}
-            x={x} y={y}
-            textAnchor="middle"
-            dominantBaseline="central"
-            fill="#D4A843"
-            fontSize={pos === 12 ? '16' : char === '- -' ? '14' : '20'}
-            fontFamily="Georgia, 'Times New Roman', serif"
-            letterSpacing={char === '- -' ? '0.1em' : '0'}
-            opacity="0.95"
-            filter="url(#softGlow)"
-          >
-            {char}
-          </text>
-        );
-      })}
-
-      <circle cx="250" cy="250" r="80" fill="none" stroke="#C8A84B" strokeWidth="0.5" opacity="0.3" />
-
-      <g className="hand-h">
-        <line x1="250" y1="250" x2="250" y2="132" stroke="#C8A84B" strokeWidth="7" strokeLinecap="round" filter="url(#glow)" />
-        <line x1="250" y1="250" x2="250" y2="280" stroke="#8B6914" strokeWidth="7" strokeLinecap="round" />
-      </g>
-      <g className="hand-m">
-        <line x1="250" y1="250" x2="250" y2="100" stroke="#D4A843" strokeWidth="5" strokeLinecap="round" filter="url(#glow)" />
-        <line x1="250" y1="250" x2="250" y2="285" stroke="#7a5c10" strokeWidth="5" strokeLinecap="round" />
-      </g>
-      <g className="hand-s">
-        <line x1="250" y1="250" x2="250" y2="76"  stroke="#F0DFA0" strokeWidth="2" strokeLinecap="round" filter="url(#glow)" />
-        <line x1="250" y1="250" x2="250" y2="295" stroke="#c84030" strokeWidth="2" strokeLinecap="round" />
-      </g>
-
-      <circle cx="250" cy="250" r="12" fill="#C8A84B" />
-      <circle cx="250" cy="250" r="6"  fill="#F0DFA0" />
-      <circle cx="250" cy="250" r="2.5" fill="#ffffff" opacity="0.8" />
-    </svg>
-  );
-}
-
-export default function Home() {
   return (
     <>
+      {/* HERO */}
       <section
-        className="relative w-full overflow-hidden"
-        style={{ height: '100dvh', minHeight: '600px', background: '#07070a' }}
+        className="relative py-40 px-6 text-center overflow-hidden"
+        style={{ background: '#07070a' }}
       >
-        <AnimatedClock />
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.15) 100%)',
-            pointerEvents: 'none',
+            background:
+              'radial-gradient(ellipse at center, rgba(200,168,75,0.08) 0%, transparent 70%)',
           }}
         />
-        <div className="absolute" style={{ bottom: '80px', left: '5vw', right: '5vw', zIndex: 10 }}>
-          <p className="uppercase mb-5" style={{ fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(220,190,120,0.75)' }}>
-            Haute Horlogerie Multiculturelle
-          </p>
-          <h1 className="font-serif mb-5" style={{ fontSize: 'clamp(3rem, 7vw, 6.5rem)', lineHeight: 1.02, fontWeight: 400, color: '#FFFFFF', letterSpacing: '0.02em' }}>
-            L&apos;Art du<br />
-            <em style={{ fontStyle: 'italic', background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 40%, #D4A843 70%, #BF9733 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Temps Universel
-            </em>
-          </h1>
-          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '400px', lineHeight: 1.7, marginBottom: '2rem' }}>
-            12 civilisations. 25 pièces. 1 montre pour réunir les grandes cultures de l&apos;humanité.
-          </p>
-          <Link href="/collection" className="inline-flex items-center gap-4" style={{ color: '#FFFFFF', fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-            <span style={{ display: 'inline-block', width: '40px', height: '1px', background: 'linear-gradient(to right, #C8A84B, #F0DFA0)' }} />
-            Découvrir la Collection
-          </Link>
-        </div>
-        <div className="absolute animate-bounce" style={{ bottom: '28px', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}>
-          <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(200,168,75,0.6), transparent)', margin: '0 auto' }} />
+        <p
+          className="uppercase mb-6 relative z-10"
+          style={{ fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(200,168,75,0.7)' }}
+        >
+          ALMA WATCHES
+        </p>
+        <h1
+          className="font-serif relative z-10"
+          style={{
+            fontSize: 'clamp(3.5rem, 8vw, 7rem)',
+            fontWeight: 400,
+            color: '#FFFFFF',
+            letterSpacing: '0.06em',
+          }}
+        >
+          Histoire
+        </h1>
+        <div className="w-14 h-[1px] mx-auto my-8 relative z-10" style={{ background: '#C8A84B' }} />
+        <p
+          className="relative z-10 text-sm"
+          style={{ color: 'rgba(255,255,255,0.45)', letterSpacing: '0.1em' }}
+        >
+          12 civilisations. 12 heures. Une seule montre pour les réunir toutes.
+        </p>
+      </section>
+
+      {/* LES 12 CIVILISATIONS */}
+      <section className="py-28 px-6" style={{ background: '#F8F7F5' }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-20">
+            <p
+              className="uppercase mb-4"
+              style={{ fontSize: '0.58rem', letterSpacing: '0.3em', color: '#C8A84B' }}
+            >
+              LE CADRAN
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl text-black tracking-[0.04em]">
+              Les Douze Civilisations
+            </h2>
+          </div>
+
+          <div className="space-y-0">
+            {civilisations.map((item, i) => (
+              <div
+                key={i}
+                className="group grid md:grid-cols-[80px_1fr_160px] gap-8 items-center py-10 border-b"
+                style={{ borderColor: 'rgba(0,0,0,0.07)' }}
+              >
+                {/* Heure */}
+                <div className="text-center hidden md:block">
+                  <span
+                    className="font-serif"
+                    style={{
+                      fontSize: '2rem',
+                      background:
+                        'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 50%, #BF9733 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    {item.heure}
+                  </span>
+                </div>
+
+                {/* Texte */}
+                <div>
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <span className="text-2xl">{item.emoji}</span>
+                    <h3 className="font-serif text-xl text-black tracking-[0.05em]">
+                      {item.civ}
+                    </h3>
+                    <span
+                      className="text-xs uppercase tracking-[0.15em] px-2 py-0.5 border"
+                      style={{
+                        color: '#C8A84B',
+                        borderColor: 'rgba(200,168,75,0.4)',
+                        fontSize: '0.55rem',
+                      }}
+                    >
+                      {item.symbole}
+                    </span>
+                  </div>
+                  <p className="text-sm text-black/50 leading-relaxed font-light italic">
+                    {item.anecdote}
+                  </p>
+                </div>
+
+                {/* Sticker */}
+                <div className="flex justify-center items-center">
+                  {item.sticker ? (
+                    <img
+                      src={item.sticker}
+                      alt={`Sticker ${item.civ}`}
+                      width={128}
+                      height={128}
+                      className="w-28 h-28 object-contain group-hover:scale-110 transition-transform duration-500"
+                      style={{
+                        filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.18))',
+                      }}
+                    />
+                  ) : (
+                    <div
+                      className="w-14 h-14 rounded-full flex items-center justify-center text-2xl border"
+                      style={{
+                        borderColor: 'rgba(200,168,75,0.2)',
+                        background: 'rgba(200,168,75,0.04)',
+                      }}
+                    >
+                      {item.emoji}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-32 px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center space-y-10">
-          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-amber-500 to-transparent mx-auto" />
-          <h2 className="font-serif text-4xl md:text-5xl tracking-[0.04em] text-black leading-tight">
-            Une Vision.<br />Douze Civilisations.
+      {/* PHILOSOPHIE */}
+      <section className="py-32 px-6" style={{ background: '#07070a' }}>
+        <div className="max-w-3xl mx-auto text-center space-y-8">
+          <p
+            className="uppercase"
+            style={{ fontSize: '0.58rem', letterSpacing: '0.3em', color: '#C8A84B' }}
+          >
+            VISION
+          </p>
+          <h2
+            className="font-serif text-4xl md:text-5xl tracking-[0.04em]"
+            style={{ color: '#FFFFFF' }}
+          >
+            Une Vision Universelle
           </h2>
           <div className="w-14 h-[1px] mx-auto" style={{ background: '#C8A84B' }} />
-          <p className="text-base md:text-lg text-black/55 leading-relaxed font-light tracking-wide">
-            ALMA réunit sur un seul cadran les systèmes de numération des plus grandes civilisations de l&apos;humanité. De Rome à Sumer, du monde arabe à l&apos;Asie, chaque heure raconte une histoire millénaire.
+          <p className="text-base text-white/45 leading-relaxed font-light tracking-wide">
+            Le temps n&apos;appartient à aucune culture, à aucune frontière. Il est le fil invisible
+            qui unit l&apos;humanité dans sa quête d&apos;éternité.
           </p>
-          <Link href="/histoire" className="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase hover:gap-5 transition-all duration-300" style={{ color: '#C8A84B' }}>
-            <span>En savoir plus</span><span>→</span>
-          </Link>
+          <p className="text-base text-white/45 leading-relaxed font-light tracking-wide">
+            ALMA rend hommage à cette universalité en incarnant dans chaque montre les douze
+            piliers de notre civilisation commune. Chaque regard sur l&apos;heure devient ainsi un
+            voyage à travers le temps et l&apos;espace.
+          </p>
         </div>
       </section>
 
-      <section className="py-28 px-6" style={{ background: '#F8F7F5' }}>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-16">
-          {[
-            { title: 'Swiss Made',    desc: 'Mouvement Sellita SW200-2 assemblé en Suisse', icon: '✦' },
-            { title: 'Série Limitée', desc: 'Seulement 125 pièces numérotées au monde',     icon: '◆' },
-            { title: 'Garantie 3 Ans',desc: 'Service après-vente exclusif en Suisse',       icon: '✧' },
-          ].map((item, idx) => (
-            <div key={idx} className="text-center space-y-5 group">
-              <div className="text-3xl group-hover:scale-110 transition-transform duration-500" style={{ color: '#C8A84B' }}>{item.icon}</div>
-              <h3 className="font-serif text-xl text-black tracking-[0.06em]">{item.title}</h3>
-              <div className="w-10 h-[1px] mx-auto" style={{ background: '#C8A84B', opacity: 0.5 }} />
-              <p className="text-black/50 text-sm leading-relaxed font-light">{item.desc}</p>
+      {/* HERITAGE */}
+      <section className="py-28 px-6 bg-white">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+          <div className="space-y-6">
+            <p
+              className="uppercase"
+              style={{ fontSize: '0.58rem', letterSpacing: '0.3em', color: '#C8A84B' }}
+            >
+              SAVOIR-FAIRE
+            </p>
+            <h2 className="font-serif text-4xl text-black tracking-[0.04em] leading-tight">
+              L&apos;Héritage Horloger
+            </h2>
+            <div className="w-10 h-[1px]" style={{ background: '#C8A84B' }} />
+            <p className="text-sm text-black/50 leading-relaxed font-light">
+              Depuis des siècles, l&apos;horlogerie suisse incarne l&apos;excellence et la précision.
+              ALMA s&apos;inscrit dans cette tradition tout en la transcendant par une vision
+              multiculturelle du temps.
+            </p>
+            <p className="text-sm text-black/50 leading-relaxed font-light">
+              Nos montres sont bien plus que des instruments de mesure : elles sont des gardiens
+              de mémoire, des ponts entre les époques.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <div
+              className="relative w-64 h-64 rounded-full flex items-center justify-center border"
+              style={{
+                borderColor: 'rgba(200,168,75,0.3)',
+                background: 'rgba(200,168,75,0.04)',
+              }}
+            >
+              <span
+                className="font-serif"
+                style={{
+                  fontSize: '5rem',
+                  background:
+                    'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 50%, #BF9733 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                XII
+              </span>
+              <div
+                className="absolute bottom-8 text-xs tracking-[0.2em] uppercase"
+                style={{ color: 'rgba(200,168,75,0.7)' }}
+              >
+                Savoir-Faire Suisse
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
-
-      <footer className="border-t py-14 px-6 bg-white" style={{ borderColor: 'rgba(0,0,0,0.07)' }}>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="font-serif text-2xl tracking-[0.3em]" style={{ background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #BF9733 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            ALMA
-          </div>
-          <div className="flex gap-8 text-xs text-black/35 tracking-[0.15em] uppercase">
-            <Link href="#" className="hover:text-black transition">Instagram</Link>
-            <Link href="#" className="hover:text-black transition">LinkedIn</Link>
-            <Link href="#" className="hover:text-black transition">Mentions légales</Link>
-          </div>
-        </div>
-        <div className="text-center mt-10 text-xs text-black/25 tracking-[0.1em]">© 2026 ALMA. Tous droits réservés.</div>
-      </footer>
     </>
   );
 }

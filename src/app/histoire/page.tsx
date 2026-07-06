@@ -1,3 +1,5 @@
+import GlobeTerrestreAlma from '@/components/GlobeTerrestreAlma';
+
 export default function Histoire() {
   const civilisations = [
     {
@@ -112,7 +114,6 @@ export default function Histoire() {
 
   return (
     <>
-      {/* HERO */}
       <section className="relative py-40 px-6 text-center overflow-hidden" style={{ background: '#07070a' }}>
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, rgba(200,168,75,0.08) 0%, transparent 70%)' }} />
         <p className="uppercase mb-6 relative z-10" style={{ fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(200,168,75,0.7)' }}>
@@ -127,119 +128,113 @@ export default function Histoire() {
         </p>
       </section>
 
-      {/* LES 12 CIVILISATIONS */}
-      <section className="py-20 px-4 md:px-6" style={{ background: '#F8F7F5' }}>
-        <div className="max-w-6xl mx-auto">
-
-          <div className="text-center mb-16">
+      <section className="py-16 md:py-20 px-4 md:px-6" style={{ background: '#F8F7F5' }}>
+        <div className="max-w-[1500px] mx-auto">
+          <div className="text-center mb-12 md:mb-16">
             <p className="uppercase mb-4" style={{ fontSize: '0.58rem', letterSpacing: '0.3em', color: '#C8A84B' }}>LE CADRAN</p>
             <h2 className="font-serif text-3xl md:text-5xl text-black tracking-[0.04em]">Les Douze Civilisations</h2>
           </div>
 
-          <div className="divide-y" style={{ borderTop: '1px solid rgba(0,0,0,0.07)', borderColor: 'rgba(0,0,0,0.07)' }}>
-            {civilisations.map((item, i) => (
-              <div key={i} className="py-10 md:py-12">
-
-                {/* DESKTOP : 3 colonnes heure | texte | sticker */}
-                <div className="hidden md:grid md:grid-cols-[80px_1fr_200px] gap-8 items-center">
-
-                  {/* Heure */}
-                  <div className="text-center">
-                    <span className="font-serif" style={{
-                      fontSize: '2rem',
-                      background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 50%, #BF9733 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      lineHeight: 1,
-                    }}>{item.heure}</span>
-                  </div>
-
-                  {/* Texte */}
-                  <div className="space-y-2">
-                    <div className="flex flex-wrap items-center gap-3 mb-1">
-                      <h3 className="font-serif text-[1.7rem] leading-none text-black tracking-[0.03em]">{item.civ}</h3>
-                      <span className="inline-flex items-center rounded-full border px-3 py-1" style={{
-                        color: '#B9913F', borderColor: 'rgba(185,145,63,0.35)', fontSize: '0.58rem', letterSpacing: '0.16em', textTransform: 'uppercase'
-                      }}>{item.symbole}</span>
+          <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_620px] gap-10 xl:gap-14 items-start">
+            <div className="order-2 xl:order-1 divide-y" style={{ borderTop: '1px solid rgba(0,0,0,0.07)', borderColor: 'rgba(0,0,0,0.07)' }}>
+              {civilisations.map((item, i) => (
+                <div key={i} className="py-10 md:py-12">
+                  <div className="hidden md:grid md:grid-cols-[80px_1fr_200px] gap-8 items-center">
+                    <div className="text-center">
+                      <span className="font-serif" style={{
+                        fontSize: '2rem',
+                        background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 50%, #BF9733 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        lineHeight: 1,
+                      }}>{item.heure}</span>
                     </div>
-                    <p style={{ fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)' }}>
-                      {item.periode}
-                    </p>
-                    <p className="font-light" style={{ fontSize: '0.96rem', lineHeight: '1.85', color: 'rgba(0,0,0,0.6)', maxWidth: '560px', paddingTop: '6px' }}>
-                      {item.description}
-                    </p>
-                  </div>
 
-                  {/* Sticker */}
-                  <div className="flex justify-center items-center">
-                    {item.sticker ? (
-                      <div style={{ transform: `rotate(${item.rotate})`, transition: 'transform 0.4s ease', filter: 'drop-shadow(3px 6px 14px rgba(0,0,0,0.18))', cursor: 'pointer' }}
-                        className="hover:[transform:rotate(0deg)_scale(1.06)]">
-                        <div style={{ width: '50px', height: '16px', background: 'rgba(255,243,190,0.8)', borderRadius: '3px', margin: '0 auto -5px', boxShadow: '0 1px 4px rgba(0,0,0,0.1)' }} />
-                        <img src={item.sticker} alt={`Sticker ${item.civ}`}
-                          style={{ width: '160px', height: '160px', objectFit: 'contain', display: 'block' }} />
-                      </div>
-                    ) : (
-                      <div className="w-14 h-14 rounded-full border flex items-center justify-center text-2xl"
-                        style={{ borderColor: 'rgba(200,168,75,0.2)', background: 'rgba(200,168,75,0.04)' }}>✦</div>
-                    )}
-                  </div>
-                </div>
-
-                {/* MOBILE : layout vertical propre */}
-                <div className="md:hidden flex gap-4 items-start">
-
-                  {/* Heure à gauche */}
-                  <div className="flex-shrink-0 w-10 pt-1 text-center">
-                    <span className="font-serif" style={{
-                      fontSize: '1.5rem',
-                      background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 50%, #BF9733 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      lineHeight: 1,
-                    }}>{item.heure}</span>
-                  </div>
-
-                  {/* Texte + sticker */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-3">
-                      {/* Titre & description */}
-                      <div className="flex-1 min-w-0 space-y-1">
-                        <h3 className="font-serif text-[1.2rem] leading-tight text-black tracking-[0.03em]">{item.civ}</h3>
-                        <p style={{ fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)' }}>
-                          {item.periode}
-                        </p>
-                        <span className="inline-flex items-center rounded-full border px-2 py-0.5" style={{
-                          color: '#B9913F', borderColor: 'rgba(185,145,63,0.35)', fontSize: '0.52rem', letterSpacing: '0.14em', textTransform: 'uppercase'
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap items-center gap-3 mb-1">
+                        <h3 className="font-serif text-[1.7rem] leading-none text-black tracking-[0.03em]">{item.civ}</h3>
+                        <span className="inline-flex items-center rounded-full border px-3 py-1" style={{
+                          color: '#B9913F', borderColor: 'rgba(185,145,63,0.35)', fontSize: '0.58rem', letterSpacing: '0.16em', textTransform: 'uppercase'
                         }}>{item.symbole}</span>
                       </div>
-
-                      {/* Sticker en haut à droite */}
-                      {item.sticker && (
-                        <div className="flex-shrink-0" style={{ transform: `rotate(${item.rotate})`, filter: 'drop-shadow(2px 4px 8px rgba(0,0,0,0.15))' }}>
-                          <div style={{ width: '36px', height: '13px', background: 'rgba(255,243,190,0.8)', borderRadius: '2px', margin: '0 auto -4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }} />
-                          <img src={item.sticker} alt={`Sticker ${item.civ}`}
-                            style={{ width: '90px', height: '90px', objectFit: 'contain', display: 'block' }} />
-                        </div>
-                      )}
+                      <p style={{ fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)' }}>
+                        {item.periode}
+                      </p>
+                      <p className="font-light" style={{ fontSize: '0.96rem', lineHeight: '1.85', color: 'rgba(0,0,0,0.6)', maxWidth: '560px', paddingTop: '6px' }}>
+                        {item.description}
+                      </p>
                     </div>
 
-                    {/* Description en dessous */}
-                    <p className="font-light mt-3" style={{ fontSize: '0.88rem', lineHeight: '1.8', color: 'rgba(0,0,0,0.58)' }}>
-                      {item.description}
-                    </p>
+                    <div className="flex justify-center items-center">
+                      {item.sticker ? (
+                        <div style={{ transform: `rotate(${item.rotate})`, transition: 'transform 0.4s ease', filter: 'drop-shadow(3px 6px 14px rgba(0,0,0,0.18))', cursor: 'pointer' }}
+                          className="hover:[transform:rotate(0deg)_scale(1.06)]">
+                          <div style={{ width: '50px', height: '16px', background: 'rgba(255,243,190,0.8)', borderRadius: '3px', margin: '0 auto -5px', boxShadow: '0 1px 4px rgba(0,0,0,0.1)' }} />
+                          <img src={item.sticker} alt={`Sticker ${item.civ}`}
+                            style={{ width: '160px', height: '160px', objectFit: 'contain', display: 'block' }} />
+                        </div>
+                      ) : (
+                        <div className="w-14 h-14 rounded-full border flex items-center justify-center text-2xl"
+                          style={{ borderColor: 'rgba(200,168,75,0.2)', background: 'rgba(200,168,75,0.04)' }}>✦</div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="md:hidden flex gap-4 items-start">
+                    <div className="flex-shrink-0 w-10 pt-1 text-center">
+                      <span className="font-serif" style={{
+                        fontSize: '1.5rem',
+                        background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 50%, #BF9733 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        lineHeight: 1,
+                      }}>{item.heure}</span>
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0 space-y-1">
+                          <h3 className="font-serif text-[1.2rem] leading-tight text-black tracking-[0.03em]">{item.civ}</h3>
+                          <p style={{ fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)' }}>
+                            {item.periode}
+                          </p>
+                          <span className="inline-flex items-center rounded-full border px-2 py-0.5" style={{
+                            color: '#B9913F', borderColor: 'rgba(185,145,63,0.35)', fontSize: '0.52rem', letterSpacing: '0.14em', textTransform: 'uppercase'
+                          }}>{item.symbole}</span>
+                        </div>
+
+                        {item.sticker && (
+                          <div className="flex-shrink-0" style={{ transform: `rotate(${item.rotate})`, filter: 'drop-shadow(2px 4px 8px rgba(0,0,0,0.15))' }}>
+                            <div style={{ width: '36px', height: '13px', background: 'rgba(255,243,190,0.8)', borderRadius: '2px', margin: '0 auto -4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }} />
+                            <img src={item.sticker} alt={`Sticker ${item.civ}`}
+                              style={{ width: '90px', height: '90px', objectFit: 'contain', display: 'block' }} />
+                          </div>
+                        )}
+                      </div>
+
+                      <p className="font-light mt-3" style={{ fontSize: '0.88rem', lineHeight: '1.8', color: 'rgba(0,0,0,0.58)' }}>
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
 
+            <div className="order-1 xl:order-2 xl:sticky xl:top-24 self-start">
+              <div className="overflow-hidden rounded-[10px] border shadow-[0_20px_60px_rgba(0,0,0,0.12)]" style={{ borderColor: 'rgba(200,168,75,0.18)', background: '#050505' }}>
+                <GlobeTerrestreAlma height="min(78vh, 860px)" />
               </div>
-            ))}
+              <p className="mt-4 text-center text-[0.68rem] uppercase tracking-[0.24em]" style={{ color: 'rgba(0,0,0,0.35)' }}>
+                Globe interactif des civilisations
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* PHILOSOPHIE */}
       <section className="py-32 px-6" style={{ background: '#07070a' }}>
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <p className="uppercase" style={{ fontSize: '0.58rem', letterSpacing: '0.3em', color: '#C8A84B' }}>VISION</p>
@@ -259,7 +254,6 @@ export default function Histoire() {
         </div>
       </section>
 
-      {/* HERITAGE */}
       <section className="py-28 px-6 bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div className="space-y-6">

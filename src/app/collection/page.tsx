@@ -12,22 +12,81 @@ const watchImages: Record<string, string> = {
 export default function Collection() {
   return (
     <div className="min-h-screen bg-white">
-      {/* HERO */}
-      <section className="flex items-end justify-center pb-20 pt-48 px-6" style={{background: '#F8F7F5'}}>
-        <div className="text-center">
-          <p className="nav-link mb-4" style={{color: 'var(--gold)'}}>HAUTE HORLOGERIE</p>
-          <h1 className="font-serif text-black mb-6" style={{fontSize: 'clamp(3rem, 8vw, 6rem)', fontWeight: 500, lineHeight: 1.05}}>
-            La Collection ALMA
-          </h1>
-          <div className="gold-line w-24 mx-auto mb-6" />
-          <p className="text-black/50 text-lg">
-            12 civilisations · 25 pièces Fondateurs · 100 pièces Limitées
+
+      {/* HERO VIDÉO CINÉMATIQUE */}
+      <section className="relative w-full overflow-hidden" style={{ height: '100dvh', minHeight: '600px' }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0,
+          }}
+        >
+          <source src="/collection-hero.mp4" type="video/mp4" />
+        </video>
+
+        {/* Overlay gradient sombre */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 1,
+          background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.25) 100%)',
+        }} />
+
+        {/* Contenu hero */}
+        <div className="absolute" style={{ bottom: '80px', left: '5vw', right: '5vw', zIndex: 10 }}>
+          <p className="uppercase mb-5" style={{ fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(220,190,120,0.8)' }}>
+            Haute Horlogerie Multiculturelle
           </p>
+          <h1 className="font-serif mb-5" style={{
+            fontSize: 'clamp(2.8rem, 7vw, 6rem)',
+            lineHeight: 1.02,
+            fontWeight: 400,
+            color: '#FFFFFF',
+            letterSpacing: '0.02em',
+          }}>
+            La Collection<br />
+            <em style={{
+              fontStyle: 'italic',
+              background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 40%, #D4A843 70%, #BF9733 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>ALMA</em>
+          </h1>
+          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '400px', lineHeight: 1.7, marginBottom: '2rem' }}>
+            12 civilisations. 25 pièces Fondateurs. 100 pièces Limitées.
+          </p>
+          <a
+            href="#montres"
+            className="inline-flex items-center gap-4"
+            style={{ color: '#FFFFFF', fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}
+          >
+            <span style={{ display: 'inline-block', width: '40px', height: '1px', background: 'linear-gradient(to right, #C8A84B, #F0DFA0)' }} />
+            Découvrir les modèles
+          </a>
+        </div>
+
+        {/* Flèche scroll */}
+        <div className="absolute animate-bounce" style={{ bottom: '28px', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}>
+          <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(200,168,75,0.6), transparent)', margin: '0 auto' }} />
         </div>
       </section>
 
       {/* CARROUSEL — DESKTOP */}
-      <section className="py-16 hidden md:block">
+      <section id="montres" className="py-16 hidden md:block">
+        <div className="text-center mb-12">
+          <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>LES MODÈLES</p>
+          <h2 className="font-serif text-4xl text-black">Choisissez votre ALMA</h2>
+          <div className="gold-line w-20 mx-auto mt-4" />
+        </div>
         <div
           className="flex gap-6 overflow-x-auto px-8"
           style={{
@@ -71,8 +130,13 @@ export default function Collection() {
         <p className="text-center mt-6 text-xs" style={{color: '#CCCCCC', letterSpacing: '0.15em'}}>FAIRE DÉFILER →</p>
       </section>
 
-      {/* CARROUSEL — MOBILE : snap-center parfait */}
-      <section className="py-12 md:hidden">
+      {/* CARROUSEL — MOBILE */}
+      <section id="montres-mobile" className="py-12 md:hidden">
+        <div className="text-center mb-10">
+          <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>LES MODÈLES</p>
+          <h2 className="font-serif text-3xl text-black">Choisissez votre ALMA</h2>
+          <div className="gold-line w-16 mx-auto mt-4" />
+        </div>
         <div
           className="flex gap-5 overflow-x-auto snap-x snap-mandatory"
           style={{
@@ -90,7 +154,6 @@ export default function Collection() {
               className="snap-center flex-shrink-0 overflow-hidden rounded-2xl border border-black/8"
               style={{width: '290px', background: '#FAFAF9'}}
             >
-              {/* Image */}
               <div className="relative overflow-hidden" style={{height: '290px', background: '#F0EFED'}}>
                 <img
                   src={watchImages[watch.id]}
@@ -106,8 +169,6 @@ export default function Collection() {
                   </span>
                 </div>
               </div>
-
-              {/* Infos */}
               <div className="p-5 space-y-3">
                 <div>
                   <h3 className="font-serif text-[1.15rem] leading-tight text-black">{watch.name}</h3>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
+      {/* HERO VIDÉO */}
       <section className="relative w-full overflow-hidden" style={{ height: '100dvh', minHeight: '600px' }}>
         <video
           autoPlay muted loop playsInline
@@ -37,6 +38,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION PUB VIDÉO NARRATIVE */}
+      <section className="relative w-full overflow-hidden" style={{ height: '100dvh', minHeight: '560px' }}>
+        <video
+          autoPlay muted loop playsInline
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+        >
+          <source src="/pub-hero.mp4" type="video/mp4" />
+        </video>
+
+        {/* Overlay léger pour garder la vidéo visible */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.25) 100%)' }} />
+
+        {/* Texte basé en bas à gauche */}
+        <div className="absolute" style={{ bottom: '60px', left: '5vw', right: '5vw', zIndex: 10 }}>
+          <p className="uppercase mb-4" style={{ fontSize: '0.58rem', letterSpacing: '0.3em', color: 'rgba(200,168,75,0.75)' }}>
+            Le manifeste ALMA
+          </p>
+          <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1.1, fontWeight: 400, color: '#FFFFFF', letterSpacing: '0.03em', maxWidth: '640px' }}>
+            Le temps n’appartient à aucune frontière.
+          </h2>
+          <div style={{ width: '40px', height: '1px', background: 'linear-gradient(to right, #C8A84B, #F0DFA0)', marginBottom: '1.5rem' }} />
+          <Link
+            href="/histoire"
+            className="inline-flex items-center gap-4"
+            style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}
+          >
+            <span style={{ display: 'inline-block', width: '30px', height: '1px', background: '#C8A84B' }} />
+            Découvrir l’histoire
+          </Link>
+        </div>
+      </section>
+
+      {/* SECTION VISION TEXTE */}
       <section className="py-32 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center space-y-10">
           <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-amber-500 to-transparent mx-auto" />
@@ -54,12 +88,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION 3 PILIERS */}
       <section className="py-28 px-6" style={{ background: '#F8F7F5' }}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-16">
           {[
-            { title: 'Swiss Made',     desc: 'Mouvement Sellita SW200-2 assemblé en Suisse', icon: '✦' },
+            { title: 'Swiss Made',     desc: 'Mouvement Sellita SW200-2 assemblé en Suisse', icon: '❆' },
             { title: 'Série Limitée',  desc: 'Seulement 125 pièces numérotées au monde',     icon: '◆' },
-            { title: 'Garantie 3 Ans', desc: 'Service après-vente exclusif en Suisse',       icon: '✧' },
+            { title: 'Garantie 3 Ans', desc: 'Service après-vente exclusif en Suisse',       icon: '❇' },
           ].map((item, idx) => (
             <div key={idx} className="text-center space-y-5 group">
               <div className="text-3xl group-hover:scale-110 transition-transform duration-500" style={{ color: '#C8A84B' }}>{item.icon}</div>
@@ -71,6 +106,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer className="border-t py-14 px-6 bg-white" style={{ borderColor: 'rgba(0,0,0,0.07)' }}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="font-serif text-2xl tracking-[0.3em]" style={{ background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #BF9733 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>

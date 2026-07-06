@@ -16,7 +16,7 @@ export default function Histoire() {
       civ: 'Monde Arabe',
       periode: 'VIIe — XVe siècle',
       symbole: 'Chiffres arabes',
-      description: 'Durant l\'âge d\'or islamique, Bagdad était la capitale mondiale du savoir. Al-Khwarizmi inventa l\'algèbre, Al-Biruni calcula la circonférence de la Terre avec une précision stupéfiante. Les chiffres dits "arabes" — ceux que vous utilisez chaque jour — sont en réalité une synthèse du génie indo-arabe qui a révolutionné les mathématiques mondiales.',
+      description: 'Durant l\'âge d\'or islamique, Bagdad était la capitale mondiale du savoir. Al-Khwarizmi inventa l\'algèbre, Al-Biruni calcula la circonférence de la Terre avec une précision stupéfiante. Les chiffres dits \"arabes\" — ceux que vous utilisez chaque jour — sont en réalité une synthèse du génie indo-arabe qui a révolutionné les mathématiques mondiales.',
       sticker: '/stickers/sticker-arabe.png',
       rotate: '5deg',
     },
@@ -135,10 +135,24 @@ export default function Histoire() {
             <h2 className="font-serif text-3xl md:text-5xl text-black tracking-[0.04em]">Les Douze Civilisations</h2>
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_620px] gap-10 xl:gap-14 items-start">
-            <div className="order-2 xl:order-1 divide-y" style={{ borderTop: '1px solid rgba(0,0,0,0.07)', borderColor: 'rgba(0,0,0,0.07)' }}>
+          {/* ── Globe compact visible uniquement sur mobile ── */}
+          <div className="xl:hidden mb-8">
+            <div className="overflow-hidden rounded-[10px] border shadow-[0_12px_40px_rgba(0,0,0,0.10)]" style={{ borderColor: 'rgba(200,168,75,0.18)', background: '#050505' }}>
+              <GlobeTerrestreAlma height="320px" />
+            </div>
+            <p className="mt-3 text-center text-[0.65rem] uppercase tracking-[0.24em]" style={{ color: 'rgba(0,0,0,0.35)' }}>
+              Globe interactif des civilisations
+            </p>
+          </div>
+
+          {/* ── Layout desktop : liste à gauche | globe sticky à droite ── */}
+          <div className="xl:grid xl:grid-cols-[1fr_600px] xl:gap-14 xl:items-start">
+
+            {/* Liste des civilisations */}
+            <div className="divide-y" style={{ borderTop: '1px solid rgba(0,0,0,0.07)', borderColor: 'rgba(0,0,0,0.07)' }}>
               {civilisations.map((item, i) => (
                 <div key={i} className="py-10 md:py-12">
+                  {/* Ligne desktop (md+) */}
                   <div className="hidden md:grid md:grid-cols-[80px_1fr_200px] gap-8 items-center">
                     <div className="text-center">
                       <span className="font-serif" style={{
@@ -181,6 +195,7 @@ export default function Histoire() {
                     </div>
                   </div>
 
+                  {/* Ligne mobile */}
                   <div className="md:hidden flex gap-4 items-start">
                     <div className="flex-shrink-0 w-10 pt-1 text-center">
                       <span className="font-serif" style={{
@@ -223,7 +238,8 @@ export default function Histoire() {
               ))}
             </div>
 
-            <div className="order-1 xl:order-2 xl:sticky xl:top-24 self-start">
+            {/* Globe sticky — visible uniquement sur xl+ */}
+            <div className="hidden xl:block xl:sticky xl:top-24 self-start">
               <div className="overflow-hidden rounded-[10px] border shadow-[0_20px_60px_rgba(0,0,0,0.12)]" style={{ borderColor: 'rgba(200,168,75,0.18)', background: '#050505' }}>
                 <GlobeTerrestreAlma height="min(78vh, 860px)" />
               </div>
@@ -231,6 +247,7 @@ export default function Histoire() {
                 Globe interactif des civilisations
               </p>
             </div>
+
           </div>
         </div>
       </section>

@@ -1,1 +1,189 @@
-&lt;!-- Globe file must be replaced with the full HTML from the user attachment --&gt;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Alma Watch — Globe des Civilisations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  html,body{margin:0;padding:0;width:100%;height:100%;background:#050505;overflow:hidden;}
+  #c{display:block;width:100%;height:100%;}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const W=()=>window.innerWidth, H=()=>window.innerHeight;
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('c'),antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setSize(W(),H());
+
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(45,W()/H(),0.1,1000);
+camera.position.z=2.8;
+
+// Lumières
+const amb=new THREE.AmbientLight(0xffffff,0.4);
+scene.add(amb);
+const sun=new THREE.DirectionalLight(0xfff8e7,1.2);
+sun.position.set(5,3,5);
+scene.add(sun);
+const rim=new THREE.DirectionalLight(0xc8a84b,0.3);
+rim.position.set(-4,-2,-3);
+scene.add(rim);
+
+// Globe (sphère avec texture procédurale)
+const geo=new THREE.SphereGeometry(1,64,64);
+
+// Créer une texture canvas pour simuler la Terre
+const texSize=1024;
+const texCanvas=document.createElement('canvas');
+texCanvas.width=texSize; texCanvas.height=texSize/2;
+const ctx=texCanvas.getContext('2d');
+
+// Fond océan profond
+const oceanGrad=ctx.createLinearGradient(0,0,0,texSize/2);
+oceanGrad.addColorStop(0,'#0a1628');
+oceanGrad.addColorStop(0.5,'#0d2040');
+oceanGrad.addColorStop(1,'#091525');
+ctx.fillStyle=oceanGrad;
+ctx.fillRect(0,0,texSize,texSize/2);
+
+// Continents simplifiés (formes approximatives)
+ctx.fillStyle='#1a2e1a';
+// Eurasie
+ctx.beginPath();
+ctx.ellipse(620,180,200,90,0.1,0,Math.PI*2); ctx.fill();
+ctx.beginPath();
+ctx.ellipse(750,200,120,60,0.2,0,Math.PI*2); ctx.fill();
+// Afrique
+ctx.beginPath();
+ctx.ellipse(560,270,60,100,0.05,0,Math.PI*2); ctx.fill();
+// Amériques
+ctx.beginPath();
+ctx.ellipse(270,190,55,110,0.1,0,Math.PI*2); ctx.fill();
+ctx.beginPath();
+ctx.ellipse(290,330,45,90,-0.1,0,Math.PI*2); ctx.fill();
+// Australie
+ctx.beginPath();
+ctx.ellipse(830,310,55,35,0.1,0,Math.PI*2); ctx.fill();
+
+// Nuances de vert sur les continents
+ctx.fillStyle='#223322';
+ctx.beginPath(); ctx.ellipse(610,175,180,80,0.1,0,Math.PI*2); ctx.fill();
+ctx.fillStyle='#1e3020';
+ctx.beginPath(); ctx.ellipse(550,265,50,85,0.05,0,Math.PI*2); ctx.fill();
+
+const texture=new THREE.CanvasTexture(texCanvas);
+
+const mat=new THREE.MeshPhongMaterial({
+  map:texture,
+  specular:new THREE.Color(0x1a3a5c),
+  shininess:25,
+});
+const globe=new THREE.Mesh(geo,mat);
+scene.add(globe);
+
+// Atmosphère
+const atmosGeo=new THREE.SphereGeometry(1.03,64,64);
+const atmosMat=new THREE.MeshPhongMaterial({
+  color:0x4488ff,
+  transparent:true,
+  opacity:0.08,
+  side:THREE.FrontSide,
+});
+scene.add(new THREE.Mesh(atmosGeo,atmosMat));
+
+// Données des civilisations (lat, lon, nom, couleur, symbole)
+const civs=[
+  {lat:41.9,lon:12.5,  name:'Rome',         color:'#e8c870',sym:'XII'},
+  {lat:33.3,lon:44.4,  name:'Mésopotamie',  color:'#d4a844',sym:'𒎙'},
+  {lat:30.0,lon:31.2,  name:'Égypte',       color:'#f0c840',sym:'𓏺'},
+  {lat:35.7,lon:51.4,  name:'Perse',        color:'#c8a84b',sym:'Θʹ'},
+  {lat:31.8,lon:35.2,  name:'Israël',       color:'#dfc060',sym:'ה'},
+  {lat:37.9,lon:23.7,  name:'Grèce',        color:'#e8d080',sym:'Δ'},
+  {lat:24.0,lon:45.0,  name:'Monde Arabe',  color:'#b8902a',sym:'١'},
+  {lat:20.7,lon:78.9,  name:'Inde',         color:'#ff9933',sym:'७'},
+  {lat:35.9,lon:104.2, name:'Chine',        color:'#cc2200',sym:'八'},
+  {lat:-13.5,lon:-172.,name:'Océanie',      color:'#44aacc',sym:'৯'},
+  {lat:19.4,lon:-99.1, name:'Mayas',        color:'#55aa44',sym:'፲'},
+  {lat:2.0, lon:21.8,  name:'Afrique',      color:'#cc8844',sym:'፲፩'},
+];
+
+function latLonToVec3(lat,lon,r){
+  const phi=(90-lat)*Math.PI/180;
+  const theta=(lon+180)*Math.PI/180;
+  return new THREE.Vector3(
+    -r*Math.sin(phi)*Math.cos(theta),
+     r*Math.cos(phi),
+     r*Math.sin(phi)*Math.sin(theta)
+  );
+}
+
+// Points lumineux pour chaque civilisation
+const pointGeo=new THREE.SphereGeometry(0.022,8,8);
+civs.forEach(civ=>{
+  const pos=latLonToVec3(civ.lat,civ.lon,1.01);
+  const mat=new THREE.MeshBasicMaterial({color:civ.color});
+  const pt=new THREE.Mesh(pointGeo,mat);
+  pt.position.copy(pos);
+  scene.add(pt);
+
+  // Halo lumineux
+  const haloGeo=new THREE.SphereGeometry(0.038,8,8);
+  const haloMat=new THREE.MeshBasicMaterial({color:civ.color,transparent:true,opacity:0.25});
+  const halo=new THREE.Mesh(haloGeo,haloMat);
+  halo.position.copy(pos);
+  scene.add(halo);
+});
+
+// Lignes de longitude/latitude décoratives
+const lineMat=new THREE.LineBasicMaterial({color:0xc8a84b,transparent:true,opacity:0.08});
+for(let i=0;i<12;i++){
+  const pts=[];
+  for(let j=0;j<=64;j++) pts.push(latLonToVec3(j*180/64-90,i*30,1.005));
+  scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),lineMat));
+}
+for(let i=-3;i<=3;i++){
+  const pts=[];
+  for(let j=0;j<=64;j++) pts.push(latLonToVec3(i*25,j*360/64-180,1.005));
+  scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),lineMat));
+}
+
+// Rotation auto + drag
+let isDragging=false, prevX=0, prevY=0, velX=0;
+const onDown=e=>{isDragging=true;prevX=e.clientX??e.touches?.[0].clientX;prevY=e.clientY??e.touches?.[0].clientY;velX=0;};
+const onUp=()=>{isDragging=false;};
+const onMove=e=>{
+  if(!isDragging)return;
+  const cx=e.clientX??e.touches?.[0].clientX;
+  const cy=e.clientY??e.touches?.[0].clientY;
+  velX=(cx-prevX)*0.005;
+  globe.rotation.y+=velX;
+  globe.rotation.x+=(cy-prevY)*0.003;
+  prevX=cx;prevY=cy;
+};
+renderer.domElement.addEventListener('mousedown',onDown);
+renderer.domElement.addEventListener('touchstart',onDown,{passive:true});
+window.addEventListener('mouseup',onUp);
+window.addEventListener('touchend',onUp);
+window.addEventListener('mousemove',onMove);
+window.addEventListener('touchmove',onMove,{passive:true});
+
+window.addEventListener('resize',()=>{
+  renderer.setSize(W(),H());
+  camera.aspect=W()/H();
+  camera.updateProjectionMatrix();
+});
+
+let t=0;
+(function animate(){
+  requestAnimationFrame(animate);
+  t+=0.003;
+  if(!isDragging){globe.rotation.y+=0.002;velX*=0.95;}
+  else{globe.rotation.y+=velX;velX*=0.92;}
+  renderer.render(scene,camera);
+})();
+</script>
+</body>
+</html>

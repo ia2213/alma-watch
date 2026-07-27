@@ -2,11 +2,11 @@ import Link from 'next/link';
 import { watches } from '@/lib/watches';
 
 const watchImages: Record<string, string> = {
-  v1: '/watches/V2-Boitier-Acire-Cadran-Noir.jpg',
-  v2: '/watches/V2-Boitier-Acire-Cadran-Blanc.jpg',
-  v3: '/watches/V2-Boitier-Or-Cadran-blanc.jpg',
-  v4: '/watches/V2-Boitier-Or-Rose-Cadran-Nacre.jpg',
-  v5: '/watches/V2-Boitier-Or-Cadran-Noir.jpg',
+  v1: '/watches/acier-noir.jpg',
+  v2: '/watches/acier-blanc.jpg',
+  v3: '/watches/or-blanc.jpg',
+  v4: '/watches/or-rose-nacre.jpg',
+  v5: '/watches/or-noir.jpg',
 };
 
 export default function Collection() {

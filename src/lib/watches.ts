@@ -20,108 +20,87 @@ export interface Watch {
   color: string;
 }
 
+export interface Watch {
+  id: string;
+  name: string;
+  subtitle: string;
+  seriesLabel: string;
+  price: string;
+  description: string;
+  specs: { label: string; value: string }[];
+}
+
 export const watches: Watch[] = [
   {
-    id: 'v1',
-    name: 'KS Exclusive',
-    subtitle: 'Météorite Gibeon',
-    ref: 'KS 01/25 — KS 25/25',
-    series: 'v1',
-    seriesLabel: 'Série Fondateurs',
-    price: '4 000 €',
-    material: 'Titane Grade 5',
-    dial: 'Météorite Gibeon authentique',
-    caseMaterial: 'Titane Grade 5 brossé',
-    caseSize: '42 mm',
-    movement: 'Sellita SW200-2 (Swiss Made)',
-    waterResistance: '100 m / 10 ATM',
-    glass: 'Saphir bombé anti-reflet double face',
-    bracelet: 'Cuir Shell Cordovan brun tabac',
-    limited: '25 pièces numérotées',
-    description: "La pièce fondatrice d'ALMA. Son cadran en météorite Gibeon, formée il y a 4 milliards d'années, inscrit l'éternité au poignet. Chacune des 25 pièces est numérotée à la main et livrée avec son certificat d'authenticité et un fragment de météorite.",
-    color: '#B8860B',
+    id: "v1",
+    name: "BABEL Acier Noir",
+    subtitle: "Boîtier Acier 316L, Cadran Laque Ardoise",
+    seriesLabel: "Édition Fondateur",
+    price: "4 500 €",
+    description: "L'élégance intemporelle de l'acier mariée à la profondeur d'un cadran noir ardoise. Une interprétation moderne des 12 civilisations.",
+    specs: [
+      { label: "Boîtier", value: "39mm Acier 316L" },
+      { label: "Cadran", value: "Laque noir ardoise" },
+      { label: "Aiguilles", value: "Dauphine Super-LumiNova" },
+      { label: "Bracelet", value: "Cuir noir" }
+    ]
   },
   {
-    id: 'v2',
-    name: 'Carbone Météorite',
-    subtitle: 'Full Carbone Forgé',
-    ref: 'ALMA-CBN-MET — 001/100',
-    series: 'v2',
-    seriesLabel: 'Série Fondateurs',
-    price: '4 500 €',
-    material: 'Carbone forgé',
-    dial: 'Météorite Gibeon & Carbone',
-    caseMaterial: 'Carbone forgé haute résistance',
-    caseSize: '42 mm',
-    movement: 'Sellita SW200-2 (Swiss Made)',
-    waterResistance: '100 m / 10 ATM',
-    glass: 'Saphir bombé anti-reflet double face',
-    bracelet: 'Bracelet carbone avec boucle ardillon titane',
-    limited: '100 pièces numérotées',
-    description: "L'alliance du cosmos et de l'ingénierie moderne. Le boîtier en carbone forgé, d'une légèreté absolue, encadre un cadran météorite Gibeon dont les motifs de Widmanstätten sont uniques à chaque exemplaire.",
-    color: '#333333',
+    id: "v2",
+    name: "BABEL Acier Blanc",
+    subtitle: "Boîtier Acier 316L, Cadran Blanc Champagne",
+    seriesLabel: "Édition Fondateur",
+    price: "4 500 €",
+    description: "La pureté originelle. Un cadran blanc champagne lumineux qui sublime les index des 12 systèmes d'écriture.",
+    specs: [
+      { label: "Boîtier", value: "39mm Acier 316L" },
+      { label: "Cadran", value: "Blanc champagne" },
+      { label: "Aiguilles", value: "Dauphine Super-LumiNova" },
+      { label: "Bracelet", value: "Cuir brun" }
+    ]
   },
   {
-    id: 'v3',
-    name: 'Classique Blanc',
-    subtitle: 'Blanc Céramique',
-    ref: '001/100 — 100/100',
-    series: 'v3',
-    seriesLabel: 'Série Limitée',
-    price: '6 100 €',
-    material: 'Acier 316L poli',
-    dial: 'Blanc céramique haute résistance',
-    caseMaterial: 'Acier inoxydable 316L poli miroir',
-    caseSize: '42 mm',
-    movement: 'Sellita SW200-2 (Swiss Made)',
-    waterResistance: '100 m / 10 ATM',
-    glass: 'Saphir bombé anti-reflet double face',
-    bracelet: 'Cuir Shell Cordovan blanc crème',
-    limited: '100 pièces numérotées',
-    description: "L'épure portée au sommet. Le cadran blanc céramique offre une luminosité immaculée qui magnifie les 12 systèmes de numérotation gravés à la main. Une montre qui transcende les cultures dans un écrin intemporel.",
-    color: '#DDDDDD',
+    id: "v3",
+    name: "BABEL Or Blanc",
+    subtitle: "Boîtier finition Or, Cadran Blanc",
+    seriesLabel: "Édition Limitée",
+    price: "4 800 €",
+    description: "Le contraste parfait entre la chaleur du boîtier doré et la clarté du cadran blanc. Une pièce de collection singulière.",
+    specs: [
+      { label: "Boîtier", value: "39mm finition Or (PVD 5 microns)" },
+      { label: "Cadran", value: "Blanc pur" },
+      { label: "Aiguilles", value: "Dauphine Super-LumiNova" },
+      { label: "Bracelet", value: "Cuir cognac" }
+    ]
   },
   {
-    id: 'v4',
-    name: 'Sport-Luxe',
-    subtitle: 'Noir Mat',
-    ref: '001/100 — 100/100',
-    series: 'v4',
-    seriesLabel: 'Série Limitée',
-    price: '6 100 €',
-    material: 'Acier 316L DLC noir',
-    dial: 'Noir mat ardoise',
-    caseMaterial: 'Acier 316L traitement DLC noir mat',
-    caseSize: '42 mm',
-    movement: 'Sellita SW200-2 (Swiss Made)',
-    waterResistance: '100 m / 10 ATM',
-    glass: 'Saphir bombé anti-reflet double face',
-    bracelet: 'Bracelet caoutchouc noir avec ardillon DLC',
-    limited: '100 pièces numérotées',
-    description: "Puissance silencieuse. Le traitement DLC (Diamond-Like Carbon) confère au boîtier une résistance aux rayures exceptionnelle et un noir profond envoûtant. Les 12 chiffres universels ressortent en or sur ardoise.",
-    color: '#222222',
+    id: "v4",
+    name: "BABEL Or Rose Nacre",
+    subtitle: "Boîtier Or Rose, Cadran Nacre",
+    seriesLabel: "Édition Limitée",
+    price: "5 500 €",
+    description: "Une pièce d'exception. Le cadran en nacre véritable offre des reflets uniques à chaque mouvement du poignet.",
+    specs: [
+      { label: "Boîtier", value: "39mm finition Or Rose" },
+      { label: "Cadran", value: "Nacre véritable" },
+      { label: "Aiguilles", value: "Dauphine Super-LumiNova" },
+      { label: "Bracelet", value: "Cuir brun foncé" }
+    ]
   },
   {
-    id: 'v5',
-    name: 'Élégant',
-    subtitle: 'Nacre & Or Rose',
-    ref: 'ALMA-MOP-RG',
-    series: 'v5',
-    seriesLabel: 'Série Prestige',
-    price: 'Sur demande',
-    priceNote: 'Pièce unique — commande privée',
-    material: 'Or rose 18 carats',
-    dial: 'Nacre naturelle (MOP)',
-    caseMaterial: 'Or rose 18 carats 750/1000',
-    caseSize: '42 mm',
-    movement: 'Sellita SW200-2 (Swiss Made)',
-    waterResistance: '50 m / 5 ATM',
-    glass: 'Saphir bombé anti-reflet double face',
-    bracelet: 'Bracelet crocodile blanc couture main',
-    limited: 'Pièce unique sur commande',
-    description: "Le summum de la collection ALMA. Le cadran en nacre naturelle irrise d'un chatoiement unique selon la lumière, sublimé par un boîtier en or rose massif 18 carats. Chaque exemplaire est une commande privée, réalisée sur mesure dans les ateliers partenaires suisses.",
-    color: '#C9A84C',
-  },
+    id: "v5",
+    name: "BABEL Or Noir",
+    subtitle: "Boîtier finition Or, Cadran Noir",
+    seriesLabel: "Édition Nuit",
+    price: "4 800 €",
+    description: "L'audace du noir absolu ceinturé d'or. Une présence forte et mystérieuse pour cette édition nocturne.",
+    specs: [
+      { label: "Boîtier", value: "39mm finition Or (PVD 5 microns)" },
+      { label: "Cadran", value: "Laque noir profond" },
+      { label: "Aiguilles", value: "Dauphine Super-LumiNova" },
+      { label: "Bracelet", value: "Cuir croco noir" }
+    ]
+  }
 ];
 
 export function getWatch(id: string): Watch | undefined {

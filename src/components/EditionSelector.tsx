@@ -108,11 +108,11 @@ export const CIVS_DATA: CivEdition[] = [
   {
     num: 11,
     roman: 'XI',
-    script: '◄▼',
+    script: '𒌋𒁹',
     name: 'Cunéiforme',
     civ: 'Sumer & Mésopotamie',
     era: '3200 av. J.-C.',
-    desc: "Le nombre 11 en écriture cunéiforme babylonienne (◄▼ — chevron de 10 suivi du clou vertical de 1), marquant la 11e heure sur le cadran de l'édition N° 11/12."
+    desc: "Le nombre 11 en écriture cunéiforme (𒌋 = 10, 𒁹 = 1 : 𒌋𒁹), marquant la 11e heure sur le cadran de l'édition N° 11/12."
   },
   {
     num: 12,
@@ -128,11 +128,11 @@ export const CIVS_DATA: CivEdition[] = [
 export function EditionSelector({ watch }: { watch: Watch }) {
   const isLimited = watch.series === 'Fondateur' || watch.limited.includes('12 pièces') || watch.id === 'v1' || watch.id === 'v3';
 
-  // Default to number 5 (Hébreu - ה) as requested by user
-  const [selectedNum, setSelectedNum] = useState<number>(5);
+  // Default to number 1 (#01 - Arabe ١) when arriving on the page
+  const [selectedNum, setSelectedNum] = useState<number>(1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const currentCiv = CIVS_DATA[selectedNum - 1] || CIVS_DATA[4]; // fallback to Hébreu #5
+  const currentCiv = CIVS_DATA[selectedNum - 1] || CIVS_DATA[0]; // fallback to Arabe #1
   const formattedNum = String(selectedNum).padStart(2, '0');
 
   return (
@@ -177,7 +177,7 @@ export function EditionSelector({ watch }: { watch: Watch }) {
                     key={item.num}
                     onClick={() => setSelectedNum(item.num)}
                     type="button"
-                    className="flex flex-col items-center justify-center py-2.5 px-1 rounded transition-all duration-200 group"
+                    className="h-14 flex flex-col items-center justify-center p-1 rounded transition-all duration-200 group"
                     style={{
                       background: isSelected ? 'rgba(200, 168, 75, 0.22)' : 'rgba(255,255,255,0.03)',
                       border: `1.5px solid ${isSelected ? '#C8A84B' : 'rgba(255,255,255,0.12)'}`,
@@ -186,15 +186,15 @@ export function EditionSelector({ watch }: { watch: Watch }) {
                     }}
                   >
                     <span 
-                      className="text-xs font-semibold tracking-tighter mb-0.5 transition-colors"
+                      className="text-[10px] font-semibold tracking-tighter mb-1 leading-none transition-colors"
                       style={{ color: isSelected ? '#F0DFA0' : 'rgba(255,255,255,0.5)' }}
                     >
                       {numLabel}
                     </span>
                     <span 
-                      className="text-base leading-none font-serif font-bold transition-colors"
+                      className="text-base leading-none font-serif font-bold transition-colors flex items-center justify-center h-5"
                       style={{ 
-                        color: isSelected ? '#C8A84B' : 'rgba(255,255,255,0.7)',
+                        color: isSelected ? '#C8A84B' : 'rgba(255,255,255,0.8)',
                         fontFamily: 'Georgia, serif'
                       }}
                     >
@@ -256,14 +256,14 @@ export function EditionSelector({ watch }: { watch: Watch }) {
             <button
               type="button"
               onClick={() => setIsModalOpen(true)}
-              className="flex-1 py-4 px-6 text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 rounded text-center flex items-center justify-center gap-2 group"
+              className="flex-1 py-4 px-6 text-xs uppercase tracking-[0.18em] font-bold transition-all duration-300 rounded text-center flex items-center justify-center gap-2 group"
               style={{
                 background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 50%, #C8A84B 100%)',
                 color: '#080808',
                 boxShadow: '0 4px 20px rgba(200, 168, 75, 0.4)'
               }}
             >
-              <span>✦ RÉSERVER L&apos;EXEMPLAIRE N° {formattedNum}/12 — {currentCiv.name.toUpperCase()} ({currentCiv.script})</span>
+              <span>✦ RÉSERVER N° {formattedNum}/12 — {currentCiv.name.toUpperCase()} ({currentCiv.script}) · ACOMPTE 1 700 €</span>
             </button>
             <Link
               href="/collection"
@@ -362,11 +362,17 @@ export function EditionSelector({ watch }: { watch: Watch }) {
                     <span style={{ color: 'rgba(255,255,255,0.5)' }}>Série :</span>
                     <span className="text-white">Édition Fondateur (12 pièces)</span>
                   </div>
+                  <div className="flex justify-between">
+                    <span style={{ color: 'rgba(255,255,255,0.5)' }}>Prix total du modèle :</span>
+                    <span className="font-semibold text-white">4 500 €</span>
+                  </div>
                 </>
               )}
               <div className="flex justify-between pt-2 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-                <span style={{ color: 'rgba(255,255,255,0.5)' }}>Prix de vente :</span>
-                <span className="font-serif font-bold text-sm" style={{ color: '#C8A84B' }}>{watch.price}</span>
+                <span style={{ color: 'rgba(255,255,255,0.5)' }}>{isLimited ? 'Montant de la réservation (acompte) :' : 'Prix de vente :'}</span>
+                <span className="font-serif font-bold text-sm" style={{ color: '#C8A84B' }}>
+                  {isLimited ? '1 700 €' : watch.price}
+                </span>
               </div>
             </div>
 
@@ -380,7 +386,7 @@ export function EditionSelector({ watch }: { watch: Watch }) {
                   color: '#080808'
                 }}
               >
-                Confirmer ma réservation →
+                {isLimited ? 'Confirmer ma réservation (1 700 €) →' : 'Confirmer ma commande →'}
               </Link>
               <button
                 type="button"

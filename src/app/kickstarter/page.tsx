@@ -34,13 +34,13 @@ const SPECS = [
   ['Diamètre',         '39 mm'],
   ['Épaisseur',        '11,5 mm'],
   ['Entre-cornes',     '20 mm'],
-  ['Matériau Acier',   '316L · Grade chirurgical'],
-  ['Matériau Or',      '316L + PVD or champagne · Halal-compatible'],
+  ['Finition Acier Noir', 'Boîtier Acier Noir 316L · Halal-compatible'],
+  ['Finition Or Blanc',   'Boîtier Or Blanc / Laiton PVD · Halal-compatible'],
   ['Étanchéité',       '50 m (5 ATM)'],
   ['Cristal',          'Saphir double face AR · 9 Mohs'],
   ['Caseback',         'Saphir transparent · Mouvement visible'],
-  ['Cadran',           'Laque blanc champagne · 12 scripts uniques'],
-  ['Tirage',           '24 pièces limitées + reward édition ouverte'],
+  ['Cadran',           'Laque noir ardoise (Acier Noir) / blanc champagne (Or Blanc)'],
+  ['Tirage',           '24 pièces limitées (12 Or Blanc + 12 Acier Noir) + série ouverte à 1 500 €'],
   ['Numérotation',     'N° pièce = position horaire = civilisation'],
 ];
 
@@ -158,7 +158,7 @@ export default function KickstarterPage() {
 
   const civ      = CIVS[num - 1];
   const funded   = 28150, goal = 42000, pct = Math.round(funded / goal * 100);
-  const price    = reward === 'open' ? 1900 : (ver === 'gold' ? 4900 : 4500);
+  const price    = reward === 'open' ? 1500 : 4500;
   const dialSize = mobile ? 'min(74vw, 280px)' : '300px';
   const px       = mobile ? 16 : 32;
 
@@ -213,7 +213,7 @@ export default function KickstarterPage() {
               <div style={{ display:'flex', gap:0, background:'rgba(255,255,255,0.06)', borderRadius:6, overflow:'hidden', border:'1px solid rgba(255,255,255,0.1)' }}>
                 {(['steel', 'gold'] as const).map(v => (
                   <button key={v} onClick={() => setVer(v)} style={{ padding:'8px 18px', background:ver === v ? (v === 'gold' ? GOLD : 'rgba(255,255,255,0.12)') : 'transparent', color:ver === v ? (v === 'gold' ? '#000' : '#fff') : '#888', border:'none', cursor:'pointer', fontSize:10, fontWeight:700, letterSpacing:'0.1em' }}>
-                    {v === 'steel' ? '⚙ ACIER' : '✦ OR PVD'}
+                    {v === 'steel' ? '⚙ ACIER NOIR' : '✦ OR BLANC'}
                   </button>
                 ))}
               </div>
@@ -222,7 +222,7 @@ export default function KickstarterPage() {
               <Dial civ={civ} version={reward === 'open' ? 'steel' : ver} />
             </div>
             <div style={{ textAlign:'center' }}>
-              <div style={{ color:reward === 'open' ? KS : GOLD, fontSize:10, letterSpacing:'0.18em', fontWeight:700 }}>BABEL {reward === 'open' ? 'ÉDITION OUVERTE' : (ver === 'gold' ? 'OR PVD' : 'ACIER 316L')}</div>
+              <div style={{ color:reward === 'open' ? KS : GOLD, fontSize:10, letterSpacing:'0.18em', fontWeight:700 }}>BABEL {reward === 'open' ? 'ÉDITION OUVERTE (1 500 €)' : (ver === 'gold' ? 'OR BLANC (4 500 €)' : 'ACIER NOIR (4 500 €)')}</div>
               <div style={{ color:'#555', fontSize:10, letterSpacing:'0.1em', marginTop:3 }}>{reward === 'open' ? 'SANS NUMÉRO FIXE · SANS LIMITE' : ('PIÈCE ' + civ.roman + ' · ' + civ.name + ' · ' + civ.era)}</div>
             </div>
           </div>
@@ -326,12 +326,12 @@ export default function KickstarterPage() {
                 <div style={{ display:'flex', gap:8, marginBottom:8, flexDirection:mobile ? 'column' : 'row' }}>
                   {(['steel', 'gold'] as const).map(v => (
                     <button key={v} onClick={() => { setVer(v); setReward('limited'); }} style={{ flex:1, padding:'10px', borderRadius:6, border:`2px solid ${reward === 'limited' && ver === v ? (v === 'gold' ? GOLD : KS) : '#e0e0e0'}`, background:reward === 'limited' && ver === v ? (v === 'gold' ? `${GOLD}12` : `${KS}10`) : '#fafafa', color:reward === 'limited' && ver === v ? (v === 'gold' ? '#b8860b' : '#047a4a') : '#888', fontWeight:700, fontSize:11, cursor:'pointer', letterSpacing:'0.06em' }}>
-                      {v === 'gold' ? '✦ VERSION OR PVD — 4 900 €' : '⚙ VERSION ACIER 316L — 4 500 €'}
+                      {v === 'gold' ? '✦ VERSION OR BLANC — 4 500 €' : '⚙ VERSION ACIER NOIR — 4 500 €'}
                     </button>
                   ))}
                 </div>
                 <button onClick={() => setReward('open')} style={{ width:'100%', padding:'12px', borderRadius:6, border:`2px solid ${reward === 'open' ? KS : '#e0e0e0'}`, background:reward === 'open' ? `${KS}12` : '#fafafa', color:reward === 'open' ? '#047a4a' : '#666', fontWeight:800, fontSize:11, cursor:'pointer', letterSpacing:'0.08em' }}>
-                  ∞ REWARD ÉDITION OUVERTE — 1 900 € — SANS LIMITE
+                  ∞ REWARD ÉDITION OUVERTE — 1 500 € — SANS LIMITE (OR BLANC / ACIER NOIR)
                 </button>
               </div>
 
@@ -346,7 +346,7 @@ export default function KickstarterPage() {
                         <div>
                           <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:4 }}>
                             <span style={{ fontSize:20, fontWeight:700, color:civ.color, fontFamily:'Georgia,serif' }}>{civ.roman}</span>
-                            <span style={{ fontSize:11, color:civ.color, fontWeight:700, background:`${civ.color}15`, padding:'3px 10px', borderRadius:3, letterSpacing:'0.1em' }}>{ver === 'gold' ? 'OR PVD' : 'ACIER 316L'}</span>
+                            <span style={{ fontSize:11, color:civ.color, fontWeight:700, background:`${civ.color}15`, padding:'3px 10px', borderRadius:3, letterSpacing:'0.1em' }}>{ver === 'gold' ? 'OR BLANC' : 'ACIER NOIR'}</span>
                           </div>
                           <div style={{ fontSize:15, fontWeight:700, color:'#fff', marginBottom:2 }}>{civ.name}</div>
                           <div style={{ fontSize:11, color:'rgba(255,255,255,0.5)' }}>{civ.civ} · {civ.era}</div>
@@ -370,7 +370,7 @@ export default function KickstarterPage() {
                         <div style={{ width:140, height:140, borderRadius:'50%', border:`2px solid ${civ.color}40` }}>
                           <Dial civ={civ} version={ver} />
                         </div>
-                        <div style={{ fontSize:9, color:'rgba(255,255,255,0.35)', textAlign:'center', letterSpacing:'0.1em', lineHeight:1.6 }}>PIÈCE {civ.roman}<br />{ver === 'gold' ? 'OR PVD' : 'ACIER 316L'}</div>
+                        <div style={{ fontSize:9, color:'rgba(255,255,255,0.35)', textAlign:'center', letterSpacing:'0.1em', lineHeight:1.6 }}>PIÈCE {civ.roman}<br />{ver === 'gold' ? 'OR BLANC' : 'ACIER NOIR'}</div>
                       </div>
                     )}
                   </div>
@@ -387,7 +387,7 @@ export default function KickstarterPage() {
                       ))}
                     </ul>
                     <div style={{ textAlign:'right' }}>
-                      <div style={{ fontSize:28, fontWeight:800, color:KS }}>1 900 €</div>
+                      <div style={{ fontSize:28, fontWeight:800, color:KS }}>1 500 €</div>
                       <div style={{ fontSize:10, color:'#666', letterSpacing:'0.1em' }}>SANS LIMITE</div>
                     </div>
                   </div>
@@ -462,11 +462,11 @@ export default function KickstarterPage() {
                   </div>
                   <div>
                     <div style={{ fontSize:13, fontWeight:700, color:ver === 'gold' ? '#fff' : '#222' }}>{civ.name} ({civ.script})</div>
-                    <div style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.4)' : '#aaa' }}>{civ.era} · {ver === 'gold' ? 'Or PVD' : 'Acier 316L'}</div>
+                    <div style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.4)' : '#aaa' }}>{civ.era} · {ver === 'gold' ? 'Or Blanc' : 'Acier Noir'}</div>
                   </div>
                 </div>
                 <div style={{ fontSize:mobile ? 24 : 22, fontWeight:800, color:ver === 'gold' ? GOLD : KS, marginBottom:4 }}>{price.toLocaleString('fr-FR')} €</div>
-                <div style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.4)' : '#888', marginBottom:12 }}>PIÈCE N° {String(civ.num).padStart(2,'0')}/12 · {civ.name.toUpperCase()} ({civ.script}) · {ver === 'gold' ? 'OR PVD' : 'ACIER 316L'}</div>
+                <div style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.4)' : '#888', marginBottom:12 }}>PIÈCE N° {String(civ.num).padStart(2,'0')}/12 · {civ.name.toUpperCase()} ({civ.script}) · {ver === 'gold' ? 'OR BLANC' : 'ACIER NOIR'}</div>
                 <ul style={{ paddingLeft:0, marginBottom:12, listStyle:'none' }}>
                   {['Sellita SW200 · Swiss Made', 'Cristal saphir double face AR', 'Écrin bois laqué + velours', 'Livret 12 civilisations', 'Certificat numéroté & signé', 'Accès communauté backers'].map((item, j) => (
                     <li key={j} style={{ fontSize:11, color:ver === 'gold' ? 'rgba(255,255,255,0.7)' : '#555', padding:'3px 0', paddingLeft:16, position:'relative' }}>
@@ -475,7 +475,7 @@ export default function KickstarterPage() {
                   ))}
                 </ul>
                 <button style={{ width:'100%', background:ver === 'gold' ? GOLD : KS, color:'#000', fontWeight:700, fontSize:13, padding:mobile ? 14 : 12, borderRadius:5, border:'none', cursor:'pointer', letterSpacing:'0.06em' }}>
-                  {ver === 'gold' ? `✦ RÉSERVER N° ${String(civ.num).padStart(2,'0')}/12 — OR (${civ.script}) · ACOMPTE 1 700 €` : `⚙ RÉSERVER N° ${String(civ.num).padStart(2,'0')}/12 — ACIER (${civ.script}) · ACOMPTE 1 700 €`}
+                  {ver === 'gold' ? `✦ RÉSERVER N° ${String(civ.num).padStart(2,'0')}/12 — OR BLANC (${civ.script}) · ACOMPTE 1 700 €` : `⚙ RÉSERVER N° ${String(civ.num).padStart(2,'0')}/12 — ACIER NOIR (${civ.script}) · ACOMPTE 1 700 €`}
                 </button>
                 <p style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.3)' : '#bbb', textAlign:'center', marginTop:8, lineHeight:1.5 }}>Fonds collectés uniquement si l&apos;objectif est atteint.</p>
               </>
@@ -492,7 +492,7 @@ export default function KickstarterPage() {
                   ))}
                 </ul>
                 <button style={{ width:'100%', background:KS, color:'#000', fontWeight:700, fontSize:13, padding:mobile ? 14 : 12, borderRadius:5, border:'none', cursor:'pointer', letterSpacing:'0.06em' }}>
-                  ∞ RÉSERVER — ÉDITION OUVERTE
+                  ∞ COMMANDER — ÉDITION OUVERTE 1 500 € (SANS LIMITE)
                 </button>
               </>
             )}

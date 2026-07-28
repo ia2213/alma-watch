@@ -12,7 +12,7 @@ const CIVS = [
   { num:8,  roman:'VIII', script:'፰', name:"Ge'ez",        civ:'Éthiopie Ancienne',            era:'4e s. ap. J.-C.',    region:"Corne de l'Afrique",                  color:'#c8a835', bg:'#1a1605', story:"፰ est le chiffre éthiopien pour 8 en Ge'ez. L'Éthiopie a conservé une tradition écrite continue parmi les plus anciennes du continent africain.", contribution:"Christianisme africain ancien, architecture Aksum, manuscrits, tradition liturgique continue.",                          whyOnDial:"Parce que l'Éthiopie relie antiquité, foi, écriture et mémoire humaine sur la longue durée." },
   { num:9,  roman:'IX',   script:'Θ', name:'Grec',          civ:'Grèce Antique',                era:'8e s. av. J.-C.',    region:'Méditerranée orientale',              color:'#a0b8d8', bg:'#080e18', story:"Theta (Θ) appartient au système grec qui a tant marqué la philosophie, les mathématiques et la science.",                               contribution:"Philosophie, démocratie, mathématiques euclidiennes, médecine hippocratique, théâtre.",                                 whyOnDial:"Parce que la pensée grecque a structuré notre manière de mesurer, nommer et raisonner." },
   { num:10, roman:'X',    script:'十', name:'Chinois',      civ:'Civilisation Chinoise',        era:'2e s. av. J.-C.',    region:"Fleuve Jaune → Asie de l'Est",       color:'#e8a060', bg:'#1a0e08', story:"十 signifie dix en chinois. Un seul signe exprime la force de concision d'une écriture logographique parmi les plus anciennes et vivantes du monde.", contribution:"Papier, imprimerie, boussole, poudre à canon, administration savante, cosmologie.",                                     whyOnDial:"Parce que la Chine a transformé notre rapport au savoir, au temps et à la transmission." },
-  { num:11, roman:'XI',   script:'𒐫𒄹', name:'Cunéiforme',  civ:'Sumer & Mésopotamie',         era:'3200 av. J.-C.',     region:'Mésopotamie (Irak actuel)',            color:'#c880c0', bg:'#160812', story:"𒐫𒄹 évoque la notation numérique cunéiforme issue de la première grande civilisation de l'écrit.",                                    contribution:"Première écriture, premières lois, premières comptabilités complexes, villes et archives.",                              whyOnDial:"Parce que c'est là que l'humanité a commencé à écrire, compter et conserver le temps." },
+  { num:11, roman:'XI',   script:'◄▼', name:'Cunéiforme',  civ:'Sumer & Mésopotamie',         era:'3200 av. J.-C.',     region:'Mésopotamie (Irak actuel)',            color:'#c880c0', bg:'#160812', story:"◄▼ évoque la notation numérique cunéiforme (chevron 10 + clou 1 = 11) issue de la première grande civilisation de l'écrit.",                                    contribution:"Première écriture, premières lois, premières comptabilités complexes, villes et archives.",                              whyOnDial:"Parce que c'est là que l'humanité a commencé à écrire, compter et conserver le temps." },
   { num:12, roman:'XII',  script:'XII', name:'Latin',       civ:'Rome & Occident',              era:'7e s. av. J.-C.',    region:'Italie → Empire Romain → Monde',      color:'#d4af37', bg:'#1a1608', story:"XII — douze en chiffres romains — est la forme emblématique du sommet du cadran.",                                                   contribution:"Droit romain, architecture, ingénierie, routes, latin scientifique universel.",                                         whyOnDial:"Parce que XII est le chiffre du temps lui-même — midi, minuit, le sommet du cadran." },
 ];
 
@@ -76,7 +76,7 @@ function Dial({ civ, version }: { civ: typeof CIVS[0]; version: 'steel' | 'gold'
     { h:0,  t:'XII' }, { h:1,  t:'١' },    { h:2,  t:'২' },
     { h:3,  t:'3' },   { h:4,  t:'– – – –' }, { h:5,  t:'ה' },
     { h:6,  t:'๖' },   { h:7,  t:'⴦' },    { h:8,  t:'፰' },
-    { h:9,  t:'Θ' },   { h:10, t:'十' },   { h:11, t:'𒐫𒄹' },
+    { h:9,  t:'Θ' },   { h:10, t:'十' },   { h:11, t:'◄▼' },
   ];
   const activePosH = civ.num === 12 ? 0 : civ.num;
   return (
@@ -302,7 +302,7 @@ export default function KickstarterPage() {
             <div>
               <h2 style={{ fontSize:mobile ? 20 : 24, fontWeight:300, letterSpacing:'0.12em', fontFamily:'Georgia,serif', marginBottom:4 }}>L&apos;Art du Temps Universel</h2>
               <p style={{ fontSize:10, color:KS, letterSpacing:'0.15em', marginBottom:20, fontWeight:700 }}>LA NAISSANCE D&apos;ALMA · JUILLET 2026</p>
-              <p style={{ fontSize:mobile ? 14 : 15, color:'#444', lineHeight:1.9, marginBottom:14 }}>ALMA vient de l&apos;araméen et signifie <em>l&apos;éternité</em> ou <em>le monde</em>. BABEL rassemble une sélection singulière de chiffres et signes du monde, du XII romain au 𒐫𒄹 cunéiforme.</p>
+              <p style={{ fontSize:mobile ? 14 : 15, color:'#444', lineHeight:1.9, marginBottom:14 }}>ALMA vient de l&apos;araméen et signifie <em>l&apos;éternité</em> ou <em>le monde</em>. BABEL rassemble une sélection singulière de chiffres et signes du monde, du XII romain au ◄▼ cunéiforme.</p>
               <p style={{ fontSize:mobile ? 14 : 15, color:'#444', lineHeight:1.9, marginBottom:28 }}>La campagne propose deux voies : les <strong style={{ color:GOLD }}>24 pièces limitées</strong> numérotées et un reward <strong style={{ color:KS }}>édition ouverte</strong>, accessible sans limite de tirage.</p>
               <div style={{ background:'#f0faf4', border:'1px solid #b2dfdb', borderLeft:`4px solid ${KS}`, borderRadius:6, padding:'18px 20px' }}>
                 <h3 style={{ fontSize:13, fontWeight:700, marginBottom:8, color:'#2e7d32' }}>🌍 Engagement Solidaire</h3>
@@ -315,7 +315,7 @@ export default function KickstarterPage() {
           {tab === 'pieces' && (
             <div>
               <h2 style={{ fontSize:mobile ? 20 : 24, fontWeight:300, letterSpacing:'0.12em', fontFamily:'Georgia,serif', marginBottom:4 }}>Choisissez Votre Numéro</h2>
-              <p style={{ fontSize:10, color:KS, letterSpacing:'0.15em', marginBottom:20, fontWeight:700 }}>XII · ١ · ২ · 3 · ––––  · ה · ๖ · ⴦ · ፰ · Θ · 十 · 𒐫𒄹</p>
+              <p style={{ fontSize:10, color:KS, letterSpacing:'0.15em', marginBottom:20, fontWeight:700 }}>XII · ١ · ২ · 3 · ––––  · ה · ๖ · ⴦ · ፰ · Θ · 十 · ◄▼</p>
               <div style={{ background:'#fff', border:'1px solid #e8e8e8', borderRadius:10, padding:mobile ? 16 : 24, marginBottom:24 }}>
                 <p style={{ fontSize:11, color:'#888', marginBottom:14, fontWeight:600 }}>Sélectionnez votre numéro (I–XII) :</p>
                 <div style={{ display:'flex', flexWrap:'wrap', gap:mobile ? 6 : 8, marginBottom:16 }}>

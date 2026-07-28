@@ -108,11 +108,11 @@ export const CIVS_DATA: CivEdition[] = [
   {
     num: 11,
     roman: 'XI',
-    script: '𒐫𒄹',
+    script: '◄▼',
     name: 'Cunéiforme',
     civ: 'Sumer & Mésopotamie',
     era: '3200 av. J.-C.',
-    desc: "L'écriture numérique cunéiforme sumérienne (𒐫𒄹), marquant la 11e heure sur le cadran de l'édition N° 11/12."
+    desc: "Le nombre 11 en écriture cunéiforme babylonienne (◄▼ — chevron de 10 suivi du clou vertical de 1), marquant la 11e heure sur le cadran de l'édition N° 11/12."
   },
   {
     num: 12,

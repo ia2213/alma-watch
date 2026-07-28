@@ -143,7 +143,7 @@ function GalleryPlaceholder({ cap }: { cap: string }) {
 
 export default function KickstarterPage() {
   const [tab,    setTab]    = useState('story');
-  const [num,    setNum]    = useState(1);
+  const [num,    setNum]    = useState(5);
   const [ver,    setVer]    = useState<'steel' | 'gold'>('steel');
   const [reward, setReward] = useState<'limited' | 'open'>('limited');
   const [lbx,    setLbx]   = useState<string | null>(null);
@@ -458,15 +458,15 @@ export default function KickstarterPage() {
               <>
                 <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:12 }}>
                   <div style={{ width:42, height:42, borderRadius:'50%', background:ver === 'gold' ? `${GOLD}20` : `${KS}15`, border:`2px solid ${ver === 'gold' ? GOLD : KS}`, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                    <span style={{ fontSize:15, color:ver === 'gold' ? GOLD : KS, fontFamily:'Georgia,serif', fontWeight:700 }}>{civ.roman}</span>
+                    <span style={{ fontSize:18, color:ver === 'gold' ? GOLD : KS, fontFamily:'Georgia,serif', fontWeight:700 }}>{civ.script}</span>
                   </div>
                   <div>
-                    <div style={{ fontSize:13, fontWeight:700, color:ver === 'gold' ? '#fff' : '#222' }}>{civ.name}</div>
+                    <div style={{ fontSize:13, fontWeight:700, color:ver === 'gold' ? '#fff' : '#222' }}>{civ.name} ({civ.script})</div>
                     <div style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.4)' : '#aaa' }}>{civ.era} · {ver === 'gold' ? 'Or PVD' : 'Acier 316L'}</div>
                   </div>
                 </div>
                 <div style={{ fontSize:mobile ? 24 : 22, fontWeight:800, color:ver === 'gold' ? GOLD : KS, marginBottom:4 }}>{price.toLocaleString('fr-FR')} €</div>
-                <div style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.4)' : '#888', marginBottom:12 }}>PIÈCE N° {civ.roman} · {ver === 'gold' ? 'OR PVD' : 'ACIER 316L'}</div>
+                <div style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.4)' : '#888', marginBottom:12 }}>PIÈCE N° {String(civ.num).padStart(2,'0')}/12 · {civ.name.toUpperCase()} ({civ.script}) · {ver === 'gold' ? 'OR PVD' : 'ACIER 316L'}</div>
                 <ul style={{ paddingLeft:0, marginBottom:12, listStyle:'none' }}>
                   {['Sellita SW200 · Swiss Made', 'Cristal saphir double face AR', 'Écrin bois laqué + velours', 'Livret 12 civilisations', 'Certificat numéroté & signé', 'Accès communauté backers'].map((item, j) => (
                     <li key={j} style={{ fontSize:11, color:ver === 'gold' ? 'rgba(255,255,255,0.7)' : '#555', padding:'3px 0', paddingLeft:16, position:'relative' }}>
@@ -475,7 +475,7 @@ export default function KickstarterPage() {
                   ))}
                 </ul>
                 <button style={{ width:'100%', background:ver === 'gold' ? GOLD : KS, color:'#000', fontWeight:700, fontSize:13, padding:mobile ? 14 : 12, borderRadius:5, border:'none', cursor:'pointer', letterSpacing:'0.06em' }}>
-                  {ver === 'gold' ? `✦ RÉSERVER — OR N° ${civ.roman}` : `⚙ RÉSERVER — ACIER N° ${civ.roman}`}
+                  {ver === 'gold' ? `✦ RÉSERVER N° ${String(civ.num).padStart(2,'0')}/12 — OR · ${civ.name.toUpperCase()} (${civ.script})` : `⚙ RÉSERVER N° ${String(civ.num).padStart(2,'0')}/12 — ACIER · ${civ.name.toUpperCase()} (${civ.script})`}
                 </button>
                 <p style={{ fontSize:10, color:ver === 'gold' ? 'rgba(255,255,255,0.3)' : '#bbb', textAlign:'center', marginTop:8, lineHeight:1.5 }}>Fonds collectés uniquement si l&apos;objectif est atteint.</p>
               </>

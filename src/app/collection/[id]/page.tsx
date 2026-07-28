@@ -1,6 +1,7 @@
 import { watches, getWatch } from '@/lib/watches';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { EditionSelector } from '@/components/EditionSelector';
 
 const watchImages: Record<string, string> = {
   v1: '/watches/acier-noir.png',
@@ -65,21 +66,7 @@ export default function WatchPage({ params }: { params: { id: string } }) {
               <p className="font-serif text-4xl gold-gradient">{watch.price}</p>
               {watch.priceNote && <p className="text-xs mt-2" style={{color: 'rgba(255,255,255,0.35)'}}>{watch.priceNote}</p>}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                className="px-10 py-4 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300"
-                style={{background: '#C8A84B', color: '#080808'}}
-              >
-                Réserver mon exemplaire
-              </button>
-              <Link
-                href="/collection"
-                className="px-10 py-4 text-xs uppercase tracking-[0.2em] text-center nav-link transition-all duration-300"
-                style={{border: '1px solid rgba(201,168,76,0.3)', color: 'rgba(255,255,255,0.6)'}}
-              >
-                ← Retour collection
-              </Link>
-            </div>
+            <EditionSelector watch={watch} />
           </div>
         </div>
       </section>

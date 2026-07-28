@@ -61,8 +61,8 @@ export default function Collection() {
               backgroundClip: 'text',
             }}>ALMA</em>
           </h1>
-          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '400px', lineHeight: 1.7, marginBottom: '2rem' }}>
-            12 civilisations. 25 pièces Fondateurs. 100 pièces Limitées.
+          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '440px', lineHeight: 1.7, marginBottom: '2rem' }}>
+            12 civilisations · 24 pièces Fondateurs (numéro au choix 01/12 — 12/12) · Éditions en continu à 1 500 €
           </p>
           <a
             href="#montres"

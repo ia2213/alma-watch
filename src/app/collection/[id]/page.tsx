@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 const watchImages: Record<string, string> = {
-  v1: 'https://i.imgur.com/2an4xEQ.jpeg',
-  v2: 'https://i.imgur.com/Jrthqf8.jpeg',
-  v3: 'https://i.imgur.com/ZUtNQWs.jpeg',
-  v4: 'https://i.imgur.com/apDtpuG.jpeg',
-  v5: 'https://i.imgur.com/R0rEAjj.jpeg',
+  v1: '/watches/acier-noir.png',
+  v2: '/watches/acier-blanc.png',
+  v3: '/watches/or-blanc.png',
+  v4: '/watches/or-rose-nacre.png',
+  v5: '/watches/or-noir.png',
 };
 
 export async function generateStaticParams() {

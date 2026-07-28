@@ -31,8 +31,8 @@ export default function Fabrication() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               { num: '01', titre: 'Mouvement', texte: 'Mouvement automatique Sellita SW200-2, manufacturié suisse réputé pour sa précision. Réserve de marche de 72 heures.' },
-              { num: '02', titre: 'Boîtier', texte: 'Boîtier coussin 42mm en titane grade 5, acier 316L ou carbone forgé. Étanchéité 100m. Glace saphir bombée anti-reflet.' },
-              { num: '03', titre: 'Cadran', texte: 'Cadrans en météorite Gibeon authentique, nacre naturelle ou carbone. Aiguilles en or rose 18 carats ou acier poli.' },
+              { num: '02', titre: 'Boîtier', texte: 'Boîtier coussin 39mm en acier 316L ou finition or. Étanchéité 50m. Glace saphir bombée anti-reflet.' },
+              { num: '03', titre: 'Cadran', texte: 'Cadrans en laque ardoise, blanc champagne ou noir profond. Aiguilles en or rose 18 carats ou acier poli.' },
               { num: '04', titre: 'Bracelet', texte: 'Bracelets en cuir Shell Cordovan, alligator ou veau velours. Boucle déployante en titane ou or rose. Finitions main.' },
             ].map((item, i) => (
               <div key={i} className="p-8 border border-black/8 bg-white hover:border-amber-400/40 transition-all duration-300" style={{boxShadow: '0 2px 20px rgba(0,0,0,0.03)'}}>

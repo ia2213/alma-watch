@@ -57,7 +57,7 @@ const TIMELINE = [
   { done:false, cur:false, date:'Nov. 2026–Fév. 2027',    title:'Assemblage & QC',                desc:'24 pièces, tests Witschi, timegrapher, certificats numérotés.' },
   { done:false, cur:false, date:'Mars–Avr. 2027',         title:'Livraison Backers',              desc:'Expédition mondiale · Suivi individuel · Unboxing vidéo.' },
   { done:false, cur:false, date:'Juil. 2027',             title:'Édition ouverte',                desc:'Ouverture du reward sans limite avec cadran BABEL standardisé.' },
-  { done:false, cur:false, date:'2028',                   title:'Série 3 · MÉTÉORITE & TITANE',  desc:'Ultra-limitées. Candidature GPHG.' },
+  { done:false, cur:false, date:'2028',                   title:'Série 3 · ACIER BLANC & OR NOIR',  desc:'Ultra-limitées. Candidature GPHG.' },
 ];
 
 const KS   = '#05ce78';

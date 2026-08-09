@@ -45,6 +45,32 @@ export const watches: Watch[] = [
     ]
   },
   {
+    id: "v3",
+    name: "LA TOLÉRANCE Or Blanc",
+    subtitle: "Boîtier Laiton PVD Or, Cadran Blanc",
+    ref: "BBL-GLD-WHT-03",
+    series: "Fondateur",
+    images: [
+      "/watches/or-blanc.png",
+      "https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=1200&q=90",
+      "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1200&q=90"
+    ],
+    case: "39mm, Laiton PVD Or (Halal-compatible)",
+    dial: "Blanc neige, finition opaline",
+    hands: "Aiguilles Alpha polies or",
+    glass: "Saphir bombé anti-reflet double face",
+    bracelet: "Cuir veau marron foncé, largeur 20 mm",
+    limited: "Édition Fondateur — 12 pièces numérotées",
+    description: "L'élégance absolue sans compromis éthique. Le traitement PVD Or sur laiton respecte les principes stricts de la marque tout en offrant un éclat chaleureux et intemporel.",
+    color: "#c9a850",
+    specs: [
+      { label: "Boîtier", value: "39mm Laiton PVD Or" },
+      { label: "Mouvement", value: "Sellita SW200-2" },
+      { label: "Réserve", value: "65 heures" },
+      { label: "Étanchéité", value: "5 ATM" }
+    ]
+  },
+  {
     id: "v2",
     name: "LA TOLÉRANCE Acier Blanc",
     subtitle: "Boîtier Acier 316L, Cadran Blanc Champagne",
@@ -66,32 +92,6 @@ export const watches: Watch[] = [
     isTeasing: true,
     specs: [
       { label: "Boîtier", value: "39mm Acier 316L" },
-      { label: "Mouvement", value: "Sellita SW200-2" },
-      { label: "Réserve", value: "65 heures" },
-      { label: "Étanchéité", value: "5 ATM" }
-    ]
-  },
-  {
-    id: "v3",
-    name: "LA TOLÉRANCE Or Blanc",
-    subtitle: "Boîtier Laiton PVD Or, Cadran Blanc",
-    ref: "BBL-GLD-WHT-03",
-    series: "Fondateur",
-    images: [
-      "/watches/or-blanc.png",
-      "https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=1200&q=90",
-      "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1200&q=90"
-    ],
-    case: "39mm, Laiton PVD Or (Halal-compatible)",
-    dial: "Blanc neige, finition opaline",
-    hands: "Aiguilles Alpha polies or",
-    glass: "Saphir bombé anti-reflet double face",
-    bracelet: "Cuir veau marron foncé, largeur 20 mm",
-    limited: "Édition Fondateur — 12 pièces numérotées",
-    description: "L'élégance absolue sans compromis éthique. Le traitement PVD Or sur laiton respecte les principes stricts de la marque tout en offrant un éclat chaleureux et intemporel.",
-    color: "#c9a850",
-    specs: [
-      { label: "Boîtier", value: "39mm Laiton PVD Or" },
       { label: "Mouvement", value: "Sellita SW200-2" },
       { label: "Réserve", value: "65 heures" },
       { label: "Étanchéité", value: "5 ATM" }

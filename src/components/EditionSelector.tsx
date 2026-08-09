@@ -283,7 +283,7 @@ export function EditionSelector({ watch }: { watch: Watch }) {
             className="px-10 py-4 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded"
             style={{ background: '#C8A84B', color: '#080808' }}
           >
-            ✦ Réserver mon exemplaire ({watch.price})
+            ✦ Réserver mon exemplaire ({watch.series === 'Fondateur' ? '4 500 €' : '1 500 €'})
           </button>
           <Link
             href="/collection"

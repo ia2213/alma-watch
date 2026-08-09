@@ -371,7 +371,7 @@ export function EditionSelector({ watch }: { watch: Watch }) {
               <div className="flex justify-between pt-2 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
                 <span style={{ color: 'rgba(255,255,255,0.5)' }}>{isLimited ? 'Montant de la réservation (acompte) :' : 'Prix de vente :'}</span>
                 <span className="font-serif font-bold text-sm" style={{ color: '#C8A84B' }}>
-                  {isLimited ? '1 700 €' : watch.price}
+                  {isLimited ? '1 700 €' : (watch.series === 'Fondateur' ? '4 500 €' : '1 500 €')}
                 </span>
               </div>
             </div>

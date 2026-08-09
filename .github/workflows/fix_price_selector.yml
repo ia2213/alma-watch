@@ -1,0 +1,22 @@
+name: Fix Price in Selector
+on:
+  push:
+    paths:
+      - '.github/workflows/fix_price_selector.yml'
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Replace texts
+        run: |
+          sed -i "s/{watch.price}/{watch.series === 'Fondateur' ? '4 500 €' : '1 500 €'}/g" src/components/EditionSelector.tsx
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "fix: replace watch.price with dynamic price in EditionSelector.tsx" || echo "No changes to commit"
+          git push

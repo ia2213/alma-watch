@@ -3,51 +3,47 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { EditionSelector } from '@/components/EditionSelector';
 
-const watchImages: Record<string, string> = {
-  v1: '/watches/acier-noir.png',
-  v2: '/watches/acier-blanc.png',
-  v3: '/watches/or-blanc.png',
-  v4: '/watches/or-rose-nacre.png',
-  v5: '/watches/or-noir.png',
-};
-
-export async function generateStaticParams() {
-  return watches.map(w => ({ id: w.id }));
-}
-
 export default function WatchPage({ params }: { params: { id: string } }) {
   const watch = getWatch(params.id);
-  if (!watch) notFound();
 
-  const currentIndex = watches.findIndex(w => w.id === params.id);
-  const prev = watches[currentIndex - 1];
-  const next = watches[currentIndex + 1];
+  if (!watch) {
+    notFound();
+  }
 
   return (
-    <div className="min-h-screen" style={{background: '#080808'}}>
-      {/* BREADCRUMB */}
-      <div className="pt-28 pb-0 px-8 max-w-7xl mx-auto">
-        <div className="flex items-center gap-3" style={{color: 'rgba(255,255,255,0.35)', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase'}}>
-          <Link href="/collection" className="hover:text-amber-200 transition-colors">Collection</Link>
-          <span style={{color: '#C8A84B', opacity: 0.4}}>—</span>
-          <span style={{color: '#E8D5A0'}}>{watch.name}</span>
-        </div>
+    <div className="min-h-screen bg-[#080808] text-white">
+      {/* ─── EN-TÊTE FIXE (Retour) ─── */}
+      <div className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center mix-blend-difference">
+        <Link href="/collection" className="nav-link text-white/50 hover:text-white transition flex items-center gap-2">
+          <span>←</span> RETOUR À LA COLLECTION
+        </Link>
       </div>
 
-      {/* HERO PRODUIT */}
-      <section className="py-16 px-8">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-          {/* Image */}
-          <div className="relative aspect-square overflow-hidden" style={{background: '#080808', border: '1px solid rgba(201,168,76,0.1)'}}>
-            <img
-              src={watchImages[watch.id]}
-              alt={watch.name}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute top-6 left-6 px-4 py-2" style={{background: 'rgba(8,8,8,0.85)', border: '1px solid rgba(201,168,76,0.3)'}}>
-              <span className="nav-link" style={{color: '#C8A84B'}}>{watch.seriesLabel}</span>
-            </div>
+      <div className="flex flex-col lg:flex-row min-h-screen">
+        
+        {/* ─── GAUCHE : IMAGES (Scrollable) ─── */}
+        <div className="w-full lg:w-3/5 h-[50vh] lg:h-screen lg:sticky top-0 overflow-y-auto no-scrollbar">
+          <div className="flex flex-col">
+            {watch.images.map((img, i) => (
+              <div key={i} className="h-screen w-full relative flex-shrink-0 flex items-center justify-center p-12 bg-gradient-to-b from-[#111] to-[#050505] border-b border-white/5">
+                <img 
+                  src={img} 
+                  alt={`${watch.name} vue ${i+1}`} 
+                  className="w-full h-full object-contain filter drop-shadow-2xl opacity-90 hover:opacity-100 transition-opacity duration-700"
+                />
+              </div>
+            ))}
           </div>
+        </div>
+
+        {/* ─── DROITE : INFORMATIONS & SÉLECTEUR ─── */}
+        <div className="w-full lg:w-2/5 p-8 lg:p-16 flex flex-col justify-center bg-[#080808] border-l border-white/5 relative">
+          
+          <div className="mb-12">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-[10px] tracking-[0.3em] font-semibold" style={{color: watch.color}}>{watch.series.toUpperCase()}</span>
+              <div className="h-[1px] flex-1 bg-white/10" />
+            </div>
 
           {/* Infos */}
           <div>
@@ -55,72 +51,30 @@ export default function WatchPage({ params }: { params: { id: string } }) {
             <h1 className="font-serif mb-2 gold-gradient" style={{fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, lineHeight: 1.1}}>
               {watch.name}
             </h1>
-            <p className="font-serif text-xl mb-2" style={{color: '#E8D5A0', opacity: 0.7}}>{watch.subtitle}</p>
-            <p className="text-xs mb-10" style={{color: '#666', letterSpacing: '0.1em'}}>{watch.ref}</p>
-            <div className="gold-line w-16 mb-10" />
-            <p className="text-base leading-relaxed mb-12" style={{color: '#C0B8AF', maxWidth: '44ch'}}>
+            <h2 className="text-sm tracking-[0.1em] text-white/40 font-light mb-8">
+              {watch.subtitle}
+            </h2>
+            
+            <p className="text-white/60 leading-relaxed font-light mb-12">
               {watch.description}
             </p>
-            <div className="mb-10">
-              <p className="nav-link mb-2" style={{color: 'rgba(255,255,255,0.35)'}}>Prix de vente</p>
-              <p className="font-serif text-4xl gold-gradient">{watch.price}</p>
-              {watch.priceNote && <p className="text-xs mt-2" style={{color: 'rgba(255,255,255,0.35)'}}>{watch.priceNote}</p>}
+
+            <div className="grid grid-cols-2 gap-x-8 gap-y-6 mb-16">
+              {watch.specs.map((spec, i) => (
+                <div key={i} className="border-b border-white/10 pb-4">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-1">{spec.label}</div>
+                  <div className="text-sm font-medium text-white/80">{spec.value}</div>
+                </div>
+              ))}
             </div>
+
+            {/* Composant interactif de réservation */}
             <EditionSelector watch={watch} />
-          </div>
-        </div>
-      </section>
 
-      {/* SPECS */}
-      <section className="py-24 px-8" style={{background: '#0a0a0a', borderTop: '1px solid rgba(201,168,76,0.07)'}}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="nav-link mb-4" style={{color: '#C8A84B'}}>FICHE TECHNIQUE</p>
-            <h2 className="font-serif text-3xl gold-gradient">Spécifications</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-x-20">
-            {[
-              ['Boîtier', watch.caseMaterial],
-              ['Diamètre', watch.caseSize],
-              ['Cadran', watch.dial],
-              ['Mouvement', watch.movement],
-              ['Étanchéité', watch.waterResistance],
-              ['Verre', watch.glass],
-              ['Bracelet', watch.bracelet],
-              ['Édition', watch.limited],
-            ].map(([label, value], i) => (
-              <div key={i} className="flex justify-between items-baseline py-5" style={{borderBottom: '1px solid rgba(201,168,76,0.1)'}}>
-                <span style={{color: 'rgba(255,255,255,0.38)', fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', flexShrink: 0}}>{label}</span>
-                <span style={{color: '#FFFFFF', fontSize: '0.88rem', maxWidth: '58%', textAlign: 'right', fontWeight: 300, letterSpacing: '0.02em'}}>{value}</span>
-              </div>
-            ))}
           </div>
         </div>
-      </section>
-
-      {/* NAVIGATION ENTRE MODELES */}
-      <section className="py-20 px-8" style={{borderTop: '1px solid rgba(201,168,76,0.07)'}}>
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          {prev ? (
-            <Link href={`/collection/${prev.id}`} className="group flex items-center gap-6">
-              <span className="nav-link group-hover:text-amber-200 transition-colors" style={{color: 'rgba(255,255,255,0.35)'}}>← Précédent</span>
-              <div>
-                <p className="text-xs mb-1" style={{color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase'}}>{prev.seriesLabel}</p>
-                <p className="font-serif text-xl" style={{color: '#E8D5A0'}}>{prev.name}</p>
-              </div>
-            </Link>
-          ) : <div />}
-          {next ? (
-            <Link href={`/collection/${next.id}`} className="group flex items-center gap-6 text-right">
-              <div>
-                <p className="text-xs mb-1" style={{color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase'}}>{next.seriesLabel}</p>
-                <p className="font-serif text-xl" style={{color: '#E8D5A0'}}>{next.name}</p>
-              </div>
-              <span className="nav-link group-hover:text-amber-200 transition-colors" style={{color: 'rgba(255,255,255,0.35)'}}>Suivant →</span>
-            </Link>
-          ) : <div />}
-        </div>
-      </section>
+      </div>
+    </div>
     </div>
   );
 }

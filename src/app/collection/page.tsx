@@ -113,7 +113,7 @@ export default function Collection() {
                   className="absolute bottom-0 left-0 right-0 p-4"
                   style={{background: 'linear-gradient(to top, rgba(255,255,255,0.92) 0%, transparent 100%)'}}
                 >
-                  <span className="nav-link" style={{color: 'var(--gold)'}}>{watch.seriesLabel}</span>
+                  <span className="nav-link" style={{color: 'var(--gold)'}}>{watch.series}</span>
                 </div>
               </div>
               <div className="p-6">
@@ -166,7 +166,7 @@ export default function Collection() {
                   style={{background: 'linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%)'}}
                 >
                   <span style={{fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold)'}}>
-                    {watch.seriesLabel}
+                    {watch.series}
                   </span>
                 </div>
               </div>

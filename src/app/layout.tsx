@@ -1,27 +1,32 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import Navbar from '@/components/Navbar';
+import type { Metadata } from 'next'
+import { Playfair_Display, Inter } from 'next/font/google'
+import './globals.css'
+import Navbar from '@/components/Navbar'
+
+const playfair = Playfair_Display({ 
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+})
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'AVICEN — L\'Art du Temps Universel',
-  description: '12 civilisations. 25 pièces. 1 montre. AVICEN, montre de haute horlogerie suisse multiculturelle en série limitée.',
-  keywords: ['montre luxe', 'haute horlogerie', 'multiculturel', 'serie limitee', 'Kickstarter', 'AVICEN'],
-  openGraph: {
-    title: 'AVICEN — L\'Art du Temps Universel',
-    description: '12 civilisations. 25 pièces. 1 montre.',
-    type: 'website',
-  },
-};
+  title: 'AVICEN | L\'Art du Temps Universel',
+  description: 'Haute horlogerie multiculturelle. Une montre réunissant 12 civilisations.',
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600&display=swap"
-          rel="stylesheet"
+        <link 
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" 
+          rel="stylesheet" 
         />
       </head>
       <body className="bg-white text-[#111111] font-sans antialiased">
@@ -29,5 +34,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
       </body>
     </html>
-  );
+  )
 }

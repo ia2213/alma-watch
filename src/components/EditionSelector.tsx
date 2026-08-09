@@ -15,7 +15,7 @@ export function EditionSelector({ watch }: { watch: Watch }) {
     { num: 5, name: 'Hébreu', script: 'ה', roman: 'V', color: '#a8b8d0' },
     { num: 6, name: 'Thaï', script: '๖', roman: 'VI', color: '#70c0a0' },
     { num: 7, name: 'Géorgien', script: '⴦', roman: 'VII', color: '#c07070' },
-    { num: 8, name: 'Ge\\'ez', script: '፰', roman: 'VIII', color: '#c8a835' },
+    { num: 8, name: "Ge'ez", script: '፰', roman: 'VIII', color: '#c8a835' },
     { num: 9, name: 'Grec', script: 'Θ', roman: 'IX', color: '#a0b8d8' },
     { num: 10, name: 'Chinois', script: '十', roman: 'X', color: '#e8a060' },
     { num: 11, name: 'Cunéiforme', script: '𒌋𒁹', roman: 'XI', color: '#c880c0' },

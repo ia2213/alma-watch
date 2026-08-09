@@ -1,0 +1,22 @@
+name: Fix Series Label
+on:
+  push:
+    paths:
+      - '.github/workflows/fix_series.yml'
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Replace texts
+        run: |
+          sed -i 's/watch.seriesLabel/watch.series/g' src/app/collection/page.tsx
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "fix: change seriesLabel to series in collection/page.tsx" || echo "No changes to commit"
+          git push

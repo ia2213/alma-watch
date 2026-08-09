@@ -1,0 +1,27 @@
+name: Rename ALMA and Babel
+on:
+  push:
+    paths:
+      - '.github/workflows/rename.yml'
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Replace texts
+        run: |
+          find src -type f -exec sed -i 's/ALMA/AVICEN/g' {} +
+          find src -type f -exec sed -i 's/Alma/Avicen/g' {} +
+          find src -type f -exec sed -i 's/alma/avicen/g' {} +
+          find src -type f -exec sed -i 's/BABEL/LA TOLÉRANCE/g' {} +
+          find src -type f -exec sed -i 's/Babel/La Tolérance/g' {} +
+          find src -type f -exec sed -i 's/babel/la tolérance/g' {} +
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore: replace ALMA with AVICEN and Babel with La Tolérance" || echo "No changes to commit"
+          git push

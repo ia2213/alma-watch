@@ -43,13 +43,14 @@ export default function Collection() {
           <div className="w-20 h-[1px] bg-[#C8A84B] mx-auto mt-4" />
         </div>
         <div 
-          className="flex justify-center flex-wrap gap-8 px-12 pb-16"
+          className="flex overflow-x-auto gap-8 px-12 pb-16 snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {watches.map(watch => (
             <Link 
               key={watch.id} 
               href={watch.isTeasing ? "#precommande" : `/collection/${watch.id}`}
-              className="group flex-shrink-0 w-[380px] bg-white border shadow-sm hover:shadow-xl transition-all duration-500 relative"
+              className="group flex-shrink-0 w-[380px] snap-center bg-white border shadow-sm hover:shadow-xl transition-all duration-500 relative"
               style={{ borderColor: 'rgba(0,0,0,0.06)' }}
             >
               <div className="h-[460px] overflow-hidden relative bg-[#050505] flex items-center justify-center">

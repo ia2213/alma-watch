@@ -1,219 +1,186 @@
-import Link from 'next/link';
 import { watches } from '@/lib/watches';
-
-const watchImages: Record<string, string> = {
-  v1: '/watches/acier-noir.png',
-  v2: '/watches/acier-blanc.png',
-  v3: '/watches/or-blanc.png',
-  v4: '/watches/or-rose-nacre.png',
-  v5: '/watches/or-noir.png',
-};
+import Link from 'next/link';
 
 export default function Collection() {
-
   return (
-    <div className="min-h-screen bg-white">
-
-      {/* HERO VIDÉO CINÉMATIQUE */}
-      <section className="relative w-full overflow-hidden" style={{ height: '100dvh', minHeight: '600px' }}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+    <main className="min-h-screen bg-[#F8F7F5]">
+      {/* HEADER HERO */}
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0,
+            backgroundImage: 'url(https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=2400&q=90)',
+            filter: 'brightness(0.3) contrast(1.1)'
           }}
-        >
-          <source src="/collection-hero.mp4" type="video/mp4" />
-        </video>
-
-        {/* Overlay gradient sombre */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 1,
-          background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.25) 100%)',
-        }} />
-
-        {/* Contenu hero */}
-        <div className="absolute" style={{ bottom: '80px', left: '5vw', right: '5vw', zIndex: 10 }}>
-          <p className="uppercase mb-5" style={{ fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(220,190,120,0.8)' }}>
-            Haute Horlogerie Multiculturelle
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F5] via-transparent to-[#080808]/50" />
+        
+        <div className="relative z-10 text-center px-6 mt-16">
+          <p className="nav-link mb-4" style={{color: '#C8A84B', letterSpacing: '0.3em'}}>
+            LA COLLECTION
           </p>
-          <h1 className="font-serif mb-5" style={{
-            fontSize: 'clamp(2.8rem, 7vw, 6rem)',
-            lineHeight: 1.02,
-            fontWeight: 400,
-            color: '#FFFFFF',
-            letterSpacing: '0.02em',
-          }}>
-            La Collection<br />
+          <h1 className="font-serif text-5xl md:text-7xl mb-6" style={{fontWeight: 400}}>
             <em style={{
-              fontStyle: 'italic',
-              background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 40%, #D4A843 70%, #BF9733 100%)',
+              fontStyle: 'normal',
+              background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #BF9733 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
             }}>AVICEN</em>
           </h1>
-          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '440px', lineHeight: 1.7, marginBottom: '2rem' }}>
+          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '440px', lineHeight: 1.7, margin: '0 auto 2rem auto' }}>
             12 civilisations · 24 pièces Fondateurs (numéro au choix 01/12 — 12/12) · Éditions en continu à 1 500 €
           </p>
-          <a
-            href="#montres"
-            className="inline-flex items-center gap-4"
-            style={{ color: '#FFFFFF', fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}
-          >
-            <span style={{ display: 'inline-block', width: '40px', height: '1px', background: 'linear-gradient(to right, #C8A84B, #F0DFA0)' }} />
-            Découvrir les modèles
-          </a>
-        </div>
-
-        {/* Flèche scroll */}
-        <div className="absolute animate-bounce" style={{ bottom: '28px', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}>
-          <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(200,168,75,0.6), transparent)', margin: '0 auto' }} />
         </div>
       </section>
 
-      {/* CARROUSEL — DESKTOP */}
+      {/* LISTE DES MONTRES DESKTOP */}
       <section id="montres" className="py-16 hidden md:block">
         <div className="text-center mb-12">
-          <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>LES MODÈLES</p>
+          <p className="nav-link mb-3" style={{color: '#C8A84B'}}>LES MODÈLES</p>
           <h2 className="font-serif text-4xl text-black">Choisissez votre AVICEN</h2>
-          <div className="gold-line w-20 mx-auto mt-4" />
+          <div className="w-20 h-[1px] bg-[#C8A84B] mx-auto mt-4" />
         </div>
-        <div
-          className="flex gap-6 overflow-x-auto px-8"
-          style={{
-            scrollSnapType: 'x mandatory',
-            scrollbarWidth: 'none',
-            WebkitOverflowScrolling: 'touch',
-          }}
+        <div 
+          className="flex overflow-x-auto gap-8 px-12 pb-16 snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {watches.map((watch) => (
-            <Link
-              key={watch.id}
+          {watches.map(watch => (
+            <Link 
+              key={watch.id} 
               href={watch.isTeasing ? "#precommande" : `/collection/${watch.id}`}
-              className="group flex-shrink-0 card-luxury overflow-hidden"
-              style={{width: '340px', scrollSnapAlign: 'center'}}
+              className="group flex-shrink-0 w-[380px] snap-center bg-white border shadow-sm hover:shadow-xl transition-all duration-500 relative"
+              style={{ borderColor: 'rgba(0,0,0,0.06)' }}
             >
-              <div className="relative overflow-hidden" style={{height: '340px', background: '#F5F5F3'}}>
-                <img
-                  src={watchImages[watch.id]}
-                  alt={watch.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div
-                  className="absolute bottom-0 left-0 right-0 p-4"
-                  style={{background: 'linear-gradient(to top, rgba(255,255,255,0.92) 0%, transparent 100%)'}}
-                >
-                  <span className="nav-link" style={{color: 'var(--gold)'}}>{watch.series}</span>
-                </div>
+              <div className="h-[460px] overflow-hidden relative bg-[#050505] flex items-center justify-center">
+                {watch.isTeasing ? (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-10 text-center bg-black/40">
+                    <img 
+                      src={watch.images[0]} 
+                      alt={watch.name} 
+                      className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale blur-sm"
+                    />
+                    <div className="relative z-20">
+                      <span className="text-white font-serif text-3xl block mb-4">Édition Secrète</span>
+                      <span className="text-[10px] text-white/90 tracking-widest border border-white/50 px-6 py-3 hover:bg-white hover:text-black transition uppercase">Rejoindre la liste d'attente</span>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <img 
+                      src={watch.images[0]} 
+                      alt={watch.name} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div 
+                      className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{background: 'linear-gradient(to top, rgba(255,255,255,0.92) 0%, transparent 100%)'}}
+                    >
+                      <span className="nav-link text-[10px] uppercase tracking-widest" style={{color: '#C8A84B'}}>{watch.series}</span>
+                    </div>
+                  </>
+                )}
               </div>
-              <div className="p-6">
-                <h3 className="font-serif text-xl mb-1" style={{color: '#111111'}}>{watch.name}</h3>
-                <p className="text-xs mb-4" style={{color: '#999999', letterSpacing: '0.08em'}}>{watch.subtitle}</p>
-                <div className="gold-line w-full mb-4" />
+              <div className="p-8">
+                <h3 className="font-serif text-2xl text-black mb-2">{watch.name}</h3>
+                <p className="text-xs text-black/50 tracking-widest uppercase mb-6 h-8">{watch.subtitle}</p>
+                <div className="w-full h-[1px] bg-black/10 mb-4" />
                 <div className="flex items-center justify-between">
-                  <span className="font-serif text-lg" style={{color: 'var(--gold)'}}>{watch.series === 'Fondateur' ? '4 500 €' : '1 500 €'}</span>
-                  <span className="nav-link" style={{color: 'var(--gold)'}}>Voir →</span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <p className="text-center mt-6 text-xs" style={{color: '#CCCCCC', letterSpacing: '0.15em'}}>FAIRE DÉFILER →</p>
-      </section>
-
-      {/* CARROUSEL — MOBILE */}
-      <section id="montres-mobile" className="py-12 md:hidden">
-        <div className="text-center mb-10">
-          <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>LES MODÈLES</p>
-          <h2 className="font-serif text-3xl text-black">Choisissez votre AVICEN</h2>
-          <div className="gold-line w-16 mx-auto mt-4" />
-        </div>
-        <div
-          className="flex gap-5 overflow-x-auto snap-x snap-mandatory"
-          style={{
-            paddingLeft: 'calc(50vw - 145px)',
-            paddingRight: 'calc(50vw - 145px)',
-            WebkitOverflowScrolling: 'touch',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-          }}
-        >
-          {watches.map((watch) => (
-            <Link
-              key={watch.id}
-              href={watch.isTeasing ? "#precommande" : `/collection/${watch.id}`}
-              className="snap-center flex-shrink-0 overflow-hidden rounded-2xl border border-black/8"
-              style={{width: '290px', background: '#FAFAF9'}}
-            >
-              <div className="relative overflow-hidden" style={{height: '290px', background: '#F0EFED'}}>
-                <img
-                  src={watchImages[watch.id]}
-                  alt={watch.name}
-                  className="w-full h-full object-cover"
-                />
-                <div
-                  className="absolute bottom-0 left-0 right-0 p-3"
-                  style={{background: 'linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%)'}}
-                >
-                  <span style={{fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold)'}}>
-                    {watch.series}
+                  <span className="font-serif text-xl text-black">
+                    {watch.isTeasing ? 'À VENIR' : (watch.series === 'Fondateur' ? '4 500 €' : '1 500 €')}
+                  </span>
+                  <span className="nav-link text-[10px] uppercase tracking-widest" style={{color: '#C8A84B'}}>
+                    {watch.isTeasing ? "S'inscrire →" : "Découvrir →"}
                   </span>
                 </div>
               </div>
-              <div className="p-5 space-y-3">
-                <div>
-                  <h3 className="font-serif text-[1.15rem] leading-tight text-black">{watch.name}</h3>
-                  <p className="text-[0.72rem] mt-1" style={{color: '#999', letterSpacing: '0.08em'}}>{watch.subtitle}</p>
-                </div>
-                <div className="gold-line w-full" />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* LISTE DES MONTRES MOBILE */}
+      <section id="montres-mobile" className="py-12 md:hidden">
+        <div className="text-center mb-10">
+          <p className="nav-link mb-3 text-[10px] uppercase tracking-widest" style={{color: '#C8A84B'}}>LES MODÈLES</p>
+          <h2 className="font-serif text-3xl text-black">Choisissez votre AVICEN</h2>
+          <div className="w-16 h-[1px] bg-[#C8A84B] mx-auto mt-4" />
+        </div>
+        <div className="flex flex-col gap-8 px-6 pb-12">
+          {watches.map(watch => (
+            <Link 
+              key={watch.id} 
+              href={watch.isTeasing ? "#precommande" : `/collection/${watch.id}`}
+              className="block bg-white border shadow-sm relative"
+              style={{ borderColor: 'rgba(0,0,0,0.06)' }}
+            >
+              <div className="h-[380px] overflow-hidden relative bg-[#050505]">
+                {watch.isTeasing ? (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-10 text-center bg-black/40">
+                    <img 
+                      src={watch.images[0]} 
+                      alt={watch.name} 
+                      className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale blur-sm"
+                    />
+                    <div className="relative z-20">
+                      <span className="text-white font-serif text-2xl block mb-4">Édition Secrète</span>
+                      <span className="text-[10px] text-white/90 tracking-widest border border-white/50 px-5 py-3 uppercase">Rejoindre la liste d'attente</span>
+                    </div>
+                  </div>
+                ) : (
+                  <img 
+                    src={watch.images[0]} 
+                    alt={watch.name} 
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+              <div className="p-6">
+                <h3 className="font-serif text-xl text-black mb-1">{watch.name}</h3>
+                <p className="text-[10px] text-black/50 tracking-widest uppercase mb-4">{watch.subtitle}</p>
+                <div className="w-full h-[1px] bg-black/10 mb-4" />
                 <div className="flex items-center justify-between">
-                  <span className="font-serif text-base" style={{color: 'var(--gold)'}}>{watch.series === 'Fondateur' ? '4 500 €' : '1 500 €'}</span>
-                  <span style={{fontSize: '0.68rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold)'}}>Voir →</span>
+                  <span className="font-serif text-lg text-black">
+                    {watch.isTeasing ? 'À VENIR' : (watch.series === 'Fondateur' ? '4 500 €' : '1 500 €')}
+                  </span>
+                  <span className="nav-link text-[10px] uppercase tracking-widest" style={{color: '#C8A84B'}}>
+                    {watch.isTeasing ? "S'inscrire →" : "Voir →"}
+                  </span>
                 </div>
               </div>
             </Link>
           ))}
         </div>
-        <p className="text-center mt-5 text-[0.65rem] tracking-[0.2em] uppercase" style={{color: '#CCC'}}>
-          ← Faire défiler →
-        </p>
       </section>
 
-      {/* SPECS COMMUNES */}
-      <section className="py-24 px-6" style={{background: '#F8F7F5', borderTop: '1px solid rgba(0,0,0,0.05)'}}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>ADN TECHNIQUE</p>
-            <h2 className="font-serif text-4xl text-black mb-4">Spécifications communes</h2>
-            <div className="gold-line w-20 mx-auto" />
-          </div>
-          <div className="grid md:grid-cols-2 gap-x-20">
-            {[
-              ['Mouvement', 'Sellita SW200-2 — Swiss Made'],
-              ['Réserve de marche', '72 heures'],
-              ['Boîtier', '42 mm — coussin'],
-              ['Étanchéité', '100 m / 10 ATM'],
-              ['Verre', 'Saphir bombé anti-reflet double face'],
-              ['Garantie', '3 ans internationale'],
-            ].map(([label, value], i) => (
-              <div key={i} className="flex justify-between items-baseline py-5" style={{borderBottom: '1px solid rgba(0,0,0,0.06)'}}>
-                <span style={{color: '#999', fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase'}}>{label}</span>
-                <span style={{color: '#111', fontSize: '0.9rem'}}>{value}</span>
-              </div>
-            ))}
-          </div>
+      {/* PRE-ORDER SECTION */}
+      <section id="precommande" className="py-24 px-6 bg-[#080808] text-white text-center">
+        <div className="max-w-2xl mx-auto">
+          <p className="nav-link mb-4 text-[10px] uppercase tracking-widest" style={{color: '#C8A84B'}}>LISTE D'ATTENTE</p>
+          <h2 className="font-serif text-4xl mb-6">Éditions Secrètes</h2>
+          <p className="text-white/60 mb-10 font-light leading-relaxed">
+            Les éditions <strong className="text-white">Or Rose Nacre</strong>, <strong className="text-white">Acier Blanc</strong> et <strong className="text-white">Or Noir</strong> sont actuellement en cours de développement. 
+            Inscrivez-vous pour être informé en priorité de leur sortie et réserver votre numéro.
+          </p>
+          <form className="flex flex-col md:flex-row gap-4 justify-center">
+            <input 
+              type="email" 
+              placeholder="Votre adresse e-mail" 
+              className="bg-white/5 border border-white/20 px-6 py-4 text-white text-sm outline-none focus:border-[#C8A84B] transition flex-1 max-w-sm" 
+              required 
+            />
+            <button 
+              type="button" 
+              onClick={() => alert('Merci ! Vous êtes sur la liste pour les éditions secrètes.')}
+              className="text-black font-bold uppercase tracking-widest text-[10px] px-8 py-4 hover:bg-white transition"
+              style={{ background: '#C8A84B' }}
+            >
+              S'inscrire
+            </button>
+          </form>
         </div>
       </section>
-    </div>
+
+    </main>
   );
 }

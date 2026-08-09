@@ -152,3 +152,7 @@ export const watches: Watch[] = [
     ]
   }
 ];
+
+export function getWatch(id: string): Watch | undefined {
+  return watches.find(w => w.id === id);
+}

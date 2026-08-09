@@ -51,7 +51,7 @@ export default function WatchPage({ params }: { params: { id: string } }) {
 
           {/* Infos */}
           <div>
-            <p className="nav-link mb-4" style={{color: '#C8A84B', letterSpacing: '0.3em'}}>ALMA WATCHES</p>
+            <p className="nav-link mb-4" style={{color: '#C8A84B', letterSpacing: '0.3em'}}>AVICEN WATCHES</p>
             <h1 className="font-serif mb-2 gold-gradient" style={{fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, lineHeight: 1.1}}>
               {watch.name}
             </h1>

@@ -58,7 +58,7 @@ export default function Navbar() {
             letterSpacing: '0.38em',
           }}
         >
-          ALMA
+          AVICEN
         </Link>
       </div>
 

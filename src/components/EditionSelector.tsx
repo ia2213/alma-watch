@@ -332,7 +332,7 @@ export function EditionSelector({ watch }: { watch: Watch }) {
                 </span>
               </div>
               <span className="text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1" style={{ color: '#C8A84B' }}>
-                RÉSERVATION ALMA · BABEL
+                RÉSERVATION AVICEN · LA TOLÉRANCE
               </span>
               <h4 className="text-xl font-serif font-bold text-white mb-1">
                 {isLimited ? `ÉDITION N° ${formattedNum}/12 — ${currentCiv.name.toUpperCase()}` : watch.name}

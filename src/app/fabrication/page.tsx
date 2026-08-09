@@ -4,7 +4,7 @@ export default function Fabrication() {
       {/* HERO */}
       <section className="flex items-end justify-center pb-24 pt-48 px-6" style={{background: '#F8F7F5'}}>
         <div className="text-center">
-          <p className="nav-link mb-4" style={{color: 'var(--gold)'}}>ALMA WATCHES</p>
+          <p className="nav-link mb-4" style={{color: 'var(--gold)'}}>AVICEN WATCHES</p>
           <h1 className="font-serif text-black mb-6" style={{fontSize: 'clamp(3.5rem, 9vw, 7rem)', fontWeight: 500, lineHeight: 1.05}}>
             Fabrication
           </h1>
@@ -25,7 +25,7 @@ export default function Fabrication() {
           </div>
 
           <p className="text-black/55 text-lg leading-relaxed max-w-3xl mx-auto text-center mb-16">
-            Chaque montre ALMA est le fruit d’un savoir-faire horloger transmis de génération en génération, fabriquée en Suisse dans le respect des traditions les plus exigeantes.
+            Chaque montre AVICEN est le fruit d’un savoir-faire horloger transmis de génération en génération, fabriquée en Suisse dans le respect des traditions les plus exigeantes.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -112,7 +112,7 @@ export default function Fabrication() {
             Le label Swiss Made garantit que 60% minimum de la valeur est produite en Suisse, que le mouvement est suisse et que l’assemblage final est réalisé en Suisse.
           </p>
           <p className="text-black/40 leading-relaxed">
-            ALMA va au-delà : 85% de nos composants sont fabriqués en Suisse.
+            AVICEN va au-delà : 85% de nos composants sont fabriqués en Suisse.
           </p>
         </div>
       </section>

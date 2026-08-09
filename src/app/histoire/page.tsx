@@ -1,4 +1,4 @@
-import GlobeTerrestreAlma from '@/components/GlobeTerrestreAlma';
+import GlobeTerrestreAvicen from '@/components/GlobeTerrestreAvicen';
 
 export default function Histoire() {
   const civilisations = [
@@ -34,7 +34,7 @@ export default function Histoire() {
       civ: 'Israël',
       periode: 'IIe millénaire av. J.-C. — aujourd\'hui',
       symbole: 'Lettres hébraïques',
-      description: 'L\'hébreu est l\'une des rares langues anciennes à avoir été ressuscitées comme langue vivante moderne. Dans la tradition juive, chaque lettre de l\'alphabet possède une valeur numérique — le Guématrie. Aleph vaut 1, Bet vaut 2, et ainsi de suite jusqu\'au Tav. Les cinq heures sur le cadran ALMA portent ces lettres comme autant de mémoires millénaires.',
+      description: 'L\'hébreu est l\'une des rares langues anciennes à avoir été ressuscitées comme langue vivante moderne. Dans la tradition juive, chaque lettre de l\'alphabet possède une valeur numérique — le Guématrie. Aleph vaut 1, Bet vaut 2, et ainsi de suite jusqu\'au Tav. Les cinq heures sur le cadran AVICEN portent ces lettres comme autant de mémoires millénaires.',
       sticker: '/stickers/sticker-hebreu.png',
       rotate: '7deg',
     },
@@ -117,7 +117,7 @@ export default function Histoire() {
       <section className="relative py-40 px-6 text-center overflow-hidden" style={{ background: '#07070a' }}>
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, rgba(200,168,75,0.08) 0%, transparent 70%)' }} />
         <p className="uppercase mb-6 relative z-10" style={{ fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(200,168,75,0.7)' }}>
-          ALMA WATCHES
+          AVICEN WATCHES
         </p>
         <h1 className="font-serif relative z-10" style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: 400, color: '#FFFFFF', letterSpacing: '0.06em' }}>
           Histoire
@@ -138,7 +138,7 @@ export default function Histoire() {
           {/* ── Globe compact visible uniquement sur mobile ── */}
           <div className="xl:hidden mb-8">
             <div className="overflow-hidden rounded-[10px] border shadow-[0_12px_40px_rgba(0,0,0,0.10)]" style={{ borderColor: 'rgba(200,168,75,0.18)', background: '#050505' }}>
-              <GlobeTerrestreAlma height="320px" />
+              <GlobeTerrestreAvicen height="320px" />
             </div>
             <p className="mt-3 text-center text-[0.65rem] uppercase tracking-[0.24em]" style={{ color: 'rgba(0,0,0,0.35)' }}>
               Globe interactif des civilisations
@@ -241,7 +241,7 @@ export default function Histoire() {
             {/* Globe sticky — visible uniquement sur xl+ */}
             <div className="hidden xl:block xl:sticky xl:top-24 self-start">
               <div className="overflow-hidden rounded-[10px] border shadow-[0_20px_60px_rgba(0,0,0,0.12)]" style={{ borderColor: 'rgba(200,168,75,0.18)', background: '#050505' }}>
-                <GlobeTerrestreAlma height="min(78vh, 860px)" />
+                <GlobeTerrestreAvicen height="min(78vh, 860px)" />
               </div>
               <p className="mt-4 text-center text-[0.68rem] uppercase tracking-[0.24em]" style={{ color: 'rgba(0,0,0,0.35)' }}>
                 Globe interactif des civilisations
@@ -264,7 +264,7 @@ export default function Histoire() {
             qui unit l&apos;humanité dans sa quête d&apos;éternité.
           </p>
           <p className="text-base text-white/45 leading-relaxed font-light tracking-wide">
-            ALMA rend hommage à cette universalité en incarnant dans chaque montre les douze
+            AVICEN rend hommage à cette universalité en incarnant dans chaque montre les douze
             piliers de notre civilisation commune. Chaque regard sur l&apos;heure devient ainsi un
             voyage à travers le temps et l&apos;espace.
           </p>
@@ -279,7 +279,7 @@ export default function Histoire() {
             <div className="w-10 h-[1px]" style={{ background: '#C8A84B' }} />
             <p className="text-sm text-black/50 leading-relaxed font-light">
               Depuis des siècles, l&apos;horlogerie suisse incarne l&apos;excellence et la précision.
-              ALMA s&apos;inscrit dans cette tradition tout en la transcendant par une vision
+              AVICEN s&apos;inscrit dans cette tradition tout en la transcendant par une vision
               multiculturelle du temps.
             </p>
             <p className="text-sm text-black/50 leading-relaxed font-light">

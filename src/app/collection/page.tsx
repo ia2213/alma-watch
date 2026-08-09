@@ -59,7 +59,7 @@ export default function Collection() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-            }}>ALMA</em>
+            }}>AVICEN</em>
           </h1>
           <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '440px', lineHeight: 1.7, marginBottom: '2rem' }}>
             12 civilisations · 24 pièces Fondateurs (numéro au choix 01/12 — 12/12) · Éditions en continu à 1 500 €
@@ -84,7 +84,7 @@ export default function Collection() {
       <section id="montres" className="py-16 hidden md:block">
         <div className="text-center mb-12">
           <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>LES MODÈLES</p>
-          <h2 className="font-serif text-4xl text-black">Choisissez votre ALMA</h2>
+          <h2 className="font-serif text-4xl text-black">Choisissez votre AVICEN</h2>
           <div className="gold-line w-20 mx-auto mt-4" />
         </div>
         <div
@@ -134,7 +134,7 @@ export default function Collection() {
       <section id="montres-mobile" className="py-12 md:hidden">
         <div className="text-center mb-10">
           <p className="nav-link mb-3" style={{color: 'var(--gold)'}}>LES MODÈLES</p>
-          <h2 className="font-serif text-3xl text-black">Choisissez votre ALMA</h2>
+          <h2 className="font-serif text-3xl text-black">Choisissez votre AVICEN</h2>
           <div className="gold-line w-16 mx-auto mt-4" />
         </div>
         <div

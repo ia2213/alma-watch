@@ -24,7 +24,7 @@ export interface Watch {
 export const watches: Watch[] = [
   {
     id: "v1",
-    name: "BABEL Acier Noir",
+    name: "LA TOLÉRANCE Acier Noir",
     subtitle: "Boîtier Acier 316L, Cadran Laque Ardoise",
     ref: "BBL-STL-BLK-01",
     series: "Fondateur",
@@ -50,7 +50,7 @@ export const watches: Watch[] = [
   },
   {
     id: "v2",
-    name: "BABEL Acier Blanc",
+    name: "LA TOLÉRANCE Acier Blanc",
     subtitle: "Boîtier Acier 316L, Cadran Blanc Champagne",
     ref: "BBL-STL-WHT-02",
     series: "Collection",
@@ -65,7 +65,7 @@ export const watches: Watch[] = [
     glass: "Saphir bombé anti-reflet double face",
     bracelet: "Cuir veau cognac, largeur 20 mm",
     limited: "Édition continue — Sans limite",
-    description: "La pureté originelle. Un cadran blanc champagne lumineux qui sublime les index des 12 systèmes d'écriture, capturant l'essence du projet BABEL dans sa forme la plus classique.",
+    description: "La pureté originelle. Un cadran blanc champagne lumineux qui sublime les index des 12 systèmes d'écriture, capturant l'essence du projet LA TOLÉRANCE dans sa forme la plus classique.",
     color: "#f5f5dc",
     specs: [
       { label: "Boîtier", value: "39mm Acier 316L" },
@@ -76,7 +76,7 @@ export const watches: Watch[] = [
   },
   {
     id: "v3",
-    name: "BABEL Or Blanc",
+    name: "LA TOLÉRANCE Or Blanc",
     subtitle: "Boîtier Laiton PVD Or, Cadran Blanc",
     ref: "BBL-GLD-WHT-03",
     series: "Fondateur",
@@ -102,7 +102,7 @@ export const watches: Watch[] = [
   },
   {
     id: "v4",
-    name: "BABEL Or Rose Nacre",
+    name: "LA TOLÉRANCE Or Rose Nacre",
     subtitle: "Boîtier Laiton PVD Or Rose, Cadran Nacre",
     ref: "BBL-RGL-MOP-04",
     series: "Collection",
@@ -128,7 +128,7 @@ export const watches: Watch[] = [
   },
   {
     id: "v5",
-    name: "BABEL Or Noir",
+    name: "LA TOLÉRANCE Or Noir",
     subtitle: "Boîtier Laiton PVD Or, Cadran Noir",
     ref: "BBL-GLD-BLK-05",
     series: "Collection",

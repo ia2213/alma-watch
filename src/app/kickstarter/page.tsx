@@ -248,7 +248,7 @@ export default function KickstarterPage() {
               lineHeight: 1.05, fontWeight: 400, color: '#fff',
               letterSpacing: '0.02em', marginBottom: 20,
             }}>
-              ALMA<br />
+              AVICEN<br />
               <em style={{
                 fontStyle: 'italic',
                 background: GOLD_GRADIENT,
@@ -256,7 +256,7 @@ export default function KickstarterPage() {
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}>
-                BABEL
+                LA TOLÉRANCE
               </em>
             </h1>
             <p style={{
@@ -305,7 +305,7 @@ export default function KickstarterPage() {
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <img
               src="/watches/or-blanc.png"
-              alt="ALMA BABEL Or Blanc"
+              alt="AVICEN LA TOLÉRANCE Or Blanc"
               style={{
                 width: mobile ? '70vw' : '380px',
                 maxWidth: 400,
@@ -333,7 +333,7 @@ export default function KickstarterPage() {
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <div style={{ width: 1, height: 48, background: `linear-gradient(to bottom, transparent, ${GOLD}, transparent)`, margin: '0 auto 32px' }} />
             <p style={{ fontSize: '0.62rem', letterSpacing: '0.3em', color: GOLD, textTransform: 'uppercase', fontWeight: 700, marginBottom: 12 }}>
-              Le Manifeste ALMA
+              Le Manifeste AVICEN
             </p>
             <h2 style={{
               fontFamily: "'Playfair Display', Georgia, serif",
@@ -352,7 +352,7 @@ export default function KickstarterPage() {
                 Depuis des siècles, la haute horlogerie conçoit le temps à travers un prisme unique, principalement européen ou occidental. Les cadrans classiques affichent des chiffres romains ou arabes standardisés, effaçant la richesse des autres cultures.
               </p>
               <p>
-                <strong>ALMA BABEL</strong> est née d&apos;un défi simple mais audacieux : concevoir un cadran universel qui rende hommage aux plus grands esprits mathématiques et scripturaux de l&apos;humanité. De la première notation cunéiforme de Sumer aux caractères traditionnels d&apos;Asie de l&apos;Est, chaque heure est une porte ouverte sur une époque et un génie spécifiques.
+                <strong>AVICEN LA TOLÉRANCE</strong> est née d&apos;un défi simple mais audacieux : concevoir un cadran universel qui rende hommage aux plus grands esprits mathématiques et scripturaux de l&apos;humanité. De la première notation cunéiforme de Sumer aux caractères traditionnels d&apos;Asie de l&apos;Est, chaque heure est une porte ouverte sur une époque et un génie spécifiques.
               </p>
             </div>
             <div>
@@ -643,7 +643,7 @@ export default function KickstarterPage() {
               }}>
                 <img
                   src={watchImage}
-                  alt={`ALMA BABEL ${version === 'or-blanc' ? 'Or Blanc' : 'Acier Noir'}`}
+                  alt={`AVICEN LA TOLÉRANCE ${version === 'or-blanc' ? 'Or Blanc' : 'Acier Noir'}`}
                   style={{
                     width: mobile ? '60vw' : 320,
                     maxWidth: 340,
@@ -661,7 +661,7 @@ export default function KickstarterPage() {
                   backgroundClip: 'text',
                   fontWeight: 700,
                 }}>
-                  BABEL · {version === 'or-blanc' ? 'OR BLANC' : 'ACIER NOIR'}
+                  LA TOLÉRANCE · {version === 'or-blanc' ? 'OR BLANC' : 'ACIER NOIR'}
                 </div>
                 <div style={{ fontSize: '0.58rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', marginTop: 4 }}>
                   PIÈCE {civ.roman} · {civ.name} · {civ.era}
@@ -934,7 +934,7 @@ export default function KickstarterPage() {
             backgroundClip: 'text',
             marginBottom: 20,
           }}>
-            ALMA
+            AVICEN
           </div>
           <h2 style={{
             fontFamily: "'Playfair Display', Georgia, serif",
@@ -975,7 +975,7 @@ export default function KickstarterPage() {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
           }}>
-            ALMA
+            AVICEN
           </div>
           <div style={{ display: 'flex', gap: 32, fontSize: '0.65rem', color: 'rgba(0,0,0,0.35)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
             <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>Accueil</Link>
@@ -984,7 +984,7 @@ export default function KickstarterPage() {
           </div>
         </div>
         <div style={{ textAlign: 'center', marginTop: 40, fontSize: '0.65rem', color: 'rgba(0,0,0,0.2)', letterSpacing: '0.1em' }}>
-          © 2026 ALMA. Tous droits réservés.
+          © 2026 AVICEN. Tous droits réservés.
         </div>
       </footer>
     </div>

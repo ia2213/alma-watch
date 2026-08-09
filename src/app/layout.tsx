@@ -3,11 +3,11 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'ALMA — L\'Art du Temps Universel',
-  description: '12 civilisations. 25 pièces. 1 montre. ALMA, montre de haute horlogerie suisse multiculturelle en série limitée.',
-  keywords: ['montre luxe', 'haute horlogerie', 'multiculturel', 'serie limitee', 'Kickstarter', 'ALMA'],
+  title: 'AVICEN — L\'Art du Temps Universel',
+  description: '12 civilisations. 25 pièces. 1 montre. AVICEN, montre de haute horlogerie suisse multiculturelle en série limitée.',
+  keywords: ['montre luxe', 'haute horlogerie', 'multiculturel', 'serie limitee', 'Kickstarter', 'AVICEN'],
   openGraph: {
-    title: 'ALMA — L\'Art du Temps Universel',
+    title: 'AVICEN — L\'Art du Temps Universel',
     description: '12 civilisations. 25 pièces. 1 montre.',
     type: 'website',
   },

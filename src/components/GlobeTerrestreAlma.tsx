@@ -4,7 +4,7 @@ interface Props {
   height?: string;
 }
 
-export default function GlobeTerrestreAlma({ height = '100%' }: Props) {
+export default function GlobeTerrestreAvicen({ height = '100%' }: Props) {
   return (
     <iframe
       src="/globe-civilisations.html"
@@ -16,7 +16,7 @@ export default function GlobeTerrestreAlma({ height = '100%' }: Props) {
         display: 'block',
         background: '#050505',
       }}
-      title="Globe des civilisations ALMA"
+      title="Globe des civilisations AVICEN"
       allowFullScreen
     />
   );

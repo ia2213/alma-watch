@@ -1,3 +1,4 @@
+'use client';
 import { watches } from '@/lib/watches';
 import Link from 'next/link';
 

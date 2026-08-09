@@ -30,7 +30,7 @@ export default function Collection() {
             }}>AVICEN</em>
           </h1>
           <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '440px', lineHeight: 1.7, margin: '0 auto 2rem auto' }}>
-            12 civilisations · 24 pièces Fondateurs (numéro au choix 01/12 — 12/12) · Éditions en continu à 1 500 €
+            12 civilisations · 24 pièces Fondateurs (numéro au choix 01/12 — 12/12) · Éditions en continu à partir de 1 500 €
           </p>
         </div>
       </section>
@@ -43,14 +43,13 @@ export default function Collection() {
           <div className="w-20 h-[1px] bg-[#C8A84B] mx-auto mt-4" />
         </div>
         <div 
-          className="flex overflow-x-auto gap-8 px-12 pb-16 snap-x snap-mandatory"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex justify-center flex-wrap gap-8 px-12 pb-16"
         >
           {watches.map(watch => (
             <Link 
               key={watch.id} 
               href={watch.isTeasing ? "#precommande" : `/collection/${watch.id}`}
-              className="group flex-shrink-0 w-[380px] snap-center bg-white border shadow-sm hover:shadow-xl transition-all duration-500 relative"
+              className="group flex-shrink-0 w-[380px] bg-white border shadow-sm hover:shadow-xl transition-all duration-500 relative"
               style={{ borderColor: 'rgba(0,0,0,0.06)' }}
             >
               <div className="h-[460px] overflow-hidden relative bg-[#050505] flex items-center justify-center">
@@ -88,7 +87,7 @@ export default function Collection() {
                 <div className="w-full h-[1px] bg-black/10 mb-4" />
                 <div className="flex items-center justify-between">
                   <span className="font-serif text-xl text-black">
-                    {watch.isTeasing ? 'À VENIR' : (watch.series === 'Fondateur' ? '4 500 €' : '1 500 €')}
+                    {watch.isTeasing ? 'À VENIR' : (watch.series === 'Fondateur' ? '4 500 €' : 'À partir de 1 500 €')}
                   </span>
                   <span className="nav-link text-[10px] uppercase tracking-widest" style={{color: '#C8A84B'}}>
                     {watch.isTeasing ? "S'inscrire →" : "Découvrir →"}
@@ -142,7 +141,7 @@ export default function Collection() {
                 <div className="w-full h-[1px] bg-black/10 mb-4" />
                 <div className="flex items-center justify-between">
                   <span className="font-serif text-lg text-black">
-                    {watch.isTeasing ? 'À VENIR' : (watch.series === 'Fondateur' ? '4 500 €' : '1 500 €')}
+                    {watch.isTeasing ? 'À VENIR' : (watch.series === 'Fondateur' ? '4 500 €' : 'À partir de 1 500 €')}
                   </span>
                   <span className="nav-link text-[10px] uppercase tracking-widest" style={{color: '#C8A84B'}}>
                     {watch.isTeasing ? "S'inscrire →" : "Voir →"}

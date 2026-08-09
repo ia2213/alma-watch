@@ -10,6 +10,7 @@ const watchImages: Record<string, string> = {
 };
 
 export default function Collection() {
+
   return (
     <div className="min-h-screen bg-white">
 
@@ -98,7 +99,7 @@ export default function Collection() {
           {watches.map((watch) => (
             <Link
               key={watch.id}
-              href={`/collection/${watch.id}`}
+              href={watch.isTeasing ? "#precommande" : `/collection/${watch.id}`}
               className="group flex-shrink-0 card-luxury overflow-hidden"
               style={{width: '340px', scrollSnapAlign: 'center'}}
             >
@@ -150,7 +151,7 @@ export default function Collection() {
           {watches.map((watch) => (
             <Link
               key={watch.id}
-              href={`/collection/${watch.id}`}
+              href={watch.isTeasing ? "#precommande" : `/collection/${watch.id}`}
               className="snap-center flex-shrink-0 overflow-hidden rounded-2xl border border-black/8"
               style={{width: '290px', background: '#FAFAF9'}}
             >

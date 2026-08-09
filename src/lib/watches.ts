@@ -19,6 +19,7 @@ export interface Watch {
   description: string;
   color: string;
   specs: { label: string; value: string }[];
+  isTeasing?: boolean;
 }
 
 export const watches: Watch[] = [
@@ -67,6 +68,7 @@ export const watches: Watch[] = [
     limited: "Édition continue — Sans limite",
     description: "La pureté originelle. Un cadran blanc champagne lumineux qui sublime les index des 12 systèmes d'écriture, capturant l'essence du projet LA TOLÉRANCE dans sa forme la plus classique.",
     color: "#f5f5dc",
+    isTeasing: true,
     specs: [
       { label: "Boîtier", value: "39mm Acier 316L" },
       { label: "Cadran", value: "Blanc champagne" },
@@ -119,6 +121,7 @@ export const watches: Watch[] = [
     limited: "Édition continue — Sans limite",
     description: "Une pièce d'exception. Le cadran en nacre véritable offre des reflets uniques à chaque mouvement du poignet, s'accordant avec élégance au ton chaud du boîtier PVD or rose.",
     color: "#fdf5e6",
+    isTeasing: true,
     specs: [
       { label: "Boîtier", value: "39mm PVD Or Rose" },
       { label: "Cadran", value: "Nacre véritable" },
@@ -145,6 +148,7 @@ export const watches: Watch[] = [
     limited: "Édition continue — Sans limite",
     description: "L'audace du noir absolu ceinturé d'un éclat doré. Une présence forte et mystérieuse pour cette édition nocturne, pensée pour les amateurs de contrastes tranchants.",
     color: "#000000",
+    isTeasing: true,
     specs: [
       { label: "Boîtier", value: "39mm PVD Or" },
       { label: "Cadran", value: "Laque noir profond" },

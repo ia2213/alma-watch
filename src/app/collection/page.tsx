@@ -121,7 +121,7 @@ export default function Collection() {
                 <p className="text-xs mb-4" style={{color: '#999999', letterSpacing: '0.08em'}}>{watch.subtitle}</p>
                 <div className="gold-line w-full mb-4" />
                 <div className="flex items-center justify-between">
-                  <span className="font-serif text-lg" style={{color: 'var(--gold)'}}>{watch.price}</span>
+                  <span className="font-serif text-lg" style={{color: 'var(--gold)'}}>{watch.series === 'Fondateur' ? '4 500 €' : '1 500 €'}</span>
                   <span className="nav-link" style={{color: 'var(--gold)'}}>Voir →</span>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function Collection() {
                 </div>
                 <div className="gold-line w-full" />
                 <div className="flex items-center justify-between">
-                  <span className="font-serif text-base" style={{color: 'var(--gold)'}}>{watch.price}</span>
+                  <span className="font-serif text-base" style={{color: 'var(--gold)'}}>{watch.series === 'Fondateur' ? '4 500 €' : '1 500 €'}</span>
                   <span style={{fontSize: '0.68rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold)'}}>Voir →</span>
                 </div>
               </div>

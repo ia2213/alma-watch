@@ -42,9 +42,17 @@ export default function Collection() {
           <h2 className="font-serif text-4xl text-black">Choisissez votre AVICEN</h2>
           <div className="w-20 h-[1px] bg-[#C8A84B] mx-auto mt-4" />
         </div>
+        {/*
+          Pour garder le défilement horizontal sans afficher la barre,
+          on utilise overflow-x-auto, on masque la scrollbar avec 'scrollbarWidth: none'
+          et on ajoute une classe pour le hover, mais ici on laisse les styles inline.
+        */}
         <div 
           className="flex overflow-x-auto gap-8 px-12 pb-16 snap-x snap-mandatory"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          style={{ 
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none'
+          }}
         >
           {watches.map(watch => (
             <Link 

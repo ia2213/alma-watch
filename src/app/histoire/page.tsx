@@ -1,4 +1,20 @@
 import GlobeTerrestreAvicen from '@/components/GlobeTerrestreAvicen';
+import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Histoire des 12 Civilisations | AVICEN Horlogerie',
+  description: 'Découvrez l\'origine et l\'histoire des 12 systèmes de numération gravés sur le cadran AVICEN : de Rome à Sumer, de Bagdad aux Mayas.',
+  alternates: {
+    canonical: 'https://avicen-watch.vercel.app/histoire',
+  },
+  openGraph: {
+    title: 'Histoire des 12 Civilisations — AVICEN Horlogerie',
+    description: '12 civilisations, 12 écritures réunies sur un seul cadran d\'exception.',
+    url: 'https://avicen-watch.vercel.app/histoire',
+    images: ['/watches/acier-noir.png'],
+  },
+};
 
 export default function Histoire() {
   const civilisations = [
@@ -302,6 +318,8 @@ export default function Histoire() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 }

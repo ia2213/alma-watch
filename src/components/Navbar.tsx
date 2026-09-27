@@ -8,6 +8,8 @@ const links = [
   { href: '/collection', label: 'Collection' },
   { href: '/histoire', label: 'Histoire' },
   { href: '/fabrication', label: 'Fabrication' },
+  { href: '/kickstarter', label: 'Kickstarter' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -23,24 +25,23 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [pathname]);
 
-  // Sur accueil : transparent → blanc au scroll
-  // Sur autres pages : toujours blanc
+  // Sur accueil : transparent → blanc/sombre au scroll
   const isTransparent = isHome && !scrolled;
 
-  const navBg = isTransparent ? 'transparent' : '#FFFFFF';
-  const navBorder = isTransparent ? '1px solid transparent' : '1px solid rgba(0,0,0,0.07)';
-  const navShadow = isTransparent ? 'none' : '0 1px 20px rgba(0,0,0,0.05)';
+  const navBg = isTransparent ? 'transparent' : '#080808';
+  const navBorder = isTransparent ? '1px solid transparent' : '1px solid rgba(255,255,255,0.08)';
+  const navShadow = isTransparent ? 'none' : '0 4px 30px rgba(0,0,0,0.5)';
 
   // Couleur des liens selon contexte
   const linkColor = (isActive: boolean) => {
-    if (isActive) return 'var(--gold)';
-    if (isTransparent) return 'rgba(255,255,255,0.72)';
-    return '#888888';
+    if (isActive) return '#C8A84B';
+    if (isTransparent) return 'rgba(255,255,255,0.85)';
+    return 'rgba(255,255,255,0.7)';
   };
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md"
       style={{ background: navBg, borderBottom: navBorder, boxShadow: navShadow }}
     >
       {/* Logo centré */}
@@ -63,21 +64,21 @@ export default function Navbar() {
       </div>
 
       {/* Navigation */}
-      <div className="flex items-center justify-center gap-10 pb-4">
+      <div className="flex items-center justify-center gap-6 md:gap-10 pb-4 overflow-x-auto px-4 no-scrollbar">
         {links.map(({ href, label }) => {
           const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
           return (
             <Link
               key={href}
               href={href}
-              className="transition-colors duration-300"
+              className="transition-all duration-300 hover:text-[#C8A84B] whitespace-nowrap"
               style={{
                 fontSize: '0.62rem',
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                fontWeight: 400,
+                fontWeight: 500,
                 color: linkColor(isActive),
-                borderBottom: isActive ? '1px solid var(--gold)' : '1px solid transparent',
+                borderBottom: isActive ? '1px solid #C8A84B' : '1px solid transparent',
                 paddingBottom: '2px',
               }}
             >

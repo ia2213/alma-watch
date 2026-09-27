@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C8A84B"/>
+      <stop offset="35%" stop-color="#F0DFA0"/>
+      <stop offset="60%" stop-color="#D4A843"/>
+      <stop offset="85%" stop-color="#EDD98A"/>
+      <stop offset="100%" stop-color="#BF9733"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="110" fill="url(#bg)" stroke="#C8A84B" stroke-width="6" stroke-opacity="0.3"/>
+  <circle cx="256" cy="256" r="210" fill="none" stroke="url(#gold)" stroke-width="4" stroke-opacity="0.6"/>
+  <circle cx="256" cy="256" r="195" fill="none" stroke="#C8A84B" stroke-width="1" stroke-dasharray="3 9" stroke-opacity="0.5"/>
+  <text x="256" y="325" font-family="'Playfair Display', 'Times New Roman', serif" font-size="220" font-weight="600" fill="url(#gold)" text-anchor="middle" letter-spacing="4">A</text>
+  <circle cx="256" cy="95" r="4" fill="#C8A84B"/>
+  <circle cx="256" cy="417" r="4" fill="#C8A84B"/>
+  <circle cx="95" cy="256" r="4" fill="#C8A84B"/>
+  <circle cx="417" cy="256" r="4" fill="#C8A84B"/>
+</svg>

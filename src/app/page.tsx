@@ -1,5 +1,7 @@
 'use client';
+
 import Link from 'next/link';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -15,7 +17,7 @@ export default function Home() {
         <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.3) 100%)' }} />
 
         <div className="absolute" style={{ bottom: '80px', left: '5vw', right: '5vw', zIndex: 10 }}>
-          <p className="uppercase mb-5" style={{ fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(220,190,120,0.8)' }}>
+          <p className="uppercase mb-4 text-[#C8A84B]" style={{ fontSize: '0.65rem', letterSpacing: '0.3em', fontWeight: 600 }}>
             Haute Horlogerie Multiculturelle
           </p>
           <h1 className="font-serif mb-5" style={{ fontSize: 'clamp(3rem, 7vw, 6.5rem)', lineHeight: 1.02, fontWeight: 400, color: '#FFFFFF', letterSpacing: '0.02em' }}>
@@ -24,17 +26,30 @@ export default function Home() {
               Temps Universel
             </em>
           </h1>
-          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', maxWidth: '400px', lineHeight: 1.7, marginBottom: '2rem' }}>
-            12 civilisations. 174 pièces. 1 montre pour réunir les grandes cultures de l&apos;humanité.
+          <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.04em', maxWidth: '440px', lineHeight: 1.7, marginBottom: '2rem' }}>
+            12 civilisations. 174 pièces au total. 1 montre d&apos;exception pour réunir les grandes cultures de l&apos;humanité.
           </p>
-          <Link href="/collection" className="inline-flex items-center gap-4" style={{ color: '#FFFFFF', fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-            <span style={{ display: 'inline-block', width: '40px', height: '1px', background: 'linear-gradient(to right, #C8A84B, #F0DFA0)' }} />
-            Découvrir la Collection
-          </Link>
+          <div className="flex flex-wrap gap-4 items-center">
+            <Link 
+              href="/collection" 
+              className="inline-flex items-center gap-4 bg-white/10 hover:bg-white text-white hover:text-black px-6 py-3.5 border border-white/20 transition-all duration-300"
+              style={{ fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 600 }}
+            >
+              <span style={{ display: 'inline-block', width: '30px', height: '1px', background: 'currentColor' }} />
+              Découvrir la Collection
+            </Link>
+            <Link
+              href="/kickstarter"
+              className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#C8A84B] text-[#C8A84B] hover:bg-[#C8A84B] hover:text-black transition-all duration-300"
+              style={{ fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 600 }}
+            >
+              Édition Fondateur →
+            </Link>
+          </div>
         </div>
 
         <div className="absolute animate-bounce" style={{ bottom: '28px', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}>
-          <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(200,168,75,0.6), transparent)', margin: '0 auto' }} />
+          <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(200,168,75,0.8), transparent)', margin: '0 auto' }} />
         </div>
       </section>
 
@@ -47,12 +62,12 @@ export default function Home() {
           <source src="/pub-hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Overlay léger pour garder la vidéo visible */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.25) 100%)' }} />
+        {/* Overlay léger */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.3) 100%)' }} />
 
-        {/* Texte basé en bas à gauche */}
+        {/* Texte en bas à gauche */}
         <div className="absolute" style={{ bottom: '60px', left: '5vw', right: '5vw', zIndex: 10 }}>
-          <p className="uppercase mb-4" style={{ fontSize: '0.58rem', letterSpacing: '0.3em', color: 'rgba(200,168,75,0.75)' }}>
+          <p className="uppercase mb-4" style={{ fontSize: '0.6rem', letterSpacing: '0.3em', color: 'rgba(200,168,75,0.9)', fontWeight: 600 }}>
             Le manifeste AVICEN
           </p>
           <h2 className="font-serif mb-5" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1.1, fontWeight: 400, color: '#FFFFFF', letterSpacing: '0.03em', maxWidth: '640px' }}>
@@ -62,10 +77,10 @@ export default function Home() {
           <Link
             href="/histoire"
             className="inline-flex items-center gap-4"
-            style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}
+            style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 600 }}
           >
             <span style={{ display: 'inline-block', width: '30px', height: '1px', background: '#C8A84B' }} />
-            Découvrir l’histoire
+            Découvrir l’histoire des 12 civilisations
           </Link>
         </div>
       </section>
@@ -78,13 +93,15 @@ export default function Home() {
             Une Vision.<br />Douze Civilisations.
           </h2>
           <div className="w-14 h-[1px] mx-auto" style={{ background: '#C8A84B' }} />
-          <p className="text-base md:text-lg text-black/55 leading-relaxed font-light tracking-wide">
+          <p className="text-base md:text-lg text-black/65 leading-relaxed font-light tracking-wide">
             AVICEN réunit sur un seul cadran les systèmes de numération des plus grandes civilisations de l&apos;humanité.
-            De Rome à Sumer, du monde arabe à l&apos;Asie, chaque heure raconte une histoire millénaire.
+            De Rome à Sumer, du monde arabe à l&apos;Asie, chaque heure raconte une histoire millénaire d&apos;ingéniosité et de savoir partagé.
           </p>
-          <Link href="/histoire" className="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase hover:gap-5 transition-all duration-300" style={{ color: '#C8A84B' }}>
-            <span>En savoir plus</span><span>→</span>
-          </Link>
+          <div>
+            <Link href="/histoire" className="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase hover:gap-5 transition-all duration-300 font-semibold" style={{ color: '#C8A84B' }}>
+              <span>Explorer les 12 écritures du cadran</span><span>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -92,34 +109,21 @@ export default function Home() {
       <section className="py-28 px-6" style={{ background: '#F8F7F5' }}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-16">
           {[
-            { title: 'Swiss Made',     desc: 'Mouvement Sellita SW200-2 assemblé en Suisse', icon: '❆' },
-            { title: 'Série Limitée',  desc: 'Seulement 174 pièces pour le lancement',     icon: '◆' },
-            { title: 'Engagement', desc: '10% des revenus reversés à une association',       icon: '❇' },
+            { title: 'Swiss Made', desc: 'Mouvement automatique Sellita SW200-2 manufacturé et assemblé en Suisse.', icon: '❆', link: '/fabrication' },
+            { title: 'Série Limitée', desc: '24 pièces Fondateurs numérotées au choix de 01/12 à 12/12.', icon: '◆', link: '/collection' },
+            { title: 'Engagement Solidaire', desc: '10% des bénéfices reversés à des initiatives de préservation du patrimoine mondial.', icon: '❇', link: '/histoire' },
           ].map((item, idx) => (
-            <div key={idx} className="text-center space-y-5 group">
+            <Link key={idx} href={item.link} className="text-center space-y-5 group block p-6 rounded-xl hover:bg-white hover:shadow-xl transition-all duration-300">
               <div className="text-3xl group-hover:scale-110 transition-transform duration-500" style={{ color: '#C8A84B' }}>{item.icon}</div>
               <h3 className="font-serif text-xl text-black tracking-[0.06em]">{item.title}</h3>
               <div className="w-10 h-[1px] mx-auto" style={{ background: '#C8A84B', opacity: 0.5 }} />
-              <p className="text-black/50 text-sm leading-relaxed font-light">{item.desc}</p>
-            </div>
+              <p className="text-black/60 text-sm leading-relaxed font-light">{item.desc}</p>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t py-14 px-6 bg-white" style={{ borderColor: 'rgba(0,0,0,0.07)' }}>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="font-serif text-2xl tracking-[0.3em]" style={{ background: 'linear-gradient(135deg, #C8A84B 0%, #F0DFA0 35%, #D4A843 60%, #BF9733 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            AVICEN
-          </div>
-          <div className="flex gap-8 text-xs text-black/35 tracking-[0.15em] uppercase">
-            <Link href="#" className="hover:text-black transition">Instagram</Link>
-            <Link href="#" className="hover:text-black transition">LinkedIn</Link>
-            <Link href="#" className="hover:text-black transition">Mentions légales</Link>
-          </div>
-        </div>
-        <div className="text-center mt-10 text-xs text-black/25 tracking-[0.1em]">© 2026 AVICEN. Tous droits réservés.</div>
-      </footer>
+      <Footer />
     </>
   );
 }
